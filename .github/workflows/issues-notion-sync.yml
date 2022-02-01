@@ -1,4 +1,5 @@
 on:
+  workflow_dispatch:
   issues:
     types:
       [
@@ -19,9 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Add GitHub Issues to Notion
     steps:
-      - uses: actions/checkout@v2
-      - uses: ./.github/actions/notion
+      - name: Add GitHub Issues to Notion
+        uses: instantish/notion-github-action@v1.2.0
         with:
           notion-token: ${{ secrets.NOTION_TOKEN }}
           notion-db: ${{ secrets.NOTION_DATABASE }}
-        
+          github-token: ${{ secrets.GITHUB_TOKEN }}
