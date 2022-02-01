@@ -1,0 +1,27 @@
+on:
+  issues:
+    types:
+      [
+        opened,
+        edited,
+        labeled,
+        unlabeled,
+        assigned,
+        unassigned,
+        milestoned,
+        demilestoned,
+        reopened,
+        closed,
+      ]
+
+jobs:
+  notion_job:
+    runs-on: ubuntu-latest
+    name: Add GitHub Issues to Notion
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/notion
+        with:
+          notion-token: ${{ secrets.NOTION_TOKEN }}
+          notion-db: ${{ secrets.NOTION_DATABASE }}
+        
