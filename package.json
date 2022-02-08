@@ -5,6 +5,7 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc"
+
   },
   "dependencies": {
     "next": "latest",
