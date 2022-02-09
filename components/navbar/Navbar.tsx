@@ -10,7 +10,7 @@ function Navbar() {
         <nav className="flex items-center flex-wrap bg-green-300 p-3">
             <Link href='/'>
             <a className='inline-flex items-center p-2 mr-4 '>
-                <svg width="40%" height="40%" viewBox="0 0 643 167" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" xmlnsSerif="http://www.serif.com/" fill="-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                <svg width="40%" height="40%" viewBox="0 0 643 167" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve"  fill="-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
                     <g transform="matrix(1,0,0,1,-121.126,-423)">
                         <g transform="matrix(1,0,0,1,-869.951,355.303)">
                             <g transform="matrix(1.33333,0,0,1.33333,887.586,-279.257)">
