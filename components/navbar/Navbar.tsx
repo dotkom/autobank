@@ -1,15 +1,26 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from "../../images/logoer/Online_hvit.svg" 
 
 function Navbar() {
+
+    const [active, setActive] = useState(false);
+
+    const handleClick = () => {
+        setActive(!active);
+        console.log(active);
+    };
+
   return (
       <>
+        {console.log(active)}
         <style jsx>{`nav {background: #0D5474}`}</style>
 
         <nav className="flex items-center flex-wrap bg-green-300 p-3">
             <Link href='/'>
             <a className='inline-flex items-center p-2 mr-4 '>
+                {//logo, bør importeres
+                }
                 <svg width="40%" height="40%" viewBox="0 0 643 167" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve"  fill="-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
                     <g transform="matrix(1,0,0,1,-121.126,-423)">
                         <g transform="matrix(1,0,0,1,-869.951,355.303)">
@@ -51,7 +62,8 @@ function Navbar() {
 
             {// Burgermeny 
                 }
-            <button className=' inline-flex p-3 hover:bg-green-600 rounded lg:hidden text-white ml-auto hover:text-white outline-none'>
+            <button className=' inline-flex p-3 hover:bg-green-600 rounded lg:hidden
+             text-white ml-auto hover:text-white outline-none' onClick={handleClick}>
             <svg
                 className='w-6 h-6'
                 fill='none'
@@ -68,7 +80,7 @@ function Navbar() {
             </svg>
             </button>
 
-            <div className='hidden w-full lg:inline-flex lg:flex-grow lg:w-auto'>
+            <div className={`${active ? '' : 'hidden' }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}>
                 <div className='lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto'>
                     <Link href='/fondet'>
                         <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white '>
@@ -90,18 +102,18 @@ function Navbar() {
                             Bedrift
                         </a>
                     </Link>
-                    <Link href="/">
+                    <Link href='/faq'>
                         <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white'>
                             FAQ
                         </a>
                     </Link>
-                    <Link href="/">
+                    <Link href='/login'>
                         <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white'>
                             Logg inn
                         </a>
                     </Link>
                 </div>
-            </div>    
+          </div>
 
         </nav>
       </>)
