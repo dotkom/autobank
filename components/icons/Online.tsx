@@ -114,10 +114,10 @@ const Online = ({ color = 'Blue', text = false, ...props }: Props) => {
 
 export const OnlineBankom = () => {
   return (
-    <div className='flex items-center'>
-      <Online className='h-6 px-2' text />
-      <div className='border-l-2 rounded-sm h-6 border-online-blue-500 w-[1px]' />
-      <span className='text-online-blue-500 px-2 text-xl'>Bankom</span>
+    <div className='flex items-end'>
+      <Online className='h-6 px-2 py-0.5' text />
+      <div className='border-l-2 rounded-sm h-5 self-center border-online-blue-500 w-px' />
+      <div className='text-online-blue-500 h-6 px-2 text-xl'>Bankom</div>
     </div>
   );
 };
