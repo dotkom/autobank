@@ -36,7 +36,7 @@ export default function OnlineProvider<
 >(options: OAuthUserConfig<P>): OAuthConfig<P> {
   return {
     id: 'onlineweb4',
-    name: 'Onlineweb4',
+    name: 'Online',
     type: 'oauth',
     version: '2.0',
     authorization: {
