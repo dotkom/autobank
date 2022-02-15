@@ -20,8 +20,8 @@ export default function SignIn({
   return (
     <Layout>
       <div className=' max-w-lg w-full flex items-center flex-col justify-center bg-slate-100 p-10 rounded-lg'>
-        <OnlineBankom />
-        <h1>Log in</h1>
+        <OnlineBankom className='h-10 my-10' />
+
         {Object.values(providers).map((provider) => (
           <div key={provider.name}>
             <Button

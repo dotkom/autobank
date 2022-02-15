@@ -84,7 +84,7 @@ export const Nav = () => {
     >
       <Link href={'/'}>
         <a className='ml-4'>
-          <OnlineBankom />
+          <OnlineBankom className='h-6' />
         </a>
       </Link>
       <ItemList
