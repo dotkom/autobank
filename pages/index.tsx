@@ -15,9 +15,9 @@ const IndexPage = () => (
         <div className='space-y-10'>
           <p className='text-2xl'>Har du eller planlegger du å bruke penger på vegne av Online linjeforening?<br/>La bankbotten velge skjema for deg!</p>
           <div className='justify-center flex space-x-2'>
-             <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Bankbotten</button>
+             <button className='bg-[#0D5474] hover:bg-[#0A425C] text-white font-bold py-2 px-4 rounded'>Bankbotten</button>
              <p className='self-center'>eller</p>
-            <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Velg selv</button>
+            <button className='bg-[#0D5474] hover:bg-[#0A425C] text-white font-bold py-2 px-4 rounded'>Velg selv</button>
           </div>
         </div>
         <Image src={heroImage} alt='Online kredittkort.' width={400} height={300}/>
@@ -59,7 +59,7 @@ const IndexPage = () => (
         <div>
           <p className='text-3xl'>Lurer du fortsatt på noe? FAQ</p>
           <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.</p>
-          <button className='mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Ofte stilte spørsmål</button>
+          <button className='mt-6 bg-[#0D5474] hover:bg-[#0A425C] text-white font-bold py-2 px-4 rounded'>Ofte stilte spørsmål</button>
         </div>
       </section>
     </div>
