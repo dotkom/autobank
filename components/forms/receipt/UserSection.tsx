@@ -52,27 +52,17 @@ const UserSection = ({ changeStep }: props) => {
         type="text"
         label="Navn"
         placeholder="Ditt fulle navn"
-        classNames={errors.fullname?.message ? "border-red-500" : ""}
+        error={errors.fullname?.message}
         register={register}
       />
-      {errors.fullname?.message ? (
-        <p className="text-red-500 text-xs italic">{errors.fullname.message}</p>
-      ) : (
-        ""
-      )}
       <InputField
         name="email"
         type="email"
         label="E-post"
         placeholder="Din e-postadresse. Onlinemail hvis du har."
-        classNames={errors.email?.message ? "border-red-500" : ""}
+        error={errors.email?.message}
         register={register}
       />
-      {errors.email?.message ? (
-        <p className="text-red-500 text-xs italic">{errors.email.message}</p>
-      ) : (
-        ""
-      )}
       <InputField
         type="text"
         name="signatur"

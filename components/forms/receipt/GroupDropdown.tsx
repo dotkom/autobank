@@ -8,7 +8,7 @@ type props = {
 const GroupDropdown = ({ register, errors }: props) => {
   return (
     <div>
-      <label className="block text-gray-700 text-sm font-bold max-w-lg">
+      <label className="block text-gray-700 text-lg font-bold max-w-lg text-left ml-2">
         Ansvarlig enhet
       </label>
       <div className="relative inline-flex pb-3">

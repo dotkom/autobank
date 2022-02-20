@@ -30,8 +30,8 @@ const AccountInput = ({ classNames, errors, register }: props) => {
   };
 
   return (
-    <>
-      <label className="block text-gray-700 text-sm font-bold mb-2 max-w-lg w-full">
+    <div className="w-full text-left">
+      <label className="block text-gray-700 text-lg font-bold mb-2 max-w-lg w-full">
         Kontonummer
         <input
           className={`${classNames} ${
@@ -46,7 +46,7 @@ const AccountInput = ({ classNames, errors, register }: props) => {
         />
       </label>
       {errors && <p className="text-red-500 text-xs italic">{errors}</p>}
-    </>
+    </div>
   );
 };
 

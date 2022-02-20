@@ -142,7 +142,7 @@ const ReciptInformation = ({ changeStep }: props) => {
             type="text"
             label="Kortinformasjon"
             placeholder="Kortinformasjon/Hvilken komite kortet tilhører"
-            classNames={errors.cardDetails?.message ? "border-red-500" : ""}
+            error={errors.cardDetails?.message}
             register={register}
           />
           {errors.cardDetails?.message && (
@@ -159,14 +159,9 @@ const ReciptInformation = ({ changeStep }: props) => {
             type="number"
             label="Beløp"
             placeholder="Beløpet i NOK"
-            classNames={errors.amount?.message ? "border-red-500" : ""}
+            error={errors.amount?.message}
             register={register}
           />
-          {errors.amount?.message && (
-            <p className="text-red-500 text-xs italic">
-              {errors.amount.message}
-            </p>
-          )}
         </div>
         <GroupDropdown
           register={register}
@@ -178,14 +173,9 @@ const ReciptInformation = ({ changeStep }: props) => {
         type="text"
         label="Anledning"
         placeholder="Grunnlag for kjøpet"
-        classNames={errors.amount?.message ? "border-red-500" : ""}
+        error={errors.amount?.message}
         register={register}
       />
-      {errors.occation?.message ? (
-        <p className="text-red-500 text-xs italic">{errors.occation.message}</p>
-      ) : (
-        ""
-      )}
       <Navigation
         changeStep={(step: number) => console.log("Change step feil")}
         step={1}
