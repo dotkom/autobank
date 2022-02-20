@@ -1,4 +1,5 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
+import { LABEL_STYLE } from "../styles";
 
 type props = {
   error?: string;
@@ -14,7 +15,7 @@ const ReciptTypeGroup = ({ error, register, changeType }: props) => {
       }`}
     >
       <div className="flex flex-col">
-        <label className="block text-gray-700 text-lg font-bold mb-2 max-w-lg w-full">
+        <label className={LABEL_STYLE}>
           <input
             type="radio"
             name="type"
@@ -31,7 +32,7 @@ const ReciptTypeGroup = ({ error, register, changeType }: props) => {
         </p>
       </div>
       <div className="flex flex-col">
-        <label className="block text-gray-700 text-lg font-bold mb-2 max-w-lg w-full">
+        <label className={LABEL_STYLE}>
           <input
             type="radio"
             name="type"

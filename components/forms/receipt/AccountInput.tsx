@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
+import { LABEL_STYLE } from "../styles";
 
 // Formats the value onto this "bankaccount format": xxxx xx xxxxx
 const FORMAT_ACCOUNT_VALUE = (value: string): string => {
@@ -32,7 +33,7 @@ const AccountInput = ({ classNames, errors, register }: props) => {
 
   return (
     <div className="w-full text-left mb-3">
-      <label className="block text-gray-700 text-lg font-bold mb-2 max-w-lg w-full">
+      <label className={LABEL_STYLE}>
         Kontonummer
         <input
           className={`${classNames} ${

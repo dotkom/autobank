@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { formatBytes } from "../../../utils/bytes";
 import Navigation from "./Navigation";
+import { LABEL_STYLE } from "../styles";
 
 export const FILE_SIZE_MAX = 9 * 1024 * 1024; // 9 MB
 
@@ -44,7 +45,7 @@ const ExtraInformation = ({ changeStep }: props) => {
       className="max-w-lg w-full flex items-center flex-col justify-center bg-slate-100 p-10 rounded-lg"
       onSubmit={handleSubmit(submitForm)}
     >
-      <label className="block text-gray-700 text-sm font-bold mb-2 max-w-lg w-full flex flex-col">
+      <label className={`${LABEL_STYLE} flex flex-col`}>
         Kommentarer
         <textarea
           name="comments"
@@ -59,7 +60,7 @@ const ExtraInformation = ({ changeStep }: props) => {
       ) : (
         ""
       )}
-      <label className="block text-gray-700 text-sm font-bold mb-2 max-w-lg w-full">
+      <label className={LABEL_STYLE}>
         Vedlegg/Kvittering
         <input
           type="file"

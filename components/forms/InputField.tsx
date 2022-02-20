@@ -1,4 +1,5 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
+import { LABEL_STYLE } from "./styles";
 
 type props = {
   type: string;
@@ -21,7 +22,7 @@ const InputField = ({
 }: props) => {
   return (
     <div className="w-full text-left mb-3">
-      <label className="block text-gray-700 text-lg font-bold mb-2 max-w-lg w-full text-left">
+      <label className={LABEL_STYLE}>
         {label}
         <input
           className={`${classNames} ${
