@@ -1,35 +1,14 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
 import { useForm } from "react-hook-form";
-import InputField from "../InputField";
-import Navigation from "./Navigation";
-
-export const EMAIL_REGEX = new RegExp(
-  /^[a-zA-Z0-9.!#$%&’*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-);
-const validationSchema = Yup.object().shape({
-  fullname: Yup.string().test(
-    "required and valid name",
-    "Du må inkludere både fornavn og etternavn",
-    (fullname) => fullname !== null && fullname.split(" ").length > 1
-  ),
-  email: Yup.string()
-    .required("Feltet må inneholde en gyldig e-postadresse")
-    .test(
-      "valid e-mail",
-      "Feltet må inneholde en gyldig e-postadresse",
-      (email) => email !== null && EMAIL_REGEX.test(email)
-    ),
-  //TODO: Validation for signature
-});
+import Navigation from "../Navigation";
+import InputField from "../../InputField";
+import { UserInformationValidationSchema } from "../validation/UserInformationValidation";
 
 type props = {
   changeStep: (step: number) => void;
 };
 
-const UserSection = ({ changeStep }: props) => {
-  const formOptions = { resolver: yupResolver(validationSchema) };
-
+const UserInformation = ({ changeStep }: props) => {
   const submitForm = (data) => {
     //TODO: Update parent component state.
     console.log(data);
@@ -40,7 +19,7 @@ const UserSection = ({ changeStep }: props) => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm(formOptions);
+  } = useForm({ resolver: yupResolver(UserInformationValidationSchema) });
 
   return (
     <form
@@ -75,4 +54,4 @@ const UserSection = ({ changeStep }: props) => {
   );
 };
 
-export default UserSection;
+export default UserInformation;

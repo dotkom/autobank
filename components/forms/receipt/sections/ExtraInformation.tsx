@@ -1,34 +1,14 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import * as Yup from "yup";
-import { formatBytes } from "../../../utils/bytes";
-import Navigation from "./Navigation";
-import { LABEL_STYLE } from "../styles";
-
-export const FILE_SIZE_MAX = 9 * 1024 * 1024; // 9 MB
+import Navigation from "../Navigation";
+import { LABEL_STYLE } from "../../styles";
+import { ExtraInformationValidationSchema } from "../validation/ExtraInformationValidation";
 
 type props = {
   changeStep: (step: number) => void;
 };
 
 const ExtraInformation = ({ changeStep }: props) => {
-  const validationSchema = Yup.object().shape({
-    comments: Yup.string().required(
-      "Du må legge ved en kommentar om utlegget ditt"
-    ),
-    attachment: Yup.array()
-      .required("Du må laste opp kvitteringen din som et vedlegg")
-      .nullable()
-      .test(
-        "fileSize",
-        `Det er ikke tillat å legge ved filer på over ${formatBytes(
-          FILE_SIZE_MAX
-        )}`,
-        (value) => value && value[0].size <= FILE_SIZE_MAX
-      ),
-  });
-  const formOptions = { resolver: yupResolver(validationSchema) };
-
   const submitForm = (data) => {
     console.log(data);
     changeStep(1);
@@ -38,7 +18,7 @@ const ExtraInformation = ({ changeStep }: props) => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm(formOptions);
+  } = useForm({ resolver: yupResolver(ExtraInformationValidationSchema) });
 
   return (
     <form

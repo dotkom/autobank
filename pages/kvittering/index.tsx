@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ExtraInformation from "../../components/forms/receipt/ExtraInformation";
-import ReciptInformation from "../../components/forms/receipt/ReciptInformation";
-import UserSection from "../../components/forms/receipt/UserSection";
+import ExtraInformation from "../../components/forms/receipt/sections/ExtraInformation";
+import ReciptInformation from "../../components/forms/receipt/sections/ReciptInformation";
+import UserInformation from "../../components/forms/receipt/sections/UserInformation";
 import Layout from "../../components/Layout/index";
 
 export default function ReciptForm() {
@@ -19,7 +19,7 @@ export default function ReciptForm() {
     <Layout title="Kvittering">
       <div className="max-w-lg w-full text-center">
         <h1 className="text-4xl">Kvitteringsskjema</h1>
-        {step === 0 && <UserSection changeStep={changeStep} />}
+        {step === 0 && <UserInformation changeStep={changeStep} />}
         {step === 1 && <ReciptInformation changeStep={changeStep} />}
         {step === 2 && <ExtraInformation changeStep={changeStep} />}
       </div>
