@@ -137,17 +137,14 @@ const ReciptInformation = ({ changeStep }: props) => {
         <AccountInput register={register} errors={errors.account?.message} />
       ) : (
         <>
-          <label className="block text-gray-700 text-sm font-bold mb-2 max-w-lg w-full">
-            Kortinformasjon
-            <InputField
-              id="cardDetails"
-              name="cardDetails"
-              type="text"
-              placeholder="Kortinformasjon/Hvilken komite kortet tilhører"
-              classNames={errors.cardDetails?.message ? "border-red-500" : ""}
-              register={register}
-            />
-          </label>
+          <InputField
+            name="cardDetails"
+            type="text"
+            label="Kortinformasjon"
+            placeholder="Kortinformasjon/Hvilken komite kortet tilhører"
+            classNames={errors.cardDetails?.message ? "border-red-500" : ""}
+            register={register}
+          />
           {errors.cardDetails?.message && (
             <p className="text-red-500 text-xs italic">
               {errors.cardDetails.message}
@@ -157,17 +154,14 @@ const ReciptInformation = ({ changeStep }: props) => {
       )}
       <div className="flex flex-row justify-between w-full">
         <div className="w-2/5">
-          <label className="block text-gray-700 text-sm font-bold mb-2 max-w-lg w-full">
-            Beløp
-            <InputField
-              id="amount"
-              name="amount"
-              type="number"
-              placeholder="Beløpet i NOK"
-              classNames={errors.amount?.message ? "border-red-500" : ""}
-              register={register}
-            />
-          </label>
+          <InputField
+            name="amount"
+            type="number"
+            label="Beløp"
+            placeholder="Beløpet i NOK"
+            classNames={errors.amount?.message ? "border-red-500" : ""}
+            register={register}
+          />
           {errors.amount?.message && (
             <p className="text-red-500 text-xs italic">
               {errors.amount.message}
@@ -179,17 +173,14 @@ const ReciptInformation = ({ changeStep }: props) => {
           errors={errors.responsible_unit?.message}
         />
       </div>
-      <label className="block text-gray-700 text-sm font-bold mb-2 max-w-lg w-full">
-        Anledning
-        <InputField
-          id="occation"
-          name="occation"
-          type="text"
-          placeholder="Grunnlag for kjøpet"
-          classNames={errors.amount?.message ? "border-red-500" : ""}
-          register={register}
-        />
-      </label>
+      <InputField
+        name="occation"
+        type="text"
+        label="Anledning"
+        placeholder="Grunnlag for kjøpet"
+        classNames={errors.amount?.message ? "border-red-500" : ""}
+        register={register}
+      />
       {errors.occation?.message ? (
         <p className="text-red-500 text-xs italic">{errors.occation.message}</p>
       ) : (

@@ -47,48 +47,39 @@ const UserSection = ({ changeStep }: props) => {
       className="max-w-lg w-full flex items-center flex-col justify-center bg-slate-100 p-10 rounded-lg"
       onSubmit={handleSubmit(submitForm)}
     >
-      <label className="block text-gray-700 text-sm font-bold mb-2 max-w-lg w-full text-left">
-        Navn
-        <InputField
-          id="fullname"
-          name="fullname"
-          type="text"
-          placeholder="Ditt fulle navn"
-          classNames={errors.fullname?.message ? "border-red-500" : ""}
-          register={register}
-        />
-      </label>
+      <InputField
+        name="fullname"
+        type="text"
+        label="Navn"
+        placeholder="Ditt fulle navn"
+        classNames={errors.fullname?.message ? "border-red-500" : ""}
+        register={register}
+      />
       {errors.fullname?.message ? (
         <p className="text-red-500 text-xs italic">{errors.fullname.message}</p>
       ) : (
         ""
       )}
-      <label className="block text-gray-700 text-sm font-bold mb-2 max-w-lg w-full">
-        E-post
-        <InputField
-          id="email"
-          name="email"
-          type="email"
-          placeholder="Din e-postadresse. Onlinemail hvis du har."
-          classNames={errors.email?.message ? "border-red-500" : ""}
-          register={register}
-        />
-      </label>
+      <InputField
+        name="email"
+        type="email"
+        label="E-post"
+        placeholder="Din e-postadresse. Onlinemail hvis du har."
+        classNames={errors.email?.message ? "border-red-500" : ""}
+        register={register}
+      />
       {errors.email?.message ? (
         <p className="text-red-500 text-xs italic">{errors.email.message}</p>
       ) : (
         ""
       )}
-      <label className="block text-gray-700 text-sm font-bold mb-2 max-w-lg w-full">
-        Signatur
-        <InputField
-          type="text"
-          name="signatur"
-          id="signatur"
-          placeholder="TBI - to be implemented"
-          register={register}
-        />
-      </label>
+      <InputField
+        type="text"
+        name="signatur"
+        label="Signatur"
+        placeholder="TBI - to be implemented"
+        register={register}
+      />
       <Navigation changeStep={changeStep} step={0} />
     </form>
   );

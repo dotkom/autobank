@@ -3,30 +3,31 @@ import { FieldValues, UseFormRegister } from "react-hook-form";
 type props = {
   type: string;
   name: string;
-  id: string;
   placeholder: string;
+  label: string;
   classNames?: string;
-  pattern?: string;
   register: UseFormRegister<FieldValues>;
 };
 
 const InputField = ({
   type,
   name,
-  id,
   placeholder,
+  label,
   classNames,
   register,
 }: props) => {
   return (
-    <input
-      className={`${classNames} shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
-      type={type}
-      name={name}
-      {...register(name)}
-      id={id}
-      placeholder={placeholder}
-    />
+    <label className="block text-gray-700 text-sm font-bold mb-2 max-w-lg w-full text-left">
+      {label}
+      <input
+        className={`${classNames} shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
+        type={type}
+        name={name}
+        {...register(name)}
+        placeholder={placeholder}
+      />
+    </label>
   );
 };
 
