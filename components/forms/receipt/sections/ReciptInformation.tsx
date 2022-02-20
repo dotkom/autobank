@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import GroupDropdown from "../GroupDropdown";
 import Navigation from "../Navigation";
 import AccountInput from "../AccountInput";
@@ -60,7 +60,7 @@ const ReciptInformation = ({ changeStep }: props) => {
           register={register}
         />
       )}
-      <div className="flex flex-row justify-between w-full">
+      <div className="flex flex-row justify-between w-full mb-3">
         <div className="w-2/5">
           <InputField
             name="amount"

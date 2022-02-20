@@ -8,7 +8,7 @@ type props = {
 //TODO: Need to fetch the actual groups from OW4 and use them.
 const GroupDropdown = ({ register, errors }: props) => {
   return (
-    <div>
+    <div className="w-6/12">
       <label className="block text-gray-700 text-lg font-bold max-w-lg text-left ml-2">
         Ansvarlig enhet
       </label>
