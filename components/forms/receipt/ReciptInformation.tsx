@@ -6,6 +6,7 @@ import GroupDropdown from "./GroupDropdown";
 import Navigation from "./Navigation";
 import AccountInput from "./AccountInput";
 import { useState } from "react";
+import ReciptTypeGroup from "./ReciptTypeGroup";
 
 export const ACCOUNT_NUMBER_REGEX = new RegExp(/^\d{4} \d{2} \d{5}$/);
 export const CARD_DETAIL_REGEX = new RegExp(/^.{5,30}$/);
@@ -89,68 +90,18 @@ const ReciptInformation = ({ changeStep }: props) => {
       className=" max-w-lg w-full flex items-center flex-col justify-center bg-slate-100 p-10 rounded-lg"
       onSubmit={handleSubmit(submitForm)}
     >
-      <div
-        className={`w-full flex flex-row justify-around pb-5 ${
-          errors.type?.message ? "border-red-500" : ""
-        }`}
-      >
-        <div className="flex flex-col">
-          <label className="block text-gray-700 text-sm font-bold mb-2 max-w-lg w-full">
-            <input
-              type="radio"
-              name="type"
-              value="deposit"
-              className="h-5 w-5 mr-1"
-              onClick={() => changeType("deposit")}
-              {...register("type")}
-              defaultChecked
-            />
-            Utlegg
-          </label>
-          <p className="text-xs text-gray-500">
-            Hvis du har lagt ut med ditt eget kort
-          </p>
-        </div>
-        <div className="flex flex-col">
-          <label className="block text-gray-700 text-sm font-bold mb-2 max-w-lg w-full">
-            <input
-              type="radio"
-              name="type"
-              value="card"
-              className="h-5 w-5 mr-1"
-              onClick={() => changeType("card")}
-              {...register("type")}
-            />
-            Bankkort
-          </label>
-          <p className="text-xs text-gray-500">
-            Hvis du har betalt for noe med ett av Online sine kort
-          </p>
-        </div>
-        {errors.type?.message ? (
-          <p className="text-red-500 text-xs italic">{errors.type.message}</p>
-        ) : (
-          ""
-        )}
-      </div>
+      <ReciptTypeGroup register={register} changeType={changeType} />
       {type == "deposit" ? (
         <AccountInput register={register} errors={errors.account?.message} />
       ) : (
-        <>
-          <InputField
-            name="cardDetails"
-            type="text"
-            label="Kortinformasjon"
-            placeholder="Kortinformasjon/Hvilken komite kortet tilhører"
-            error={errors.cardDetails?.message}
-            register={register}
-          />
-          {errors.cardDetails?.message && (
-            <p className="text-red-500 text-xs italic">
-              {errors.cardDetails.message}
-            </p>
-          )}
-        </>
+        <InputField
+          name="cardDetails"
+          type="text"
+          label="Kortinformasjon"
+          placeholder="Kortinformasjon/Hvilken komite kortet tilhører"
+          error={errors.cardDetails?.message}
+          register={register}
+        />
       )}
       <div className="flex flex-row justify-between w-full">
         <div className="w-2/5">
