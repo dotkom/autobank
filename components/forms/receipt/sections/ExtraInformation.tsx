@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import Navigation from "../Navigation";
-import { LABEL_STYLE } from "../../styles";
+import { ERROR_MSG_STYLE, LABEL_STYLE } from "../../styles";
 import { ExtraInformationValidationSchema } from "../validation/ExtraInformationValidation";
 
 type props = {
@@ -35,10 +35,8 @@ const ExtraInformation = ({ changeStep }: props) => {
           className={errors.comments?.message ? "border-red-500" : ""}
         ></textarea>
       </label>
-      {errors.comments?.message ? (
-        <p className="text-red-500 text-xs italic">{errors.comments.message}</p>
-      ) : (
-        ""
+      {errors.comments?.message && (
+        <p className={ERROR_MSG_STYLE}>{errors.comments.message}</p>
       )}
       <label className={LABEL_STYLE}>
         Vedlegg/Kvittering
@@ -51,12 +49,8 @@ const ExtraInformation = ({ changeStep }: props) => {
           {...register("attachment")}
         />
       </label>
-      {errors.attachment?.message ? (
-        <p className="text-red-500 text-xs italic">
-          {errors.attachment.message}
-        </p>
-      ) : (
-        ""
+      {errors.attachment?.message && (
+        <p className={ERROR_MSG_STYLE}>{errors.attachment.message}</p>
       )}
       <Navigation changeStep={(step: number) => console.log(step)} step={2} />
     </form>

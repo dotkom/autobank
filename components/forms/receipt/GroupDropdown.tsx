@@ -1,4 +1,5 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
+import { ERROR_MSG_STYLE } from "../styles";
 
 type props = {
   register: UseFormRegister<FieldValues>;
@@ -37,7 +38,7 @@ const GroupDropdown = ({ register, errors }: props) => {
           <option value="3">Testkom</option>
         </select>
       </div>
-      {errors && <p className="text-red-500 text-xs italic">{errors}</p>}
+      {errors && <p className={ERROR_MSG_STYLE}>{errors}</p>}
     </div>
   );
 };

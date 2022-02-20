@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
-import { LABEL_STYLE } from "../styles";
+import { ERROR_MSG_STYLE, INPUT_STYLE, LABEL_STYLE } from "../styles";
 
 // Formats the value onto this "bankaccount format": xxxx xx xxxxx
 const FORMAT_ACCOUNT_VALUE = (value: string): string => {
@@ -38,7 +38,7 @@ const AccountInput = ({ classNames, errors, register }: props) => {
         <input
           className={`${classNames} ${
             errors && "border-red-500"
-          } shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
+          } ${INPUT_STYLE}`}
           type="text"
           name="account"
           value={account}
@@ -47,7 +47,7 @@ const AccountInput = ({ classNames, errors, register }: props) => {
           placeholder="Kontonummer for tilbakebetaling"
         />
       </label>
-      {errors && <p className="text-red-500 text-xs italic">{errors}</p>}
+      {errors && <p className={ERROR_MSG_STYLE}>{errors}</p>}
     </div>
   );
 };

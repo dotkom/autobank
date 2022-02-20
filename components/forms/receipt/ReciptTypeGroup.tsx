@@ -1,5 +1,5 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
-import { LABEL_STYLE } from "../styles";
+import { ERROR_MSG_STYLE, LABEL_STYLE } from "../styles";
 
 type props = {
   error?: string;
@@ -47,7 +47,7 @@ const ReciptTypeGroup = ({ error, register, changeType }: props) => {
           Hvis du har betalt for noe med ett av Online sine kort
         </p>
       </div>
-      {error && <p className="text-red-500 text-xs italic">{error}</p>}
+      {error && <p className={ERROR_MSG_STYLE}>{error}</p>}
     </div>
   );
 };
