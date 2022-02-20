@@ -18,7 +18,7 @@ export default function ReciptForm() {
   return (
     <Layout title="Kvittering">
       <div className="max-w-lg w-full text-center">
-        <h1>Kvitteringsskjema</h1>
+        <h1 className="text-4xl">Kvitteringsskjema</h1>
         {step === 0 && <UserSection changeStep={changeStep} />}
         {step === 1 && <ReciptInformation changeStep={changeStep} />}
         {step === 2 && <ExtraInformation changeStep={changeStep} />}
