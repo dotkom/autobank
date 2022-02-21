@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import Layout from '../components/Layout'
 import Image from 'next/image'
-import paymentImage from '../public/undraw_payment.svg'
-import receiptImage from '../public/undraw_receipt.svg'
-import creditcardImage from '../public/undraw_credit_card.svg'
-import vaultImage from '../public/undraw_vault.svg'
-import questionsImage from '../public/undraw_questions.svg'
+import paymentImage from '../images/undraw/undraw_payment.svg'
+import receiptImage from '../images/undraw/undraw_receipt.svg'
+import creditcardImage from '../images/undraw/undraw_credit_card.svg'
+import vaultImage from '../images/undraw/undraw_vault.svg'
+import questionsImage from '../images/undraw/undraw_questions.svg'
 
 const IndexPage = () => (
   <Layout title="Online Autobank">
