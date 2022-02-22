@@ -1,8 +1,9 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { ERROR_MSG_STYLE } from "../styles";
+import { IReceiptData } from "./state";
 
 type props = {
-  register: UseFormRegister<FieldValues>;
+  register: UseFormRegister<IReceiptData>;
   errors?: string;
 };
 //TODO: Need to fetch the actual groups from OW4 and use them.

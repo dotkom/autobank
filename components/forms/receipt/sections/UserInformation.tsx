@@ -10,9 +10,10 @@ import { IUserData } from "../state";
 type props = {
   changeStep: (step: number) => void;
   setFormData: Dispatch<SetStateAction<IUserData>>;
+  initialData: IUserData;
 };
 
-const UserInformation = ({ changeStep, setFormData }: props) => {
+const UserInformation = ({ changeStep, setFormData, initialData }: props) => {
   const submitForm = (data: IUserData) => {
     setFormData(data);
     changeStep(1);
@@ -22,7 +23,10 @@ const UserInformation = ({ changeStep, setFormData }: props) => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(UserInformationValidationSchema) });
+  } = useForm({
+    resolver: yupResolver(UserInformationValidationSchema),
+    defaultValues: initialData,
+  });
 
   return (
     <form

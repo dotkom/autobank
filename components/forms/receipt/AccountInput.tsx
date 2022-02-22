@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { ERROR_MSG_STYLE, INPUT_STYLE, LABEL_STYLE } from "../styles";
+import { IReceiptData } from "./state";
 
 // Formats the value onto this "bankaccount format": xxxx xx xxxxx
 const FORMAT_ACCOUNT_VALUE = (value: string): string => {
@@ -21,7 +22,7 @@ const FORMAT_ACCOUNT_VALUE = (value: string): string => {
 type props = {
   classNames?: string;
   errors?: string;
-  register: UseFormRegister<FieldValues>;
+  register: UseFormRegister<IReceiptData>;
 };
 
 const AccountInput = ({ classNames, errors, register }: props) => {

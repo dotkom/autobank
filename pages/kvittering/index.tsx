@@ -9,11 +9,26 @@ import {
 } from "../../components/forms/receipt/state";
 import Layout from "../../components/Layout/index";
 
+const initUserData: IUserData = {
+  fullname: "",
+  email: "",
+  toc: false,
+};
+
+const initReceiptData: IReceiptData = {
+  amount: null,
+  occation: "",
+  type: "deposit",
+  account: "",
+  cardDetails: "unused",
+  responsible_unit: "default",
+};
+
 export default function ReciptForm() {
   const [step, setStep] = useState<0 | 1 | 2>(0); //TODO: Add "enum" for steps, remove use of magic numbers.
-  const [userFormData, setUserFormData] = useState<IUserData>();
+  const [userFormData, setUserFormData] = useState<IUserData>(initUserData);
   const [receciptInformationData, setRececiptInformationData] =
-    useState<IReceiptData>();
+    useState<IReceiptData>(initReceiptData);
 
   const changeStep = (delta) => {
     setStep(step + delta);
@@ -36,12 +51,14 @@ export default function ReciptForm() {
         {step === 0 && (
           <UserInformation
             changeStep={changeStep}
+            initialData={userFormData}
             setFormData={setUserFormData}
           />
         )}
         {step === 1 && (
           <ReciptInformation
             changeStep={changeStep}
+            initialData={receciptInformationData}
             setFormData={setRececiptInformationData}
           />
         )}

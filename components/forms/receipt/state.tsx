@@ -1,6 +1,7 @@
 export interface IUserData {
-  fullName: string;
+  fullname: string;
   email: string;
+  toc: boolean;
 }
 export interface IReceiptData {
   amount: number;

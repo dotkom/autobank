@@ -11,13 +11,15 @@ import { IReceiptData } from "../state";
 
 type props = {
   changeStep: (step: number) => void;
+  initialData: IReceiptData;
   setFormData: Dispatch<SetStateAction<IReceiptData>>;
 };
 
-const ReciptInformation = ({ changeStep, setFormData }: props) => {
-  const [type, setType] = useState<"card" | "deposit">("deposit");
+const ReciptInformation = ({ changeStep, initialData, setFormData }: props) => {
+  const [type, setType] = useState<"card" | "deposit">(initialData.type);
 
   const submitForm = (data: IReceiptData) => {
+    console.log("submit; ", data);
     setFormData(data);
     changeStep(1);
   };
@@ -29,6 +31,7 @@ const ReciptInformation = ({ changeStep, setFormData }: props) => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(ReceiptInformationValidationSchema),
+    defaultValues: initialData,
     mode: "all",
   });
 
@@ -82,7 +85,7 @@ const ReciptInformation = ({ changeStep, setFormData }: props) => {
         type="text"
         label="Anledning"
         placeholder="Grunnlag for kjøpet"
-        error={errors.amount?.message}
+        error={errors.occation?.message}
         register={register}
       />
       <Navigation step={1} changeStep={changeStep} />

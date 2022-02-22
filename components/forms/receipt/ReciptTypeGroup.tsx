@@ -1,9 +1,10 @@
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { UseFormRegister } from "react-hook-form";
 import { ERROR_MSG_STYLE, LABEL_STYLE } from "../styles";
+import { IReceiptData } from "./state";
 
 type props = {
   error?: string;
-  register: UseFormRegister<FieldValues>;
+  register: UseFormRegister<IReceiptData>;
   changeType: (type: string) => void;
 };
 
@@ -23,7 +24,6 @@ const ReciptTypeGroup = ({ error, register, changeType }: props) => {
             className="form-radio h-5 w-5 mr-1 mb-1 form-checkbox text-online-blue-500 hover:border-online-blue-500 hover:border-2"
             onClick={() => changeType("deposit")}
             {...register("type")}
-            defaultChecked
           />
           Utlegg
         </label>

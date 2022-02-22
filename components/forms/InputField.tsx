@@ -8,7 +8,7 @@ type props = {
   label: string;
   error?: string;
   classNames?: string;
-  register: UseFormRegister<FieldValues>;
+  register: UseFormRegister<any>;
 };
 
 const InputField = ({
