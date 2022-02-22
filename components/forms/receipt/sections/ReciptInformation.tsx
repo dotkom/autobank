@@ -65,12 +65,12 @@ const ReciptInformation = ({ changeStep, initialData, setFormData }: props) => {
         />
       )}
       <div className="flex flex-row justify-between w-full mb-3">
-        <div className="w-2/5">
+        <div className="w-1/3">
           <InputField
             name="amount"
             type="number"
             label="Beløp"
-            placeholder="Beløpet i NOK"
+            placeholder="Beløpet i kr"
             error={errors.amount?.message}
             register={register}
           />

@@ -1,16 +1,18 @@
 import { UseFormRegister } from "react-hook-form";
 import { ERROR_MSG_STYLE } from "../styles";
+import { getAllGroups, OnlineGroup } from "./groups";
 import { IReceiptData } from "./state";
 
 type props = {
   register: UseFormRegister<IReceiptData>;
   errors?: string;
 };
+
 //TODO: Need to fetch the actual groups from OW4 and use them.
 const GroupDropdown = ({ register, errors }: props) => {
   return (
-    <div className="w-6/12">
-      <label className="block text-lg font-bold max-w-lg text-left ml-2 text-online-blue-500">
+    <div className="w-2/3 ml-4">
+      <label className="block text-lg font-bold max-w-lg ml-1 text-left text-online-blue-500">
         Ansvarlig enhet
       </label>
       <div className="relative inline-flex pb-3">
@@ -27,17 +29,19 @@ const GroupDropdown = ({ register, errors }: props) => {
         </svg>
         <select
           className={`border ${
-            errors ? "border-red-500" : "border-gray-300"
-          } rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none`}
+            errors ? "border-red-500" : "border-gray-500"
+          } rounded text-gray-700 border shadow h-10 bg-white focus:outline-none appearance-none`}
           {...register("responsible_unit")}
           defaultValue="default"
         >
           <option disabled value="default">
             Velg komite/gruppe
           </option>
-          <option value="1">AndersKom</option>
-          <option value="2">HS</option>
-          <option value="3">Testkom</option>
+          {getAllGroups().map((group, index) => (
+            <option key={`group-${index}`} value={group.name_long}>
+              {group.name_long}
+            </option>
+          ))}
         </select>
       </div>
       {errors && <p className={ERROR_MSG_STYLE}>{errors}</p>}
