@@ -90,6 +90,16 @@ const steps: Step[] = [
   },
 ]
 
-const Bankbot = () => <Chatbot steps={steps} />
+const Bankbot = () => (
+  <Chatbot
+    style={{
+      primaryColor: '#0D5474',
+      secondaryColor: '#F9B759',
+      textColor: 'white',
+    }}
+    options={{ header: 'Bankbot' }}
+    steps={steps}
+  />
+)
 
 export default Bankbot
