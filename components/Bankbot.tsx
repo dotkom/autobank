@@ -1,6 +1,30 @@
 import Chatbot from 'react-best-chatbot'
 
-const steps = [
+/* 
+Types based on props at the bottom of this page.
+https://github.com/lucasfernando06/React-best-chatbot/blob/main/dist/index.js
+*/
+
+type Step = {
+  id: number | string
+  content?: string
+  receiveInput?: boolean
+  delay?: number
+  fetch?: Function
+  component?: { content: object; buble?: boolean }
+  options?: Option[]
+  goTo?: string | number
+  validator?: Function
+  end?: boolean
+}
+
+type Option = {
+  content?: string | object
+  value: number
+  goTo: number | string
+}
+
+const steps: Step[] = [
   {
     id: 'default',
     content: 'Hei Onliner! Hvordan kan jeg hjelpe deg i dag?',
