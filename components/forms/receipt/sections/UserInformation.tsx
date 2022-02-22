@@ -3,15 +3,18 @@ import { useForm } from "react-hook-form";
 import Navigation from "../Navigation";
 import InputField from "../../InputField";
 import { UserInformationValidationSchema } from "../validation/UserInformationValidation";
+import { Dispatch, SetStateAction } from "react";
+import { ERROR_MSG_STYLE, LABEL_STYLE } from "../../styles";
+import { IUserData } from "../state";
 
 type props = {
   changeStep: (step: number) => void;
+  setFormData: Dispatch<SetStateAction<IUserData>>;
 };
 
-const UserInformation = ({ changeStep }: props) => {
-  const submitForm = (data) => {
-    //TODO: Update parent component state.
-    console.log(data);
+const UserInformation = ({ changeStep, setFormData }: props) => {
+  const submitForm = (data: IUserData) => {
+    setFormData(data);
     changeStep(1);
   };
 
@@ -42,14 +45,19 @@ const UserInformation = ({ changeStep }: props) => {
         error={errors.email?.message}
         register={register}
       />
-      <InputField
-        type="text"
-        name="signatur"
-        label="Signatur"
-        placeholder="TBI - to be implemented"
-        register={register}
-      />
-      <Navigation changeStep={changeStep} step={0} />
+      <label className={LABEL_STYLE}>
+        <input
+          type="checkbox"
+          name="toc"
+          {...register("toc")}
+          className="form-checkbox h-5 w-5 mr-1 text-online-blue-500 hover:cursor-pointer hover:border-online-blue-500 hover:border-2"
+        />
+        Aksepterer TOC
+      </label>
+      {errors.toc?.message && (
+        <p className={ERROR_MSG_STYLE}>{errors.toc.message}</p>
+      )}
+      <Navigation step={0} />
     </form>
   );
 };

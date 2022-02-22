@@ -17,5 +17,9 @@ export const UserInformationValidationSchema = Yup.object().shape({
       "Feltet må inneholde en gyldig e-postadresse",
       (email) => email !== null && EMAIL_REGEX.test(email)
     ),
-  //TODO: Validation for signature
+  toc: Yup.boolean().test(
+    "isChecked",
+    "Du må godkjenne vår TOC for å kunne sende inn kvitteringsskjema",
+    (toc) => toc
+  ),
 });

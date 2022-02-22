@@ -9,7 +9,7 @@ type props = {
 const GroupDropdown = ({ register, errors }: props) => {
   return (
     <div className="w-6/12">
-      <label className="block text-gray-700 text-lg font-bold max-w-lg text-left ml-2">
+      <label className="block text-lg font-bold max-w-lg text-left ml-2 text-online-blue-500">
         Ansvarlig enhet
       </label>
       <div className="relative inline-flex pb-3">
@@ -29,8 +29,9 @@ const GroupDropdown = ({ register, errors }: props) => {
             errors ? "border-red-500" : "border-gray-300"
           } rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none`}
           {...register("responsible_unit")}
+          defaultValue="default"
         >
-          <option disabled selected value="default">
+          <option disabled value="default">
             Velg komite/gruppe
           </option>
           <option value="1">AndersKom</option>

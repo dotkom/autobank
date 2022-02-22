@@ -15,12 +15,12 @@ const ReciptTypeGroup = ({ error, register, changeType }: props) => {
       }`}
     >
       <div className="flex flex-col">
-        <label className={LABEL_STYLE}>
+        <label className={LABEL_STYLE + " hover:cursor-pointer"}>
           <input
             type="radio"
             name="type"
             value="deposit"
-            className="h-5 w-5 mr-1"
+            className="form-radio h-5 w-5 mr-1 mb-1 form-checkbox text-online-blue-500 hover:border-online-blue-500 hover:border-2"
             onClick={() => changeType("deposit")}
             {...register("type")}
             defaultChecked
@@ -32,12 +32,12 @@ const ReciptTypeGroup = ({ error, register, changeType }: props) => {
         </p>
       </div>
       <div className="flex flex-col">
-        <label className={LABEL_STYLE}>
+        <label className={LABEL_STYLE + " hover:cursor-pointer"}>
           <input
             type="radio"
             name="type"
             value="card"
-            className="h-5 w-5 mr-1"
+            className="form-radio h-5 w-5 mr-1 mb-1 form-checkbox text-online-blue-500 hover:border-online-blue-500 hover:border-2"
             onClick={() => changeType("card")}
             {...register("type")}
           />

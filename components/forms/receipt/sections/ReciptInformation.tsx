@@ -3,21 +3,22 @@ import { useForm } from "react-hook-form";
 import GroupDropdown from "../GroupDropdown";
 import Navigation from "../Navigation";
 import AccountInput from "../AccountInput";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import ReciptTypeGroup from "../ReciptTypeGroup";
 import InputField from "../../InputField";
 import { ReceiptInformationValidationSchema } from "../validation/ReceiptInformationValidation";
+import { IReceiptData } from "../state";
 
 type props = {
   changeStep: (step: number) => void;
+  setFormData: Dispatch<SetStateAction<IReceiptData>>;
 };
 
-const ReciptInformation = ({ changeStep }: props) => {
+const ReciptInformation = ({ changeStep, setFormData }: props) => {
   const [type, setType] = useState<"card" | "deposit">("deposit");
 
-  const submitForm = (data) => {
-    console.log("Submittitng");
-    console.log(data);
+  const submitForm = (data: IReceiptData) => {
+    setFormData(data);
     changeStep(1);
   };
 
@@ -84,10 +85,7 @@ const ReciptInformation = ({ changeStep }: props) => {
         error={errors.amount?.message}
         register={register}
       />
-      <Navigation
-        changeStep={(step: number) => console.log("Change step feil")}
-        step={1}
-      />
+      <Navigation step={1} changeStep={changeStep} />
     </form>
   );
 };
