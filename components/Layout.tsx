@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
+import Bankbot from './Bankbot'
 
 type Props = {
   children?: ReactNode
@@ -30,6 +31,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       </nav>
     </header>
     {children}
+    <Bankbot />
     <footer>
       <hr />
       <span>Im here to stay (Footer)</span>
