@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { UseFormRegister } from "react-hook-form";
 import { ERROR_MSG_STYLE, INPUT_STYLE, LABEL_STYLE } from "../styles";
 import { IReceiptData } from "./state";
 
