@@ -19,7 +19,6 @@ const ReciptInformation = ({ changeStep, initialData, setFormData }: props) => {
   const [type, setType] = useState<"card" | "deposit">(initialData.type);
 
   const submitForm = (data: IReceiptData) => {
-    console.log("submit; ", data);
     setFormData(data);
     changeStep(1);
   };
