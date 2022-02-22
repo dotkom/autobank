@@ -7,7 +7,7 @@ const PROGRESS_BAR_STYLE =
 
 const ProgressBar = ({ currentStep }: props) => {
   return (
-    <div className="flex flex-wrap mx-auto pt-12 w-full items-center justify-center mb-[-20px]">
+    <div className="flex flex-wrap mx-auto pt-12 w-full items-center justify-center mb-[-40px]">
       <a
         className={
           PROGRESS_BAR_STYLE +

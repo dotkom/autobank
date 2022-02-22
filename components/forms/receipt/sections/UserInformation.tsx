@@ -49,7 +49,7 @@ const UserInformation = ({ changeStep, setFormData, initialData }: props) => {
         error={errors.email?.message}
         register={register}
       />
-      <label className={LABEL_STYLE}>
+      <label className={LABEL_STYLE + " mt-4"}>
         <input
           type="checkbox"
           name="toc"
