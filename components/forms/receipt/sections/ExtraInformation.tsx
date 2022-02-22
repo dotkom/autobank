@@ -25,7 +25,9 @@ const ExtraInformation = ({ changeStep, submitReceiptForm }: props) => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(ExtraInformationValidationSchema) });
+  } = useForm({
+    resolver: yupResolver(ExtraInformationValidationSchema),
+  });
 
   return (
     <form
