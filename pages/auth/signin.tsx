@@ -22,23 +22,24 @@ export default function SignIn({
       <div className=' max-w-lg w-full flex items-center flex-col justify-center bg-slate-100 p-10 rounded-lg'>
         <OnlineBankom className='h-10 my-10' />
 
-        {Object.values(providers).map((provider) => (
-          <div key={provider.name}>
-            <Button
-              onClick={() => signIn(provider.id)}
-              pri={'primary'}
-              logo
-              className='flex items-center'
-            >
-              Sign in with {provider.name}
-              {provider.name == 'Online' ? (
-                <Online className='h-5 ml-1.5' color='white' />
-              ) : (
-                ''
-              )}
-            </Button>
-          </div>
-        ))}
+        {providers &&
+          Object.values(providers).map((provider) => (
+            <div key={provider.name}>
+              <Button
+                onClick={() => signIn(provider.id)}
+                pri={'primary'}
+                logo
+                className='flex items-center'
+              >
+                Sign in with {provider.name}
+                {provider.name == 'Online' ? (
+                  <Online className='h-5 ml-1.5' color='white' />
+                ) : (
+                  ''
+                )}
+              </Button>
+            </div>
+          ))}
       </div>
     </Layout>
   );
