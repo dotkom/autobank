@@ -4,7 +4,6 @@ import OnlineProvider from '../../../lib/auth/OnlineProvider';
 
 export default NextAuth({
   providers: [
-    //mail goes here
     OnlineProvider({
       clientId: process.env.OW4_SSO_CLIENT_ID,
       clientSecret: process.env.OW4_SSO_CLIENT_SECRET,
