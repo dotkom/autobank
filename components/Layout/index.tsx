@@ -9,7 +9,11 @@ type Props = {
   className?: string;
 };
 
-const Layout = ({ children, title = 'Unkn', className = '' }: Props) => {
+const Layout = ({
+  children,
+  title = 'Online | økonomi',
+  className = '',
+}: Props) => {
   return (
     <div className={`bg-background text-zinc-700 text-Montserrat min-h-screen`}>
       <Head title={title} />
