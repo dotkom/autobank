@@ -1,27 +1,28 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import GroupDropdown from "../GroupDropdown";
-import Navigation from "../Navigation";
-import AccountInput from "../AccountInput";
-import { Dispatch, SetStateAction, useState } from "react";
-import ReciptTypeGroup from "../ReciptTypeGroup";
-import InputField from "../../InputField";
-import { ReceiptInformationValidationSchema } from "../validation/ReceiptInformationValidation";
-import { IReceiptData } from "../state";
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
+import GroupDropdown from '../GroupDropdown'
+import Navigation from '../Navigation'
+import AccountInput from '../AccountInput'
+import { Dispatch, SetStateAction, useState } from 'react'
+import ReciptTypeGroup from '../ReciptTypeGroup'
+import InputField from '../../InputField'
+import { ReceiptInformationValidationSchema } from '../validation/ReceiptInformationValidation'
+import { IReceiptData } from '../state'
+import { FORM_STYLE } from '../../styles'
 
 type props = {
-  changeStep: (step: number) => void;
-  initialData: IReceiptData;
-  setFormData: Dispatch<SetStateAction<IReceiptData>>;
-};
+  changeStep: (step: number) => void
+  initialData: IReceiptData
+  setFormData: Dispatch<SetStateAction<IReceiptData>>
+}
 
 const ReciptInformation = ({ changeStep, initialData, setFormData }: props) => {
-  const [type, setType] = useState<"card" | "deposit">(initialData.type);
+  const [type, setType] = useState<'card' | 'deposit'>(initialData.type)
 
   const submitForm = (data: IReceiptData) => {
-    setFormData(data);
-    changeStep(1);
-  };
+    setFormData(data)
+    changeStep(1)
+  }
 
   const {
     handleSubmit,
@@ -31,27 +32,24 @@ const ReciptInformation = ({ changeStep, initialData, setFormData }: props) => {
   } = useForm({
     resolver: yupResolver(ReceiptInformationValidationSchema),
     defaultValues: initialData,
-    mode: "all",
-  });
+    mode: 'all',
+  })
 
-  const changeType = (type: "card" | "deposit") => {
-    if (type === "card") {
-      setValue("account", "unused");
-      setValue("cardDetails", null);
+  const changeType = (type: 'card' | 'deposit') => {
+    if (type === 'card') {
+      setValue('account', 'unused')
+      setValue('cardDetails', null)
     } else {
-      setValue("cardDetails", "unused");
-      setValue("account", null);
+      setValue('cardDetails', 'unused')
+      setValue('account', null)
     }
-    setType(type);
-  };
+    setType(type)
+  }
 
   return (
-    <form
-      className=" max-w-lg w-full flex items-center flex-col justify-center bg-slate-100 p-10 rounded-lg"
-      onSubmit={handleSubmit(submitForm)}
-    >
+    <form className={FORM_STYLE} onSubmit={handleSubmit(submitForm)}>
       <ReciptTypeGroup register={register} changeType={changeType} />
-      {type == "deposit" ? (
+      {type == 'deposit' ? (
         <AccountInput register={register} errors={errors.account?.message} />
       ) : (
         <InputField
@@ -89,7 +87,7 @@ const ReciptInformation = ({ changeStep, initialData, setFormData }: props) => {
       />
       <Navigation step={1} changeStep={changeStep} />
     </form>
-  );
-};
+  )
+}
 
-export default ReciptInformation;
+export default ReciptInformation
