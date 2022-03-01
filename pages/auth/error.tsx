@@ -33,7 +33,9 @@ export default function ErrorPage({ error = 'default' }: ErrorProps) {
       message: (
         <div className='flex flex-col justify-center items-center'>
           <p className='my-2'>You did somthing wrong i think:)</p>
-          <ButtonLink pri={'primary'}>Gå hjem</ButtonLink>
+          <ButtonLink pri={'primary'} link={'/'}>
+            Gå hjem
+          </ButtonLink>
         </div>
       ),
     },
@@ -104,4 +106,8 @@ export async function getServerSideProps(ctx) {
     return {
       props: { error },
     };
+
+  return {
+    props: { error: 'default' },
+  };
 }

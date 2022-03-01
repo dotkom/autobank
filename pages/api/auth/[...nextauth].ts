@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import EmailProvider from 'next-auth/providers/email';
+import sendVerification from '../../../lib/auth/mail/verfication';
 import OnlineProvider from '../../../lib/auth/OnlineProvider';
 
 export default NextAuth({
@@ -8,17 +9,29 @@ export default NextAuth({
       clientId: process.env.OW4_SSO_CLIENT_ID,
       clientSecret: process.env.OW4_SSO_CLIENT_SECRET,
     }),
-    EmailProvider({
-      server: {
-        host: process.env.EMAIL_SERVER_HOST,
-        port: process.env.EMAIL_SERVER_PORT,
-        auth: {
-          user: process.env.EMAIL_SERVER_USER,
-          pass: process.env.EMAIL_SERVER_PASSWORD,
-        },
-      },
-      from: process.env.EMAIL_FROM,
-    }),
+    // email kan legges til etter at adapter og db er lagt til
+    // EmailProvider({
+    //   server: {
+    //     host: process.env.EMAIL_SERVER_HOST,
+    //     port: process.env.EMAIL_SERVER_PORT,
+    //     auth: {
+    //       user: process.env.EMAIL_SERVER_USER,
+    //       pass: process.env.EMAIL_SERVER_PASSWORD,
+    //     },
+    //   },
+    //   from: process.env.EMAIL_FROM,
+    //   sendVerificationRequest({
+    //     identifier: email,
+    //     url,
+    //     provider: { server, from },
+    //   }) {
+    //     sendVerification({
+    //       identifier: email,
+    //       url,
+    //       provider: { server, from },
+    //     });
+    //   },
+    // }),
   ],
   callbacks: {
     async jwt({ token, account }) {

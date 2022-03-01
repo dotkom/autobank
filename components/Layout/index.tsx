@@ -11,7 +11,7 @@ type Props = {
 
 const Layout = ({
   children,
-  title = 'Online | økonomi',
+  title = 'Online | Bankom',
   className = '',
 }: Props) => {
   return (

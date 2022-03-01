@@ -10,8 +10,10 @@ import Online, { OnlineBankom } from '../../components/icons/Online';
 import Layout from '../../components/Layout';
 
 export default function SignIn({
+  error,
   providers,
 }: {
+  error?: string;
   providers: Record<
     LiteralUnion<BuiltInProviderType, string>,
     ClientSafeProvider
@@ -19,9 +21,11 @@ export default function SignIn({
 }) {
   return (
     <Layout>
-      <div className=' max-w-lg w-full flex items-center flex-col justify-center bg-slate-100 p-10 rounded-lg'>
+      <div className=' max-w-lg w-full flex items-center flex-col justify-center shadow-2xl bg-slate-50 p-10 rounded-lg'>
         <OnlineBankom className='h-10 my-10' />
-
+        {error && (
+          <div className='pb-5 text-red-800 font-medium'>Error - {error}</div>
+        )}
         {providers &&
           Object.values(providers).map((provider) => (
             <div key={provider.name}>
@@ -31,7 +35,7 @@ export default function SignIn({
                 logo
                 className='flex items-center'
               >
-                Sign in with {provider.name}
+                Log in med {provider.name}
                 {provider.name == 'Online' ? (
                   <Online className='h-5 ml-1.5' color='white' />
                 ) : (
@@ -45,8 +49,14 @@ export default function SignIn({
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(ctx) {
   const providers = await getProviders();
+  const { error } = ctx.query;
+
+  if (error)
+    return {
+      props: { error, providers },
+    };
   return {
     props: { providers },
   };
