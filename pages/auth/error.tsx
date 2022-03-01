@@ -31,16 +31,17 @@ export default function ErrorPage({ error = 'default' }: ErrorProps) {
       status: 200,
       heading: 'Error',
       message: (
-        <p>
+        <div className='flex flex-col justify-center items-center'>
+          <p className='my-2'>You did somthing wrong i think:)</p>
           <ButtonLink pri={'primary'}>Gå hjem</ButtonLink>
-        </p>
+        </div>
       ),
     },
     configuration: {
       status: 500,
       heading: 'Server error',
       message: (
-        <div>
+        <div className='flex flex-col justify-center items-center'>
           <p>There is a problem with the server configuration.</p>
           <p>Check the server logs for more information.</p>
         </div>
@@ -50,7 +51,7 @@ export default function ErrorPage({ error = 'default' }: ErrorProps) {
       status: 403,
       heading: 'Access Denied',
       message: (
-        <div>
+        <div className='flex flex-col justify-center items-center'>
           <p>You do not have permission to sign in.</p>
           <p>
             <Button onClick={() => signIn()} pri={'primary'}>
@@ -64,7 +65,7 @@ export default function ErrorPage({ error = 'default' }: ErrorProps) {
       status: 403,
       heading: 'Unable to sign in',
       message: (
-        <div>
+        <div className='flex flex-col justify-center items-center'>
           <p>The sign in link is no longer valid.</p>
           <p>It may have been used already or it may have expired.</p>
         </div>
@@ -82,12 +83,12 @@ export default function ErrorPage({ error = 'default' }: ErrorProps) {
 
   return (
     <Layout>
-      <div className=' max-w-lg w-full flex items-center flex-col justify-center bg-slate-100 p-10 rounded-lg'>
+      <div className=' max-w-lg w-full flex items-center flex-col justify-center p-10 rounded-lg'>
         <OnlineBankom className='h-10 my-5' />
         <div className='error my-5'>
-          <div className='card'>
-            <h1 className='text-xl'>{heading + ' - ' + status}</h1>
-            <div className='message'>{message}</div>
+          <div className='flex flex-col justify-center items-center'>
+            <h1 className='text-3xl mb-5'>{heading + ' - ' + status}</h1>
+            <div className=''>{message}</div>
             {signin}
           </div>
         </div>
