@@ -58,7 +58,7 @@ export const ItemList = ({
       <Item link={'/kvitteringer'} text={'Kvitteringer'} />
       <Item link={'/bedrift'} text={'Bedrift'} />
       <Item link={'/faq'} text={'FAQ'} />
-      <Item link={'/auth/singin'} text={'Login'} button />
+      <Item link={'/auth/signin'} text={'Login'} button />
     </motion.ul>
   );
 };
@@ -84,7 +84,7 @@ export const Nav = () => {
     >
       <Link href={'/'}>
         <a className='ml-4'>
-          <OnlineBankom />
+          <OnlineBankom className='h-6' />
         </a>
       </Link>
       <ItemList
