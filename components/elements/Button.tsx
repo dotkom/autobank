@@ -13,7 +13,7 @@ const Button = ({ pri, logo = false, className, ...props }: Props) => {
         pri == 'primary'
           ? 'bg-online-blue-500 text-zinc-100'
           : 'bg-online-blue-500 text-zinc-100'
-      } px-4 py-px rounded shadow-md`}
+      } px-4 py-2 rounded shadow-md`}
     />
   );
 };
@@ -36,7 +36,7 @@ export const ButtonLink = ({
         pri == 'primary'
           ? 'bg-online-blue-500 text-zinc-100'
           : 'bg-online-blue-500 text-zinc-100'
-      } px-4 py-px rounded shadow-md cursor-pointer`}
+      } px-4 py-2 rounded shadow-md cursor-pointer`}
     />
   );
 };
