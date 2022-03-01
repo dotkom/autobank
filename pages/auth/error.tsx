@@ -83,10 +83,10 @@ export default function ErrorPage({ error = 'default' }: ErrorProps) {
   return (
     <Layout>
       <div className=' max-w-lg w-full flex items-center flex-col justify-center bg-slate-100 p-10 rounded-lg'>
-        <OnlineBankom className='h-10 my-10' />
-        <div className='error'>
+        <OnlineBankom className='h-10 my-5' />
+        <div className='error my-5'>
           <div className='card'>
-            <h1>{heading + ' - ' + status}</h1>
+            <h1 className='text-xl'>{heading + ' - ' + status}</h1>
             <div className='message'>{message}</div>
             {signin}
           </div>
@@ -99,7 +99,8 @@ export default function ErrorPage({ error = 'default' }: ErrorProps) {
 export async function getServerSideProps(ctx) {
   const { error } = ctx.query;
 
-  return {
-    props: { error },
-  };
+  if (error)
+    return {
+      props: { error },
+    };
 }
