@@ -1,15 +1,15 @@
-import { FieldValues, UseFormRegister } from "react-hook-form";
-import { ERROR_MSG_STYLE, INPUT_STYLE, LABEL_STYLE } from "./styles";
+import { FieldValues, UseFormRegister } from 'react-hook-form'
+import { ERROR_MSG_STYLE, INPUT_STYLE, LABEL_STYLE } from './styles'
 
 type props = {
-  type: string;
-  name: string;
-  placeholder: string;
-  label: string;
-  error?: string;
-  classNames?: string;
-  register: UseFormRegister<any>;
-};
+  type: string
+  name: string
+  placeholder: string
+  label: string
+  error?: string
+  classNames?: string
+  register: UseFormRegister<any>
+}
 
 const InputField = ({
   type,
@@ -26,17 +26,17 @@ const InputField = ({
         {label}
         <input
           className={`${classNames} ${
-            error && "border-red-500"
+            error && 'border-red-500'
           } ${INPUT_STYLE}`}
           type={type}
           name={name}
-          {...register(name)}
           placeholder={placeholder}
+          {...register(name)}
         />
       </label>
       {error && <p className={ERROR_MSG_STYLE}>{error}</p>}
     </div>
-  );
-};
+  )
+}
 
-export default InputField;
+export default InputField
