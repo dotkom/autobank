@@ -6,6 +6,7 @@ import { UserInformationValidationSchema } from '../validation/UserInformationVa
 import { Dispatch, SetStateAction } from 'react'
 import { ERROR_MSG_STYLE, FORM_STYLE, LABEL_STYLE } from '../../styles'
 import { IUserData } from '../state'
+import Checkbox from '../../Checkbox'
 
 type props = {
   changeStep: (step: number) => void
@@ -46,18 +47,12 @@ const UserInformation = ({ changeStep, setFormData, initialData }: props) => {
         error={errors.email?.message}
         register={register}
       />
-      <label className={LABEL_STYLE + ' mt-4'}>
-        <input
-          type="checkbox"
-          name="toc"
-          {...register('toc')}
-          className="form-checkbox h-5 w-5 mr-1 text-online-blue-500 hover:cursor-pointer hover:border-online-blue-500 hover:border-2"
-        />
-        Aksepterer TOC
-      </label>
-      {errors.toc?.message && (
-        <p className={ERROR_MSG_STYLE}>{errors.toc.message}</p>
-      )}
+      <Checkbox
+        label="Aksepterer TOC"
+        name="toc"
+        error={errors.toc?.message}
+        register={register}
+      />
       <Navigation step={0} />
     </form>
   )

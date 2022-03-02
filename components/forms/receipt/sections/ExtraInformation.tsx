@@ -1,10 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import Navigation from '../Navigation'
-import { ERROR_MSG_STYLE, FORM_STYLE, LABEL_STYLE } from '../../styles'
+import {
+  ERROR_MSG_STYLE,
+  FORM_STYLE,
+  INPUT_STYLE,
+  LABEL_STYLE,
+} from '../../styles'
 import { ExtraInformationValidationSchema } from '../validation/ExtraInformationValidation'
 import { getDataUrlsFromFiles } from '../../../../utils/getDataUrlsFromFiles'
 import { IExtraInformationData } from '../state'
+import TextArea from '../../TextArea'
 
 type props = {
   changeStep: (delta: number) => void
@@ -31,19 +37,13 @@ const ExtraInformation = ({ changeStep, submitReceiptForm }: props) => {
 
   return (
     <form className={FORM_STYLE} onSubmit={handleSubmit(submitForm)}>
-      <label className={`${LABEL_STYLE} flex flex-col w-full text-left`}>
-        Kommentarer
-        <textarea
-          name="comments"
-          rows={4}
-          {...register('comments')}
-          placeholder="Andre kommentarer eller viktig informasjon rundt kjøpet kan skrives her. Hvis det gjelder teambuilding, skriv også inn navn på alle deltakere"
-          className={errors.comments?.message ? 'border-red-500' : ''}
-        ></textarea>
-      </label>
-      {errors.comments?.message && (
-        <p className={ERROR_MSG_STYLE}>{errors.comments.message}</p>
-      )}
+      <TextArea
+        label="Kommentar"
+        name="comments"
+        placeholder="Andre kommentarer eller viktig informasjon rundt kjøpet kan skrives her. Hvis det gjelder teambuilding, skriv også inn navn på alle deltakere"
+        error={errors.comments?.message}
+        register={register}
+      />
       <label className={LABEL_STYLE + ' text-left pt-2'}>
         Vedlegg/Kvittering
         <input
