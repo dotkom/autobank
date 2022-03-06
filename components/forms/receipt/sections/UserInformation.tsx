@@ -6,6 +6,7 @@ import { UserInformationValidationSchema } from "../validation/UserInformationVa
 import { Dispatch, SetStateAction } from "react";
 import { ERROR_MSG_STYLE, LABEL_STYLE } from "../../styles";
 import { IUserData } from "../state";
+import Link from "next/link";
 
 type props = {
   changeStep: (step: number) => void;
@@ -56,7 +57,9 @@ const UserInformation = ({ changeStep, setFormData, initialData }: props) => {
           {...register("toc")}
           className="form-checkbox h-5 w-5 mr-1 text-online-blue-500 hover:cursor-pointer hover:border-online-blue-500 hover:border-2"
         />
-        Aksepterer TOC
+        <a href="/terms-of-service" target="_blank">
+          Aksepterer TOC
+        </a>
       </label>
       {errors.toc?.message && (
         <p className={ERROR_MSG_STYLE}>{errors.toc.message}</p>
