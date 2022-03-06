@@ -1,4 +1,6 @@
 import NextAuth from 'next-auth';
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
+
 import EmailProvider from 'next-auth/providers/email';
 import sendVerification from '../../../lib/auth/mail/verfication';
 import OnlineProvider from '../../../lib/auth/OnlineProvider';
@@ -36,6 +38,8 @@ export default NextAuth({
   callbacks: {
     async jwt({ token, account }) {
       // Persist the OAuth access_token to the token right after signin
+      console.log({ token, account });
+
       if (account) {
         token.accessToken = account.access_token;
       }

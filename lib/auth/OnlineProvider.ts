@@ -69,21 +69,15 @@ export default function OnlineProvider<P extends IAuthProfile & { id: string }>(
     type: 'oauth',
     version: '2.0',
     authorization: {
-      url: 'https://online.ntnu.no/openid/authorize',
       params: {
         scope: 'openid profile email onlineweb4',
         response_type: 'code',
       },
     },
-    token: {
-      url: 'https://online.ntnu.no/openid/token',
-      params: {
-        grant_type: 'authorization_code',
-      },
-    },
-    userinfo: {
-      url: 'https://online.ntnu.no/openid/userinfo',
-    },
+    wellKnown:
+      'https://old.online.ntnu.no/openid/.well-known/openid-configuration',
+    idToken: true,
+    checks: ['state'],
     profile: (profile: IAuthProfile) => {
       return {
         ...profile,
@@ -92,7 +86,6 @@ export default function OnlineProvider<P extends IAuthProfile & { id: string }>(
         email: profile.email,
       };
     },
-    idToken: false,
     options,
   };
 }
