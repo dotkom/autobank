@@ -20,11 +20,11 @@ const IndexPage = () => (
             La bankbotten velge skjema for deg!
           </p>
           <div className="justify-center flex space-x-2">
-            <button className="bg-[#0D5474] hover:bg-[#0A425C] text-white font-bold py-2 px-4 rounded">
+            <button className="bg-online-blue-500 hover:bg-online-blue-700 text-white font-bold py-2 px-4 rounded">
               Bankbotten
             </button>
             <p className="self-center">eller</p>
-            <button className="bg-[#0D5474] hover:bg-[#0A425C] text-white font-bold py-2 px-4 rounded">
+            <button className="bg-online-blue-500 hover:bg-online-blue-700 text-white font-bold py-2 px-4 rounded">
               Velg selv
             </button>
           </div>
@@ -133,6 +133,6 @@ const IndexPage = () => (
       </section>
     </div>
   </Layout>
-)
+);
 
-export default IndexPage
+export default IndexPage;
