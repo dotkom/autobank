@@ -19,7 +19,7 @@ const Layout = ({
       <Head title={title} />
       <Navbar />
       <main
-        className={`${className} min-h-[calc(100vh-64px)] flex items-center justify-center`}
+        className={`${className} min-h-[calc(100vh-64px)] flex flex-col items-center justify-center py-10`}
       >
         {children}
       </main>
