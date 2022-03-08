@@ -1,3 +1,5 @@
+import axios from 'axios';
+import { calcRelativeAxisPosition } from 'framer-motion/types/projection/geometry/delta-calc';
 import { BuiltInProviderType } from 'next-auth/providers';
 import {
   ClientSafeProvider,
@@ -6,7 +8,9 @@ import {
   signIn,
   useSession,
 } from 'next-auth/react';
+import { useState } from 'react';
 import Button from '../../components/elements/Button';
+import Input from '../../components/elements/form/Input';
 import Online, { OnlineBankom } from '../../components/icons/Online';
 import Layout from '../../components/Layout';
 
@@ -40,6 +44,14 @@ export default function SignIn({
   > | null;
 }) {
   const { data: session, status } = useSession();
+  const [email, setemail] = useState('');
+
+  const sendLoginVerification = (e) => {
+    e.preventDefault();
+
+    // Notice, we are also redirecting users to the protected route instead of the homepage after signing in.
+    signIn('email', { callbackUrl: '/protected', email });
+  };
   return (
     <Layout>
       <div className=' max-w-lg w-full flex items-center flex-col justify-center shadow-2xl bg-slate-50 p-10 rounded-lg'>
@@ -49,19 +61,47 @@ export default function SignIn({
         {providers &&
           Object.values(providers).map((provider) => (
             <div key={provider.name}>
-              <Button
-                onClick={() => signIn(provider.id)}
-                pri={'primary'}
-                logo
-                className='flex items-center'
-              >
-                Log in med {provider.name}
-                {provider.name == 'Online' ? (
-                  <Online className='h-5 ml-1.5' color='white' />
-                ) : (
-                  ''
-                )}
-              </Button>
+              {provider.type === 'email' ? (
+                <div>
+                  <div className='relative flex py-5 items-center'>
+                    <div className='flex-grow border-t border-gray-400'></div>
+                    <span className='flex-shrink mx-4 text-gray-400'>
+                      Eller
+                    </span>
+                    <div className='flex-grow border-t border-gray-400'></div>
+                  </div>
+                  <form
+                    onSubmit={sendLoginVerification}
+                    className={`flex flex-col`}
+                  >
+                    <h2 className='mx-auto text-lg'>Log inn med mail</h2>
+                    <Input
+                      type='email'
+                      value={email}
+                      onChange={(e) => {
+                        setemail(e.target.value);
+                      }}
+                    />
+                    <Button type='submit' pri={'primary'}>
+                      Send Magic Link 🪄
+                    </Button>
+                  </form>
+                </div>
+              ) : (
+                <Button
+                  onClick={() => signIn(provider.id)}
+                  pri={'primary'}
+                  logo
+                  className='flex items-center'
+                >
+                  Log in med {provider.name}
+                  {provider.name == 'Online' ? (
+                    <Online className='h-5 ml-1.5' color='white' />
+                  ) : (
+                    ''
+                  )}
+                </Button>
+              )}
             </div>
           ))}
       </div>
