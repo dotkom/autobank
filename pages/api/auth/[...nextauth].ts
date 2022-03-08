@@ -31,18 +31,6 @@ export default NextAuth({
         url,
         provider: { server, from },
       }) {
-        console.log({
-          host: process.env.EMAIL_SERVER_HOST,
-          port: process.env.EMAIL_SERVER_PORT,
-          auth: {
-            type: 'OAuth2',
-            user: process.env.EMAIL_CLIENT_EMAIL,
-            serviceClient: process.env.EMAIL_CLIENT_ID,
-            privateKey: process.env.EMAIL_PRIVATE_KEY,
-          },
-          secure: true,
-        });
-
         sendVerification({
           identifier: email,
           url,
@@ -58,11 +46,7 @@ export default NextAuth({
       }
       return token;
     },
-    async session({ session, token, user }) {
-      // Send properties to the client, like an access_token from a provider.
-      // session.accessToken = token.accessToken;
-      console.log({ session, token, user });
-
+    async session({ session, user }) {
       session.user = user;
       return session;
     },
