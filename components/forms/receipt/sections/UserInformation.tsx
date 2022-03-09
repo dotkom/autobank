@@ -4,7 +4,7 @@ import Navigation from '../Navigation'
 import InputField from '../../InputField'
 import { UserInformationValidationSchema } from '../validation/UserInformationValidation'
 import { Dispatch, SetStateAction } from 'react'
-import { ERROR_MSG_STYLE, FORM_STYLE, LABEL_STYLE } from '../../styles'
+import { FORM_STYLE } from '../../styles'
 import { IUserData } from '../state'
 import Checkbox from '../../Checkbox'
 

@@ -4,24 +4,35 @@ import { ContactPersonValidationSchema } from '../validation/ContactPersonValida
 import { FORM_STYLE } from '../../styles'
 import InputField from '../../InputField'
 import Navigation from '../../receipt/Navigation'
+import { IContactPerson } from '../state'
+import { Dispatch, SetStateAction } from 'react'
 
-const ContactPerson = () => {
-  const submitForm = (data: any) => {
-    console.log('Submitted contact person section')
-    console.log(data)
-    // setFormData(data)
-    // changeStep(1)
+type props = {
+  changeStep: (step: number) => void
+  initialData: IContactPerson
+  setFormData: Dispatch<SetStateAction<IContactPerson>>
+}
+
+const ContactPerson = ({ changeStep, initialData, setFormData }: props) => {
+  const submitForm = (data: IContactPerson) => {
+    setFormData(data)
+    changeStep(1)
   }
 
   const {
     handleSubmit,
     register,
-    setValue,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(ContactPersonValidationSchema),
-    // defaultValues: initialData,
+    defaultValues: initialData,
   })
+
+  const handlePrevStep = (delta: number) => {
+    setFormData(getValues())
+    changeStep(delta)
+  }
 
   return (
     <form className={FORM_STYLE} onSubmit={handleSubmit(submitForm)}>
@@ -49,7 +60,7 @@ const ContactPerson = () => {
         error={errors.phone?.message}
         register={register}
       />
-      <Navigation step={1} />
+      <Navigation step={1} changeStep={handlePrevStep} />
     </form>
   )
 }

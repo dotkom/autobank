@@ -7,34 +7,50 @@ import Dropdown from '../../Dropdown'
 import { INNVOICE_OCCATIONS } from '../invoiceOccations'
 import { INNVOICE_DELIVERY_OPTIONS } from '../invoiceDeliveryOptions'
 import Checkbox from '../../Checkbox'
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import Navigation from '../../receipt/Navigation'
 import TextArea from '../../TextArea'
+import { IInvoiceInformation } from '../state'
 
-const InvoiceInformation = () => {
-  const [isPoNumber, setIsPoNumber] = useState<boolean>(false)
-  const [isDueDate, setIsDueDate] = useState<boolean>(false)
-  const [deliveryMethod, setDeliveryMethod] = useState<String>()
+type props = {
+  changeStep: (step: number) => void
+  initialData: IInvoiceInformation
+  setFormData: Dispatch<SetStateAction<IInvoiceInformation>>
+  submitInvoiceForm: (data: IInvoiceInformation) => void
+}
 
-  const submitForm = (data: any) => {
-    console.log('Submitted contact person section')
-    delete data.poNumber_CB
-    delete data.dueDate_CB
-    console.log(data)
-    // setFormData(data)
-    // changeStep(1)
+const InvoiceInformation = ({
+  changeStep,
+  initialData,
+  setFormData,
+  submitInvoiceForm,
+}: props) => {
+  const [isPoNumber, setIsPoNumber] = useState<boolean>(initialData.isPoNumber)
+  const [isDueDate, setIsDueDate] = useState<boolean>(initialData.isDueDate)
+  const [deliveryMethod, setDeliveryMethod] = useState<String>(
+    initialData.delivery
+  )
+
+  const submitForm = (data: IInvoiceInformation) => {
+    submitInvoiceForm(data as IInvoiceInformation)
   }
 
   const {
     handleSubmit,
     register,
     clearErrors,
+    getValues,
     setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(InvoiceInformationValidationSchema),
-    // defaultValues: initialData,
+    defaultValues: initialData,
   })
+
+  const handlePrevStep = (delta: number) => {
+    setFormData(getValues())
+    changeStep(delta)
+  }
 
   return (
     <form
@@ -62,7 +78,7 @@ const InvoiceInformation = () => {
         errors={errors.delivery?.message}
         register={register}
       />
-      {deliveryMethod && deliveryMethod != 'ehf' ? (
+      {deliveryMethod != 'default' && deliveryMethod != 'ehf' ? (
         <InputField
           name="deliveryAdress"
           type="text"
@@ -121,7 +137,7 @@ const InvoiceInformation = () => {
         error={errors.comments?.message}
         register={register}
       />
-      <Navigation step={2} />
+      <Navigation step={2} changeStep={handlePrevStep} />
     </form>
   )
 }
