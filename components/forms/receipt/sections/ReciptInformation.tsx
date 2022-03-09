@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import GroupDropdown from '../GroupDropdown'
-import Navigation from '../Navigation'
+import Navigation from '../../Navigation'
 import AccountInput from '../AccountInput'
 import { Dispatch, SetStateAction, useState } from 'react'
 import ReciptTypeGroup from '../ReciptTypeGroup'
@@ -85,7 +85,7 @@ const ReciptInformation = ({ changeStep, initialData, setFormData }: props) => {
         error={errors.occation?.message}
         register={register}
       />
-      <Navigation step={1} changeStep={changeStep} />
+      <Navigation step={1} numberOfSteps={3} changeStep={changeStep} />
     </form>
   )
 }

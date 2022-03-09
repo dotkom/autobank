@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import Navigation from '../Navigation'
+import Navigation from '../../Navigation'
 import InputField from '../../InputField'
 import { UserInformationValidationSchema } from '../validation/UserInformationValidation'
 import { Dispatch, SetStateAction } from 'react'
@@ -53,7 +53,7 @@ const UserInformation = ({ changeStep, setFormData, initialData }: props) => {
         error={errors.toc?.message}
         register={register}
       />
-      <Navigation step={0} />
+      <Navigation step={0} numberOfSteps={3} />
     </form>
   )
 }

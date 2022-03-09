@@ -1,11 +1,12 @@
-import ProgressBar from "../ProgressBar";
+import ProgressBar from './ProgressBar'
 
 type props = {
-  step: 0 | 1 | 2;
-  changeStep?: (step: number) => void;
-};
+  step: number
+  numberOfSteps: number
+  changeStep?: (step: number) => void
+}
 
-const Navigation = ({ step, changeStep }: props) => {
+const Navigation = ({ step, numberOfSteps, changeStep }: props) => {
   return (
     <>
       <div className="max-w-lg w-full flex flex-row padding-top justify-around pt-12">
@@ -18,7 +19,7 @@ const Navigation = ({ step, changeStep }: props) => {
           </button>
         )}
 
-        {step < 2 ? (
+        {step < numberOfSteps - 1 ? (
           <button className="bg-transparent hover:bg-online-blue-500 text-online-blue-500 font-semibold hover:text-white py-2 px-4 border border-online-blue-500 hover:border-transparent rounded-full">
             Neste
           </button>
@@ -28,9 +29,9 @@ const Navigation = ({ step, changeStep }: props) => {
           </button>
         )}
       </div>
-      <ProgressBar currentStep={step} />
+      <ProgressBar currentStep={step} numberOfSteps={numberOfSteps} />
     </>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation

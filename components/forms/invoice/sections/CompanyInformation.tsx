@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Dispatch, SetStateAction } from 'react'
 import { useForm } from 'react-hook-form'
 import InputField from '../../InputField'
-import Navigation from '../../receipt/Navigation'
+import Navigation from '../../Navigation'
 import { FORM_STYLE } from '../../styles'
 import { ICompanyInformation } from '../state'
 import { CompanyInfoValidationSchema } from '../validation/CompanyInformationValidation'
@@ -50,7 +50,7 @@ const CompanyInformation = ({
         error={errors.companyName?.message}
         register={register}
       />
-      <Navigation step={0} />
+      <Navigation step={0} numberOfSteps={3} />
     </form>
   )
 }

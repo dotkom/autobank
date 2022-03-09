@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { ContactPersonValidationSchema } from '../validation/ContactPersonValidation'
 import { FORM_STYLE } from '../../styles'
 import InputField from '../../InputField'
-import Navigation from '../../receipt/Navigation'
+import Navigation from '../../Navigation'
 import { IContactPerson } from '../state'
 import { Dispatch, SetStateAction } from 'react'
 
@@ -60,7 +60,7 @@ const ContactPerson = ({ changeStep, initialData, setFormData }: props) => {
         error={errors.phone?.message}
         register={register}
       />
-      <Navigation step={1} changeStep={handlePrevStep} />
+      <Navigation step={1} numberOfSteps={3} changeStep={handlePrevStep} />
     </form>
   )
 }

@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import Navigation from '../Navigation'
+import Navigation from '../../Navigation'
 import {
   ERROR_MSG_STYLE,
   FORM_STYLE,
@@ -58,7 +58,7 @@ const ExtraInformation = ({ changeStep, submitReceiptForm }: props) => {
       {errors.attachments?.message && (
         <p className={ERROR_MSG_STYLE}>{errors.attachments.message}</p>
       )}
-      <Navigation step={2} changeStep={changeStep} />
+      <Navigation step={2} numberOfSteps={3} changeStep={changeStep} />
     </form>
   )
 }

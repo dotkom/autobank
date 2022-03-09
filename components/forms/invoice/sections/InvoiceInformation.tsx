@@ -8,7 +8,7 @@ import { INNVOICE_OCCATIONS } from '../invoiceOccations'
 import { INNVOICE_DELIVERY_OPTIONS } from '../invoiceDeliveryOptions'
 import Checkbox from '../../Checkbox'
 import { Dispatch, SetStateAction, useState } from 'react'
-import Navigation from '../../receipt/Navigation'
+import Navigation from '../../Navigation'
 import TextArea from '../../TextArea'
 import { IInvoiceInformation } from '../state'
 
@@ -137,7 +137,7 @@ const InvoiceInformation = ({
         error={errors.comments?.message}
         register={register}
       />
-      <Navigation step={2} changeStep={handlePrevStep} />
+      <Navigation step={2} numberOfSteps={3} changeStep={handlePrevStep} />
     </form>
   )
 }
