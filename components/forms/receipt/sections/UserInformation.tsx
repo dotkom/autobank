@@ -4,9 +4,10 @@ import Navigation from '../../Navigation'
 import InputField from '../../InputField'
 import { UserInformationValidationSchema } from '../validation/UserInformationValidation'
 import { Dispatch, SetStateAction } from 'react'
-import { FORM_STYLE } from '../../styles'
+import { ERROR_MSG_STYLE, FORM_STYLE, LABEL_STYLE } from '../../styles'
 import { IUserData } from '../state'
 import Checkbox from '../../Checkbox'
+import Link from 'next/link'
 
 type props = {
   changeStep: (step: number) => void
@@ -47,12 +48,20 @@ const UserInformation = ({ changeStep, setFormData, initialData }: props) => {
         error={errors.email?.message}
         register={register}
       />
-      <Checkbox
-        label="Aksepterer TOC"
-        name="toc"
-        error={errors.toc?.message}
-        register={register}
-      />
+      <label className={LABEL_STYLE + ' mt-4'}>
+        <input
+          type="checkbox"
+          name="toc"
+          {...register('toc')}
+          className="form-checkbox h-5 w-5 mr-1 text-online-blue-500 hover:cursor-pointer hover:border-online-blue-500 hover:border-2"
+        />
+        <Link href="/terms-of-service">
+          <a target="_blank">Aksepterer TOC</a>
+        </Link>
+      </label>
+      {errors.toc?.message && (
+        <p className={ERROR_MSG_STYLE}>{errors.toc.message}</p>
+      )}
       <Navigation step={0} numberOfSteps={3} />
     </form>
   )
