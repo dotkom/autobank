@@ -14,6 +14,7 @@ import TextArea from '../../TextArea'
 const InvoiceInformation = () => {
   const [isPoNumber, setIsPoNumber] = useState<boolean>(false)
   const [isDueDate, setIsDueDate] = useState<boolean>(false)
+  const [deliveryMethod, setDeliveryMethod] = useState<String>()
 
   const submitForm = (data: any) => {
     console.log('Submitted contact person section')
@@ -27,6 +28,8 @@ const InvoiceInformation = () => {
   const {
     handleSubmit,
     register,
+    clearErrors,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(InvoiceInformationValidationSchema),
@@ -43,6 +46,7 @@ const InvoiceInformation = () => {
         options={INNVOICE_OCCATIONS}
         label="Anledning"
         name="occation"
+        onChange={(_) => clearErrors('occation')}
         errors={errors.occation?.message}
         register={register}
       />
@@ -51,22 +55,39 @@ const InvoiceInformation = () => {
         options={INNVOICE_DELIVERY_OPTIONS}
         label="Leveringsmetode"
         name="delivery"
+        onChange={(e) => {
+          clearErrors('delivery')
+          setDeliveryMethod(e.target.value)
+        }}
         errors={errors.delivery?.message}
         register={register}
       />
+      {deliveryMethod && deliveryMethod != 'ehf' ? (
+        <InputField
+          name="deliveryAdress"
+          type="text"
+          label={deliveryMethod == 'adresse' ? 'Adresse' : 'E-post'}
+          placeholder={
+            deliveryMethod == 'adresse' ? 'Ønsket adresse' : 'Ønsket e-post'
+          }
+          error={errors.deliveryAdress?.message}
+          register={register}
+        />
+      ) : null}
       <Checkbox
         label="Ønsker PO-nummer"
-        name="poNumber_CB"
+        name="isPoNumber"
         register={register}
         defaultChecked={isPoNumber}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          setValue('isPoNumber', e.target.checked)
           setIsPoNumber(e.target.checked)
-        }
+        }}
       />
       {isPoNumber ? (
         <InputField
           name="poNumber"
-          type="number"
+          type="text"
           label="" //TODO: Make label optional?
           placeholder="PO-nummer"
           error={errors.poNumber?.message}
@@ -75,12 +96,13 @@ const InvoiceInformation = () => {
       ) : null}
       <Checkbox
         label="Ønsker spesielt antall dager til forfallsdato"
-        name="dueDate_CB"
+        name="isDueDate"
         register={register}
         defaultChecked={isDueDate}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          setValue('isDueDate', e.target.checked)
           setIsDueDate(e.target.checked)
-        }
+        }}
       />
       {isDueDate ? (
         <InputField

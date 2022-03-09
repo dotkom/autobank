@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react'
 import { UseFormRegister } from 'react-hook-form'
 import { ERROR_MSG_STYLE, LABEL_STYLE } from './styles'
 
@@ -13,6 +14,7 @@ type props = {
   name: string
   classNames?: string
   errors?: string
+  onChange?: (event: ChangeEvent<HTMLSelectElement>) => void
   register: UseFormRegister<any>
 }
 
@@ -22,8 +24,15 @@ const Dropdown = ({
   label,
   name,
   errors,
+  onChange,
   register,
 }: props) => {
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    if (onChange) {
+      onChange(e)
+    }
+  }
+
   return (
     <div className="w-full text-left">
       <label className={LABEL_STYLE}>{label}</label>
@@ -44,6 +53,7 @@ const Dropdown = ({
             errors ? 'border-red-500' : 'border-gray-500'
           } rounded text-gray-700 border shadow h-10 bg-white focus:outline-none appearance-none w-full`}
           {...register(name)}
+          onChange={handleChange}
           defaultValue={defaultOption.value}
         >
           <option disabled value={defaultOption.value}>
