@@ -38,18 +38,21 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime? @map("email_verified")
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  recipts       Recipt[]
+  id                    String         @id @default(cuid())
+  name                  String?
+  email                 String?        @unique
+  emailVerified         DateTime?      @map("email_verified")
+  image                 String?
+  accounts              Account[]
+  sessions              Session[]
+  recipts               Recipt[]       @relation(name: "recipt")
+  Onlinepotten          Onlinepotten[] @relation(name: "potten")
+  Invoiceinfo           Invoiceinfo[]  @relation(name: "invoice")
+  approved_recipts      Recipt[]       @relation(name: "approved_recipt")
+  approved_Onlinepotten Onlinepotten[] @relation(name: "approved_potten")
+  approved_Invoiceinfo  Invoiceinfo[]  @relation(name: "approved_invoice")
 
-  Onlinepotten Onlinepotten[]
   @@map("users")
-  Invoiceinfo Invoiceinfo[]
 }
 
 model VerificationToken {
@@ -63,39 +66,44 @@ model VerificationToken {
 
 model Recipt {
   id        String  @id @default(cuid())
-  user      User?   @relation(fields: [userId], references: [id])
+  user      User?   @relation(fields: [userId], references: [id], name: "recipt")
   userId    String?
   full_name String
   email     String
 
   created_at   DateTime @default(now())
   approved_at  DateTime
+  approvedBy   User?    @relation(fields: [approvedById], references: [id], name: "approved_recipt")
+  approvedById String?
   last_updated DateTime @default(now())
-  status       String
+  status       String   @default("ikke sendt")
 
   reimbursement Boolean
   account_nr    Int?
+  card          String?
   paid_at       DateTime?
   amount        Int
   occasion      String
 
   comments     String?
   appendix     Bytes
-  error        String
+  error        String?
   error_fields String[]
 }
 
 model Onlinepotten {
   id        String  @id @default(cuid())
-  user      User?   @relation(fields: [userId], references: [id])
+  user      User?   @relation(fields: [userId], references: [id], name: "potten")
   userId    String?
   full_name String
   email     String
 
   created_at   DateTime @default(now())
   approved_at  DateTime
+  approvedBy   User?    @relation(fields: [approvedById], references: [id], name: "approved_potten")
+  approvedById String?
   last_updated DateTime @default(now())
-  status       String
+  status       String   @default("ikke sendt")
 
   occation       String
   planned_date   DateTime
@@ -112,7 +120,7 @@ model Onlinepotten {
 
 model Invoiceinfo {
   id           String  @id @default(cuid())
-  user         User?   @relation(fields: [userId], references: [id])
+  user         User?   @relation(fields: [userId], references: [id], name: "invoice")
   userId       String?
   orgnr        String
   company_name String
@@ -123,9 +131,9 @@ model Invoiceinfo {
 
   occasion String
 
-  invoice_method String
-  po_nr          String
-  duedays        Int
+  invoice_method String?
+  po_nr          String?
+  duedays        Int     @default(30)
 
   comments     String?
   error        String?
@@ -133,6 +141,8 @@ model Invoiceinfo {
 
   created_at   DateTime @default(now())
   approved_at  DateTime
+  approvedBy   User?    @relation(fields: [approvedById], references: [id], name: "approved_invoice")
+  approvedById String?
   last_updated DateTime @default(now())
-  status       String
+  status       String   @default("ikke sendt")
 }
