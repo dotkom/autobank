@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 type Props = {
@@ -13,7 +14,7 @@ const Button = ({ pri, logo = false, className, ...props }: Props) => {
         pri == 'primary'
           ? 'bg-online-blue-500 text-zinc-100'
           : 'bg-online-blue-500 text-zinc-100'
-      } px-4 py-px rounded shadow-md`}
+      } px-4 py-2 rounded shadow-md`}
     />
   )
 }
@@ -21,23 +22,27 @@ const Button = ({ pri, logo = false, className, ...props }: Props) => {
 type LinkProps = {
   pri: 'primary' | 'secondary'
   logo?: boolean
-} & React.AnchorHTMLAttributes<HTMLAnchorElement>
+  link: string
+} & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>
 
 export const ButtonLink = ({
   pri,
   logo = false,
   className,
+  link,
   ...props
 }: LinkProps) => {
   return (
-    <a
-      {...props}
-      className={`${className} ${
-        pri == 'primary'
-          ? 'bg-online-blue-500 text-zinc-100'
-          : 'bg-online-blue-500 text-zinc-100'
-      } px-4 py-px rounded shadow-md cursor-pointer`}
-    />
+    <Link href={link}>
+      <a
+        {...props}
+        className={`${className} ${
+          pri == 'primary'
+            ? 'bg-online-blue-500 text-zinc-100'
+            : 'bg-online-blue-500 text-zinc-100'
+        } px-4 py-2 rounded shadow-md cursor-pointer`}
+      />
+    </Link>
   )
 }
 
