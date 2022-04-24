@@ -38,19 +38,15 @@ model Session {
 }
 
 model User {
-  id                    String         @id @default(cuid())
-  name                  String?
-  email                 String?        @unique
-  emailVerified         DateTime?      @map("email_verified")
-  image                 String?
-  accounts              Account[]
-  sessions              Session[]
-  recipts               Recipt[]       @relation(name: "recipt")
-  Onlinepotten          Onlinepotten[] @relation(name: "potten")
-  Invoiceinfo           Invoiceinfo[]  @relation(name: "invoice")
-  approved_recipts      Recipt[]       @relation(name: "approved_recipt")
-  approved_Onlinepotten Onlinepotten[] @relation(name: "approved_potten")
-  approved_Invoiceinfo  Invoiceinfo[]  @relation(name: "approved_invoice")
+  id                   String        @id @default(cuid())
+  name                 String?
+  email                String?       @unique
+  emailVerified        DateTime?     @map("email_verified")
+  image                String?
+  accounts             Account[]
+  sessions             Session[]
+  applications         Application[] @relation(name: "owner")
+  approvedApplications Application[] @relation(name: "approved_by")
 
   @@map("users")
 }
@@ -64,47 +60,37 @@ model VerificationToken {
   @@map("verificationtokens")
 }
 
-model Recipt {
-  id        String  @id @default(cuid())
-  user      User?   @relation(fields: [userId], references: [id], name: "recipt")
-  userId    String?
-  full_name String
-  email     String
-
+model Application {
+  id           String   @id @default(cuid())
+  user         User?    @relation(fields: [userId], references: [id], name: "owner")
+  userId       String?
+  full_name    String
+  email        String
   created_at   DateTime @default(now())
   approved_at  DateTime
-  approvedBy   User?    @relation(fields: [approvedById], references: [id], name: "approved_recipt")
+  approvedBy   User?    @relation(fields: [approvedById], references: [id], name: "approved_by")
   approvedById String?
   last_updated DateTime @default(now())
   status       String   @default("ikke sendt")
+  comments     String?
+  error        String?
+  error_fields String[]
 
+}
+
+model Recipt {
+  id            String    @id @default(cuid())
   reimbursement Boolean
   account_nr    Int?
   card          String?
   paid_at       DateTime?
   amount        Int
   occasion      String
-
-  comments     String?
-  appendix     Bytes
-  error        String?
-  error_fields String[]
+  appendix      Bytes
 }
 
 model Onlinepotten {
-  id        String  @id @default(cuid())
-  user      User?   @relation(fields: [userId], references: [id], name: "potten")
-  userId    String?
-  full_name String
-  email     String
-
-  created_at   DateTime @default(now())
-  approved_at  DateTime
-  approvedBy   User?    @relation(fields: [approvedById], references: [id], name: "approved_potten")
-  approvedById String?
-  last_updated DateTime @default(now())
-  status       String   @default("ikke sendt")
-
+  id             String   @id @default(cuid())
   occation       String
   planned_date   DateTime
   hours          Int
@@ -112,37 +98,13 @@ model Onlinepotten {
   participants   String[]
   payment_method String
   recipt_id      Int
-
-  comments     String
-  error        String
-  error_fields String[]
 }
 
 model Invoiceinfo {
-  id           String  @id @default(cuid())
-  user         User?   @relation(fields: [userId], references: [id], name: "invoice")
-  userId       String?
-  orgnr        String
-  company_name String
-
-  contact_name  String
-  contact_email String
-  contact_nr    Int
-
-  occasion String
-
+  id             String  @id @default(cuid())
+  orgnr          String
+  occasion       String
   invoice_method String?
   po_nr          String?
   duedays        Int     @default(30)
-
-  comments     String?
-  error        String?
-  error_fields String[]
-
-  created_at   DateTime @default(now())
-  approved_at  DateTime
-  approvedBy   User?    @relation(fields: [approvedById], references: [id], name: "approved_invoice")
-  approvedById String?
-  last_updated DateTime @default(now())
-  status       String   @default("ikke sendt")
 }
