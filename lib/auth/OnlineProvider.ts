@@ -22,18 +22,47 @@ export type Account = {
   accessTokenExpires: null;
 };
 
-export type OnlineProfile = {
-  account_id: string;
+export interface Profile {
+  sub: number;
   name: string;
-  email: string;
+  given_name: string;
+  family_name: string;
+  nickname: string;
+  preferred_username: string;
   picture: string;
-};
+}
+
+interface IOnlinewebScope {
+  field_of_study: string;
+  member: boolean;
+  rfid: string | null;
+  staff: boolean;
+  superuser: boolean;
+}
+
+interface IEmailScope {
+  email: string;
+  email_verified: boolean;
+}
+
+/**
+ * Profile information returned from authenticating with
+ * OpenID Connect to Onlineweb4.
+ */
+export type IAuthProfile = NonNullable<Profile> &
+  IOnlinewebScope &
+  Partial<IEmailScope>;
 
 export type OnlineSession = Session & {};
 
-export default function OnlineProvider<
-  P extends Record<string, any> = OnlineProfile
->(options: OAuthUserConfig<P>): OAuthConfig<P> {
+// authorization (replaces authorizationUrl, authorizationParams, scope)
+// token replaces (accessTokenUrl, headers, params)
+// userinfo (replaces profileUrl)
+// issuer(replaces domain)
+
+export default function OnlineProvider<P extends IAuthProfile & { id: string }>(
+  options: OAuthUserConfig<P>
+): OAuthConfig<P> {
   return {
     id: 'onlineweb4',
     name: 'Online',
@@ -41,23 +70,22 @@ export default function OnlineProvider<
     version: '2.0',
     authorization: {
       params: {
-        scope: 'openid profile authentication:admin',
-        grant_type: 'authorization_code',
-        url: `${OW4_ADDRESS}/sso/authorize/?response_type=code`,
+        scope: 'openid profile email onlineweb4',
+        response_type: 'code',
       },
     },
-    accessTokenUrl: `${OW4_ADDRESS}/sso/token/`,
-    requestTokenUrl: `${OW4_ADDRESS}/sso/authorize/`,
-    profileUrl: `${OW4_ADDRESS}/sso/userinfo/`,
-    profile: (profile) => {
+    wellKnown:
+      'https://old.online.ntnu.no/openid/.well-known/openid-configuration',
+    idToken: true,
+    checks: ['state'],
+    profile: (profile: IAuthProfile) => {
       return {
         ...profile,
-        id: profile.sub,
+        id: '' + profile.sub,
         image: profile.picture,
         email: profile.email,
       };
     },
-    idToken: false,
     options,
   };
 }

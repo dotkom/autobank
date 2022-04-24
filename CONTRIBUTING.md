@@ -13,14 +13,14 @@ If possible, tag it with a milestone as well, so we know when we can expect it t
 
 To start working on a new feature, checkout to a new branch with a name following the template of `feature/<name of feature>`. This makes it easy to distinguish branches related to features/hotfixes/etc. from one another.
 
-If the branch is to fall out of sync with `master`, please update it before merging into `master`.
+If the branch is to fall out of sync with `main`, please update it before merging into `main`.
 
-When you are done working on your feature, and you deem it apt for merging into master, create a pull request requesting your branch to be merged into `master`.
+When you are done working on your feature, and you deem it apt for merging into main, create a pull request requesting your branch to be merged into `main`.
 
 After doing this, we say that your branch is in _review stage_. When it is in this state, try your best to refrain from pushing more changes.
 Now, you wait for someone to review your code, and either request changes, or approve.
 
-When your PR (pull request) has been approved, merge it into master, and delete the feature branch you worked on (this is to avoid a situation where you have potentially hundreds of inactive branches laying around).
+When your PR (pull request) has been approved, merge it into main, and delete the feature branch you worked on (this is to avoid a situation where you have potentially hundreds of inactive branches laying around).
 
 ## Fixing something (hotfix)
 
