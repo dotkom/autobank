@@ -7,6 +7,11 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator typegraphql {
+  provider = "typegraphql-prisma"
+  output   = "graphql"
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String  @map("user_id")
@@ -43,7 +48,9 @@ model User {
   email                String?       @unique
   emailVerified        DateTime?     @map("email_verified")
   image                String?
+  /// @TypeGraphQL.omit(output: true)
   accounts             Account[]
+  /// @TypeGraphQL.omit(output: true)
   sessions             Session[]
   applications         Application[] @relation(name: "owner")
   approvedApplications Application[] @relation(name: "approved_by")
@@ -61,17 +68,17 @@ model VerificationToken {
 }
 
 model Application {
-  id           String   @id @default(cuid())
-  user         User?    @relation(fields: [userId], references: [id], name: "owner")
+  id           String    @id @default(cuid())
+  user         User?     @relation(fields: [userId], references: [id], name: "owner")
   userId       String?
   full_name    String
   email        String
-  created_at   DateTime @default(now())
-  approved_at  DateTime
-  approvedBy   User?    @relation(fields: [approvedById], references: [id], name: "approved_by")
+  created_at   DateTime  @default(now())
+  approved_at  DateTime?
+  approvedBy   User?     @relation(fields: [approvedById], references: [id], name: "approved_by")
   approvedById String?
-  last_updated DateTime @default(now())
-  status       String   @default("ikke sendt")
+  last_updated DateTime  @default(now())
+  status       String    @default("ikke sendt")
   comments     String?
   error        String?
   error_fields String[]
@@ -96,15 +103,15 @@ model Onlinepotten {
   hours          Int
   description    String
   participants   String[]
-  payment_method String
-  recipt_id      Int
+  payment_method String   @default("kvittering")
+  recipt_id      Int?
 }
 
-model Invoiceinfo {
-  id             String  @id @default(cuid())
-  orgnr          String
-  occasion       String
-  invoice_method String?
-  po_nr          String?
-  duedays        Int     @default(30)
+model Invoice {
+  id       String  @id @default(cuid())
+  orgnr    String
+  occasion String
+  method   String  @default("mail")
+  po_nr    String?
+  duedays  Int     @default(30)
 }

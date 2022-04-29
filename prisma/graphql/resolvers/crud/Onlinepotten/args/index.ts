@@ -1,0 +1,12 @@
+export { AggregateOnlinepottenArgs } from "./AggregateOnlinepottenArgs";
+export { CreateManyOnlinepottenArgs } from "./CreateManyOnlinepottenArgs";
+export { CreateOnlinepottenArgs } from "./CreateOnlinepottenArgs";
+export { DeleteManyOnlinepottenArgs } from "./DeleteManyOnlinepottenArgs";
+export { DeleteOnlinepottenArgs } from "./DeleteOnlinepottenArgs";
+export { FindFirstOnlinepottenArgs } from "./FindFirstOnlinepottenArgs";
+export { FindManyOnlinepottenArgs } from "./FindManyOnlinepottenArgs";
+export { FindUniqueOnlinepottenArgs } from "./FindUniqueOnlinepottenArgs";
+export { GroupByOnlinepottenArgs } from "./GroupByOnlinepottenArgs";
+export { UpdateManyOnlinepottenArgs } from "./UpdateManyOnlinepottenArgs";
+export { UpdateOnlinepottenArgs } from "./UpdateOnlinepottenArgs";
+export { UpsertOnlinepottenArgs } from "./UpsertOnlinepottenArgs";
