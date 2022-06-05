@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { AccountUpdateManyWithoutUserInput } from "../inputs/AccountUpdateManyWithoutUserInput";
 import { ApplicationUpdateManyWithoutApprovedByInput } from "../inputs/ApplicationUpdateManyWithoutApprovedByInput";
 import { ApplicationUpdateManyWithoutUserInput } from "../inputs/ApplicationUpdateManyWithoutUserInput";
+import { BoolFieldUpdateOperationsInput } from "../inputs/BoolFieldUpdateOperationsInput";
 import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { SessionUpdateManyWithoutUserInput } from "../inputs/SessionUpdateManyWithoutUserInput";
@@ -38,6 +39,11 @@ export class UserUpdateInput {
     nullable: true
   })
   image?: NullableStringFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => BoolFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  admin?: BoolFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => AccountUpdateManyWithoutUserInput, {
     nullable: true

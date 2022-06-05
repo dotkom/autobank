@@ -31,4 +31,9 @@ export class UserCreateManyInput {
     nullable: true
   })
   image?: string | undefined;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  admin?: boolean | undefined;
 }

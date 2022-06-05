@@ -31,4 +31,9 @@ export class UserMinAggregate {
     nullable: true
   })
   image!: string | null;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  admin!: boolean | null;
 }

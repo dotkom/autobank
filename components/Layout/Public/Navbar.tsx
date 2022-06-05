@@ -1,27 +1,27 @@
-import { motion, useCycle, Variants } from 'framer-motion';
-import { MenuIcon } from '../icons/MenuIcon';
-import Link from 'next/link';
-import { useEffect } from 'react';
-import { OnlineBankom } from '../icons/Online';
-import Button, { ButtonLink } from '../elements/Button';
+import { motion, useCycle, Variants } from 'framer-motion'
+import { MenuIcon } from '../../icons/MenuIcon'
+import Link from 'next/link'
+import { useEffect } from 'react'
+import { OnlineBankom } from '../../icons/Online'
+import Button, { ButtonLink } from '../../elements/Button'
 
 const spring = {
   type: 'spring',
   stiffness: 700,
   damping: 50,
-};
+}
 
 export const Item = ({
   link,
   text,
   button = false,
 }: {
-  link: string;
-  text: React.ReactNode;
-  button?: boolean;
+  link: string
+  text: React.ReactNode
+  button?: boolean
 }) => {
   return (
-    <motion.li className='mt-10 md:mt-0 md:ml-6'>
+    <motion.li className="mt-10 md:mt-0 md:ml-6">
       {button ? (
         <Link href={link}>
           <ButtonLink pri={'primary'}>{text}</ButtonLink>
@@ -32,17 +32,17 @@ export const Item = ({
         </Link>
       )}
     </motion.li>
-  );
-};
+  )
+}
 
 export const ItemList = ({
   variants,
   toggle = () => {},
   className,
 }: {
-  toggle?: (i?: number | undefined) => void;
-  variants?: Variants;
-  className?: string;
+  toggle?: (i?: number | undefined) => void
+  variants?: Variants
+  className?: string
 }) => {
   return (
     <motion.ul
@@ -50,7 +50,7 @@ export const ItemList = ({
       className={className}
       transition={spring}
       onClick={() => {
-        toggle();
+        toggle()
       }}
     >
       <Item link={'/fondet'} text={'Fondet'} />
@@ -60,35 +60,35 @@ export const ItemList = ({
       <Item link={'/faq'} text={'FAQ'} />
       <Item link={'/auth/signin'} text={'Login'} button />
     </motion.ul>
-  );
-};
+  )
+}
 
 export const Nav = () => {
-  const [isOpen, toggleOpen] = useCycle(false, true);
+  const [isOpen, toggleOpen] = useCycle(false, true)
 
   useEffect(
     function mount() {
       window.onresize = () => {
-        if (isOpen) toggleOpen();
-      };
+        if (isOpen) toggleOpen()
+      }
     },
     [isOpen, toggleOpen]
-  );
+  )
 
   return (
     <motion.nav
       initial={false}
       animate={isOpen ? 'open' : 'closed'}
-      className='max-w-7xl flex justify-between items-center h-16 mx-auto z-40 text-online-blue-500'
+      className="max-w-7xl flex justify-between items-center h-16 mx-auto z-40 text-online-blue-500"
       layout
     >
       <Link href={'/'}>
-        <a className='ml-4'>
-          <OnlineBankom className='h-6' />
+        <a className="ml-4">
+          <OnlineBankom className="h-6" />
         </a>
       </Link>
       <ItemList
-        className='text-xl md:!hidden absolute w-screen flex flex-col items-center h-screen mt-16'
+        className="text-xl md:!hidden absolute w-screen flex flex-col items-center h-screen mt-16"
         variants={{
           closed: {
             x: 0,
@@ -105,13 +105,13 @@ export const Nav = () => {
         }}
         toggle={() => toggleOpen()}
       />
-      <ItemList className='hidden md:flex items-center p-3 mr-3 z-50' />
+      <ItemList className="hidden md:flex items-center p-3 mr-3 z-50" />
       <MenuIcon
         toggle={() => toggleOpen()}
-        className='h-full w-auto md:hidden p-4 z-50 mr-3'
+        className="h-full w-auto md:hidden p-4 z-50 mr-3"
       />
     </motion.nav>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav

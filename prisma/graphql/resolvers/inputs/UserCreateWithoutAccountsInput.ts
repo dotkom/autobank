@@ -35,6 +35,11 @@ export class UserCreateWithoutAccountsInput {
   })
   image?: string | undefined;
 
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  admin?: boolean | undefined;
+
   @TypeGraphQL.Field(_type => SessionCreateNestedManyWithoutUserInput, {
     nullable: true
   })

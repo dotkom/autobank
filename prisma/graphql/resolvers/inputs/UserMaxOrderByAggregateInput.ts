@@ -32,4 +32,9 @@ export class UserMaxOrderByAggregateInput {
     nullable: true
   })
   image?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  admin?: "asc" | "desc" | undefined;
 }

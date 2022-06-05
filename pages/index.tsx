@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/Public/'
 import Image from 'next/image'
 import paymentImage from '../images/undraw/undraw_payment.svg'
 import receiptImage from '../images/undraw/undraw_receipt.svg'
@@ -133,6 +133,6 @@ const IndexPage = () => (
       </section>
     </div>
   </Layout>
-);
+)
 
-export default IndexPage;
+export default IndexPage

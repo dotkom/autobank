@@ -1,15 +1,15 @@
-import React, { ReactNode } from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
-import Head from './Head';
+import React, { ReactNode } from 'react'
+import Navbar from './Navbar'
+import Footer from './Footer'
+import Head from './Head'
 
 type Props = {
-  children?: ReactNode;
-  title?: string;
-  className?: string;
-};
+  children?: ReactNode
+  title?: string
+  className?: string
+}
 
-const Layout = ({ children, title = 'Unkn', className = '' }: Props) => {
+const Public = ({ children, title = 'Unkn', className = '' }: Props) => {
   return (
     <div className={`bg-background text-zinc-700 text-Montserrat min-h-screen`}>
       <Head title={title} />
@@ -21,7 +21,7 @@ const Layout = ({ children, title = 'Unkn', className = '' }: Props) => {
       </main>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Public

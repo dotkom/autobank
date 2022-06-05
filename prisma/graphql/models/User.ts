@@ -36,6 +36,11 @@ export class User {
   })
   image?: string | null;
 
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: false
+  })
+  admin!: boolean;
+
   accounts?: Account[];
 
   sessions?: Session[];

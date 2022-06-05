@@ -35,6 +35,11 @@ export class UserGroupBy {
   })
   image!: string | null;
 
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: false
+  })
+  admin!: boolean;
+
   @TypeGraphQL.Field(_type => UserCountAggregate, {
     nullable: true
   })

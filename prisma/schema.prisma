@@ -48,6 +48,7 @@ model User {
   email                String?       @unique
   emailVerified        DateTime?     @map("email_verified")
   image                String?
+  admin                Boolean       @default(false)
   /// @TypeGraphQL.omit(output: true)
   accounts             Account[]
   /// @TypeGraphQL.omit(output: true)

@@ -1,8 +1,14 @@
 {
   "compilerOptions": {
+    "target": "es2018",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "esnext.asynciterable"
+    ],
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -13,14 +19,25 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "paths": {
+      // "$lib": ["./lib"],
+      // "$lib/*": ["./lib/*"],
+      // "$components": ["./components"],
+      // "$components/*": ["./components/*"],
+      // "$prisma": ["./prisma"],
+      // "$prisma/*": ["./prisma/*"]
+    },
+    "jsx": "preserve",
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
+    "types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "prisma/buildgql.mts",
     "next.config.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

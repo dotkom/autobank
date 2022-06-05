@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { AccountListRelationFilter } from "../inputs/AccountListRelationFilter";
 import { ApplicationListRelationFilter } from "../inputs/ApplicationListRelationFilter";
+import { BoolFilter } from "../inputs/BoolFilter";
 import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
 import { SessionListRelationFilter } from "../inputs/SessionListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
@@ -52,6 +53,11 @@ export class UserWhereInput {
     nullable: true
   })
   image?: StringNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => BoolFilter, {
+    nullable: true
+  })
+  admin?: BoolFilter | undefined;
 
   @TypeGraphQL.Field(_type => AccountListRelationFilter, {
     nullable: true
