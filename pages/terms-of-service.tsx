@@ -1,5 +1,5 @@
-import React from 'react';
-import Layout from '../components/Layout';
+import React from 'react'
+import Public from '../components/Layout/Public'
 
 const termsOfService = () => {
   const tos = {
@@ -211,44 +211,44 @@ const termsOfService = () => {
         ],
       },
     ],
-  };
+  }
   return (
-    <Layout>
-      <h1 className='text-2xl font-medium'>TERMS OF SERVICE</h1>
-      <p className=' text-gray-400 '>Last updated {tos.updated}</p>
+    <Public>
+      <h1 className="text-2xl font-medium">TERMS OF SERVICE</h1>
+      <p className=" text-gray-400 ">Last updated {tos.updated}</p>
       {tos.contents.map((section, index) => {
         return (
-          <section key={index} className='mx-10 my-5'>
-            <h2 className='text-lg mb-3 font-medium'>
+          <section key={index} className="mx-10 my-5">
+            <h2 className="text-lg mb-3 font-medium">
               {index + 1 + '. ' + section.title}
             </h2>
             {section.paragraphs.map((paragraph, subindex) => {
               if (typeof paragraph == 'string')
                 return (
-                  <p key={'s' + subindex} className='mt-4'>
+                  <p key={'s' + subindex} className="mt-4">
                     {paragraph}
                   </p>
-                );
+                )
               if (paragraph.title)
                 return (
-                  <div key={'s' + subindex} className='mt-4'>
-                    <h3 className='font-medium mb-1'>{paragraph.title}</h3>
+                  <div key={'s' + subindex} className="mt-4">
+                    <h3 className="font-medium mb-1">{paragraph.title}</h3>
                     <div>{paragraph.paragraph}</div>
                   </div>
-                );
+                )
 
               return (
-                <ul key={'s' + subindex} className='list-disc list-inside mt-2'>
+                <ul key={'s' + subindex} className="list-disc list-inside mt-2">
                   {paragraph.map((item, subsubindex) => (
-                    <li key={'ss' + subsubindex} className='mt-2'>
+                    <li key={'ss' + subsubindex} className="mt-2">
                       {item}
                     </li>
                   ))}
                 </ul>
-              );
+              )
             })}
             {section.title == 'CONTACT US' ? (
-              <ul className='list-none font-medium mt-2'>
+              <ul className="list-none font-medium mt-2">
                 <li>ONLINE LINJEFORENINGEN FOR INFORMATIKK</li>
                 <li>Sem Sælands vei 9</li>
                 <li>TRONDHEIM, TRONDHEIM 7034</li>
@@ -259,10 +259,10 @@ const termsOfService = () => {
               ''
             )}
           </section>
-        );
+        )
       })}
-    </Layout>
-  );
-};
+    </Public>
+  )
+}
 
-export default termsOfService;
+export default termsOfService

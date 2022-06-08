@@ -1,0 +1,12 @@
+export { AggregateReciptArgs } from "./AggregateReciptArgs";
+export { CreateManyReciptArgs } from "./CreateManyReciptArgs";
+export { CreateReciptArgs } from "./CreateReciptArgs";
+export { DeleteManyReciptArgs } from "./DeleteManyReciptArgs";
+export { DeleteReciptArgs } from "./DeleteReciptArgs";
+export { FindFirstReciptArgs } from "./FindFirstReciptArgs";
+export { FindManyReciptArgs } from "./FindManyReciptArgs";
+export { FindUniqueReciptArgs } from "./FindUniqueReciptArgs";
+export { GroupByReciptArgs } from "./GroupByReciptArgs";
+export { UpdateManyReciptArgs } from "./UpdateManyReciptArgs";
+export { UpdateReciptArgs } from "./UpdateReciptArgs";
+export { UpsertReciptArgs } from "./UpsertReciptArgs";

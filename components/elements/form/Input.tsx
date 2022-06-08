@@ -1,12 +1,12 @@
-import { FieldValues, UseFormRegister } from 'react-hook-form';
-import { ERROR_MSG_STYLE, INPUT_STYLE, LABEL_STYLE } from '../styles';
+import { FieldValues, UseFormRegister } from 'react-hook-form'
+import { ERROR_MSG_STYLE, INPUT_STYLE, LABEL_STYLE } from '../styles'
 
 type props = {
-  value?: string;
-  label?: string;
-  error?: string;
-  register?: UseFormRegister<any>;
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value'>;
+  value?: string
+  label?: string
+  error?: string
+  register?: UseFormRegister<any>
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value'>
 
 // if you are using react-hook-form, the dont pass a value!!!
 
@@ -20,7 +20,7 @@ const InputField = ({
   ...props
 }: props) => {
   return (
-    <div className='w-full text-left mb-3'>
+    <div className="w-full text-left mb-3">
       <label className={LABEL_STYLE}>
         {label}
         {value || value == '' ? (
@@ -45,7 +45,7 @@ const InputField = ({
       </label>
       {error && <p className={ERROR_MSG_STYLE}>{error}</p>}
     </div>
-  );
-};
+  )
+}
 
-export default InputField;
+export default InputField
