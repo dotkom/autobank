@@ -9,7 +9,11 @@ type Props = {
   className?: string
 }
 
-const Public = ({ children, title = 'Unkn', className = '' }: Props) => {
+const Public = ({
+  children,
+  title = 'Online | Bankom',
+  className = '',
+}: Props) => {
   return (
     <div className={`bg-background text-zinc-700 text-Montserrat min-h-screen`}>
       <Head title={title} />

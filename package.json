@@ -35,6 +35,8 @@
     "reflect-metadata": "^0.1.13",
     "tslib": "^2.4.0",
     "type-graphql": "^1.1.1",
+    "axios": "^0.26.0",
+    
     "yup": "^0.32.11"
   },
   "devDependencies": {

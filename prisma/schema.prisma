@@ -6,11 +6,14 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+<<<<<<< HEAD
 
 generator typegraphql {
   provider = "typegraphql-prisma"
   output   = "graphql"
 }
+=======
+>>>>>>> 063e0ed77c9e98a6185896fa078de9468a3d850f
 
 model Account {
   id                String  @id @default(cuid())
