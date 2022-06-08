@@ -6,7 +6,7 @@ import CardSocialTraffic from '../../components/elements/Cards/CardSocialTraffic
 import Admin from '../../components/Layout/Admin'
 import { authenticate } from '../../lib/auth'
 
-export default function Dashboard() {
+export default function Inbox() {
   return (
     <Admin>
       <div className="flex flex-wrap">

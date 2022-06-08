@@ -69,7 +69,7 @@ export default function CardProfile() {
                 </p>
                 <a
                   href="#pablo"
-                  className="font-normal text-lightBlue-500"
+                  className="font-normal text-online-blue-500"
                   onClick={(e) => e.preventDefault()}
                 >
                   Show more

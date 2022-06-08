@@ -7,4 +7,7 @@ module.exports = {
     // config.resolve.alias['$lib'] = path.resolve(__dirname, 'lib')
     return config
   },
+  images: {
+    domains: ['lh3.googleusercontent.com'],
+  },
 }

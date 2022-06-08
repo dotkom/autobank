@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 import { OnlineBankom } from '../../icons/Online'
 import Button, { ButtonLink } from '../../elements/Button'
+import { useSession } from 'next-auth/react'
 
 const spring = {
   type: 'spring',
@@ -44,6 +45,7 @@ export const ItemList = ({
   variants?: Variants
   className?: string
 }) => {
+  const { data: session, status } = useSession()
   return (
     <motion.ul
       variants={variants}
@@ -58,6 +60,11 @@ export const ItemList = ({
       <Item link={'/kvitteringer'} text={'Kvitteringer'} />
       <Item link={'/bedrift'} text={'Bedrift'} />
       <Item link={'/faq'} text={'FAQ'} />
+      {status == 'authenticated' && session.user.role != 'USER' ? (
+        <Item link={'/admin'} text={'Dashboard'} />
+      ) : (
+        ''
+      )}
       <Item link={'/auth/signin'} text={'Login'} button />
     </motion.ul>
   )

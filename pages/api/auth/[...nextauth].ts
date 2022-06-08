@@ -106,5 +106,4 @@ export default NextAuth({
     newUser: '/auth/new-user', // New users will be directed here on first sign in (leave the property out if not of interest)
   },
   secret: process.env.NEXTAUTH_SECRET,
-  debug: true,
 })

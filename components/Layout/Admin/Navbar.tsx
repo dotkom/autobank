@@ -1,7 +1,9 @@
+import { useSession } from 'next-auth/react'
 import React from 'react'
-import UserDropdown from '../../elements/Dropdowns/UserDropdown'
+import Dropdown from '../../elements/Dropdown'
 
 export default function Navbar() {
+  const { data: session, status } = useSession()
   return (
     <>
       {/* Navbar */}
@@ -30,7 +32,7 @@ export default function Navbar() {
           </form>
           {/* User */}
           <ul className="flex-col md:flex-row list-none items-center hidden md:flex">
-            <UserDropdown />
+            <Dropdown type="user" userImage={session?.user?.image} />
           </ul>
         </div>
       </nav>
