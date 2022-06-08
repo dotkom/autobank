@@ -2,6 +2,8 @@ import NextAuth from 'next-auth'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import EmailProvider from 'next-auth/providers/email'
 import GoogleProvider from 'next-auth/providers/google'
+
+import CredentialsProvider from 'next-auth/providers/credentials'
 import OnlineProvider from '../../../lib/auth/OnlineProvider'
 import sendVerification from '../../../lib/auth/mail/verification'
 import { prisma } from '../../../prisma'
@@ -17,6 +19,32 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
     }),
     // email kan legges til etter at adapter og db er lagt til
+    CredentialsProvider({
+      // The name to display on the sign in form (e.g. "Sign in with...")
+      name: 'Test',
+      // The credentials is used to generate a suitable form on the sign in page.
+      // You can specify whatever fields you are expecting to be submitted.
+      // e.g. domain, username, password, 2FA token, etc.
+      // You can pass any HTML attribute to the <input> tag through the object.
+      credentials: {
+        username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
+      },
+      async authorize(credentials) {
+        const user = await prisma.user.findFirst({
+          where: {
+            name: credentials.username,
+          },
+        })
+
+        if (user !== null) {
+          return user
+        } else {
+          throw new Error(
+            'User does not exists. Please make sure you insert the correct username.'
+          )
+        }
+      },
+    }),
     EmailProvider({
       server: {
         host: process.env.EMAIL_SERVER_HOST,
@@ -45,14 +73,17 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, account }) {
+    async jwt({ token, account, user }) {
       if (account) {
         token.accessToken = account.access_token
       }
+      console.log(user)
+
       return token
     },
     async session({ session, token, user }) {
       session.user = await prisma.user.findUnique({ where: { id: user.id } })
+      console.log({ session, token, user })
 
       return session
     },

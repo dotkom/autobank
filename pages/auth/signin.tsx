@@ -42,13 +42,21 @@ export default function SignIn({
   > | null
 }) {
   const { data: session, status } = useSession()
-  const [email, setemail] = useState('')
+  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
 
   const sendLoginVerification = (e) => {
     e.preventDefault()
 
     // Notice, we are also redirecting users to the protected route instead of the homepage after signing in.
-    signIn('email', { callbackUrl: '/protected', email })
+    signIn('email', { callbackUrl: '/', email })
+  }
+
+  const testLogin = (e) => {
+    e.preventDefault()
+
+    // Notice, we are also redirecting users to the protected route instead of the homepage after signing in.
+    signIn('credentials', { redirect: false, username })
   }
   return (
     <Public>
@@ -82,10 +90,37 @@ export default function SignIn({
                       type="email"
                       value={email}
                       onChange={(e) => {
-                        setemail(e.target.value)
+                        setEmail(e.target.value)
                       }}
                     />
-                    <Button type="submit" pri={'primary'} name="login">
+                    <Button type="submit" name="login">
+                      Send Magic Link 🪄
+                    </Button>
+                  </form>
+                </div>
+              ) : provider.type === 'credentials' ? (
+                <div>
+                  <div className="relative flex py-5 items-center">
+                    <div className="flex-grow border-t border-gray-400"></div>
+                    <span className="flex-shrink mx-4 text-gray-400">
+                      Eller
+                    </span>
+                    <div className="flex-grow border-t border-gray-400"></div>
+                  </div>
+                  <form
+                    onSubmit={testLogin}
+                    className={`flex flex-col items-center`}
+                  >
+                    <h2 className="mx-auto text-lg mb-2">Test login</h2>
+                    <Input
+                      name="username"
+                      type="username"
+                      value={username}
+                      onChange={(e) => {
+                        setUsername(e.target.value)
+                      }}
+                    />
+                    <Button type="submit" name="login">
                       Send Magic Link 🪄
                     </Button>
                   </form>
@@ -93,7 +128,6 @@ export default function SignIn({
               ) : (
                 <Button
                   onClick={() => signIn(provider.id)}
-                  pri={'primary'}
                   logo
                   className={`flex items-center ${
                     provider.name == 'Online' ? 'bg-gray-600' : ''

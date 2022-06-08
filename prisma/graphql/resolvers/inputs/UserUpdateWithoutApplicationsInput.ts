@@ -4,7 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { AccountUpdateManyWithoutUserInput } from "../inputs/AccountUpdateManyWithoutUserInput";
 import { ApplicationUpdateManyWithoutApprovedByInput } from "../inputs/ApplicationUpdateManyWithoutApprovedByInput";
-import { BoolFieldUpdateOperationsInput } from "../inputs/BoolFieldUpdateOperationsInput";
+import { EnumroleFieldUpdateOperationsInput } from "../inputs/EnumroleFieldUpdateOperationsInput";
 import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { SessionUpdateManyWithoutUserInput } from "../inputs/SessionUpdateManyWithoutUserInput";
@@ -39,10 +39,10 @@ export class UserUpdateWithoutApplicationsInput {
   })
   image?: NullableStringFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => BoolFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => EnumroleFieldUpdateOperationsInput, {
     nullable: true
   })
-  admin?: BoolFieldUpdateOperationsInput | undefined;
+  role?: EnumroleFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => AccountUpdateManyWithoutUserInput, {
     nullable: true

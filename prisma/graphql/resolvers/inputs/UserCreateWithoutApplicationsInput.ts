@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { AccountCreateNestedManyWithoutUserInput } from "../inputs/AccountCreateNestedManyWithoutUserInput";
 import { ApplicationCreateNestedManyWithoutApprovedByInput } from "../inputs/ApplicationCreateNestedManyWithoutApprovedByInput";
 import { SessionCreateNestedManyWithoutUserInput } from "../inputs/SessionCreateNestedManyWithoutUserInput";
+import { role } from "../../enums/role";
 
 @TypeGraphQL.InputType("UserCreateWithoutApplicationsInput", {
   isAbstract: true
@@ -35,10 +36,10 @@ export class UserCreateWithoutApplicationsInput {
   })
   image?: string | undefined;
 
-  @TypeGraphQL.Field(_type => Boolean, {
+  @TypeGraphQL.Field(_type => role, {
     nullable: true
   })
-  admin?: boolean | undefined;
+  role?: "USER" | "ADMIN" | "SUPERADMIN" | undefined;
 
   @TypeGraphQL.Field(_type => AccountCreateNestedManyWithoutUserInput, {
     nullable: true

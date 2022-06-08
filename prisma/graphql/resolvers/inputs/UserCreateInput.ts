@@ -6,6 +6,7 @@ import { AccountCreateNestedManyWithoutUserInput } from "../inputs/AccountCreate
 import { ApplicationCreateNestedManyWithoutApprovedByInput } from "../inputs/ApplicationCreateNestedManyWithoutApprovedByInput";
 import { ApplicationCreateNestedManyWithoutUserInput } from "../inputs/ApplicationCreateNestedManyWithoutUserInput";
 import { SessionCreateNestedManyWithoutUserInput } from "../inputs/SessionCreateNestedManyWithoutUserInput";
+import { role } from "../../enums/role";
 
 @TypeGraphQL.InputType("UserCreateInput", {
   isAbstract: true
@@ -36,10 +37,10 @@ export class UserCreateInput {
   })
   image?: string | undefined;
 
-  @TypeGraphQL.Field(_type => Boolean, {
+  @TypeGraphQL.Field(_type => role, {
     nullable: true
   })
-  admin?: boolean | undefined;
+  role?: "USER" | "ADMIN" | "SUPERADMIN" | undefined;
 
   @TypeGraphQL.Field(_type => AccountCreateNestedManyWithoutUserInput, {
     nullable: true

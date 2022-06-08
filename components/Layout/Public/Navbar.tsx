@@ -24,7 +24,7 @@ export const Item = ({
     <motion.li className="mt-10 md:mt-0 md:ml-6">
       {button ? (
         <Link href={link}>
-          <ButtonLink pri={'primary'}>{text}</ButtonLink>
+          <ButtonLink>{text}</ButtonLink>
         </Link>
       ) : (
         <Link href={link}>

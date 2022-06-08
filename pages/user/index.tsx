@@ -11,7 +11,7 @@ const Profile = () => {
   return (
     <div>
       <p>Signed in as {session.user.email}</p>
-      <Button pri={'primary'} onClick={() => signOut()} />
+      <Button onClick={() => signOut()} />
     </div>
   )
 }

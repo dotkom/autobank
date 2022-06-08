@@ -42,13 +42,19 @@ model Session {
   @@map("sessions")
 }
 
+enum role {
+  USER
+  ADMIN
+  SUPERADMIN
+}
+
 model User {
   id                   String        @id @default(cuid())
   name                 String?
   email                String?       @unique
   emailVerified        DateTime?     @map("email_verified")
   image                String?
-  admin                Boolean       @default(false)
+  role                 role          @default(USER)
   /// @TypeGraphQL.omit(output: true)
   accounts             Account[]
   /// @TypeGraphQL.omit(output: true)

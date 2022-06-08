@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { role } from "../../enums/role";
 
 @TypeGraphQL.InputType("UserCreateManyInput", {
   isAbstract: true
@@ -32,8 +33,8 @@ export class UserCreateManyInput {
   })
   image?: string | undefined;
 
-  @TypeGraphQL.Field(_type => Boolean, {
+  @TypeGraphQL.Field(_type => role, {
     nullable: true
   })
-  admin?: boolean | undefined;
+  role?: "USER" | "ADMIN" | "SUPERADMIN" | undefined;
 }

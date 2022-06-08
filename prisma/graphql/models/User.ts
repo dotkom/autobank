@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../scalars";
 import { Account } from "../models/Account";
 import { Application } from "../models/Application";
 import { Session } from "../models/Session";
+import { role } from "../enums/role";
 import { UserCount } from "../resolvers/outputs/UserCount";
 
 @TypeGraphQL.ObjectType("User", {
@@ -36,10 +37,10 @@ export class User {
   })
   image?: string | null;
 
-  @TypeGraphQL.Field(_type => Boolean, {
+  @TypeGraphQL.Field(_type => role, {
     nullable: false
   })
-  admin!: boolean;
+  role!: "USER" | "ADMIN" | "SUPERADMIN";
 
   accounts?: Account[];
 
