@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth'
+import NextAuth, { Session, User } from 'next-auth'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import EmailProvider from 'next-auth/providers/email'
 import GoogleProvider from 'next-auth/providers/google'
@@ -7,6 +7,7 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import OnlineProvider from '../../../lib/auth/OnlineProvider'
 import sendVerification from '../../../lib/auth/mail/verification'
 import { prisma } from '../../../prisma'
+import { JWT } from 'next-auth/jwt'
 
 export default NextAuth({
   providers: [
@@ -78,12 +79,20 @@ export default NextAuth({
         token.accessToken = account.access_token
       }
       console.log(user)
+      token.user = user
 
       return token
     },
-    async session({ session, token, user }) {
-      session.user = await prisma.user.findUnique({ where: { id: user.id } })
-      console.log({ session, token, user })
+    async session({
+      session,
+      token,
+      user,
+    }: {
+      session: Session
+      user: User
+      token: JWT
+    }) {
+      session.user = user
 
       return session
     },

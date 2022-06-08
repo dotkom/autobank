@@ -11,7 +11,7 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
 
   const session = await getSession({ req: requestForNextAuth })
 
-  if (session) {
+  if (session.user.role != 'USER') {
     console.log('middleware' + session)
 
     // validate your session here

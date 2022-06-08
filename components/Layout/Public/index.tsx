@@ -19,7 +19,7 @@ const Public = ({
       <Head title={title} />
       <Navbar />
       <main
-        className={`${className} min-h-[calc(100vh-64px)] flex flex-col items-center justify-center py-10`}
+        className={`${className} min-h-[calc(100vh-64px)] max-w-7xl mx-auto flex flex-col items-center justify-center py-10`}
       >
         {children}
       </main>
