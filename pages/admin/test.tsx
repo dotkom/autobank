@@ -1,6 +1,6 @@
 import React from 'react'
-import CardTable from '../../components/elements/Cards/CardTable'
-import Admin from '../../components/Layout/Admin'
+import CardTable from 'components/elements/Cards/CardTable'
+import Admin from 'components/Layout/Admin'
 
 export default function Tables() {
   return (

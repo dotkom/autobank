@@ -4,8 +4,8 @@ import EmailProvider from 'next-auth/providers/email'
 import GoogleProvider from 'next-auth/providers/google'
 
 import CredentialsProvider from 'next-auth/providers/credentials'
-import OnlineProvider from '../../../lib/auth/OnlineProvider'
-import sendVerification from '../../../lib/auth/mail/verification'
+import OnlineProvider from 'lib/auth/OnlineProvider'
+import sendVerification from 'lib/auth/mail/verification'
 import { prisma } from '../../../prisma'
 import { JWT } from 'next-auth/jwt'
 

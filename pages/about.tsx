@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Public from '../components/Layout/Public'
+import Public from 'components/Layout/Public'
 
 const AboutPage = () => (
   <Public title="About | Next.js + TypeScript Example">

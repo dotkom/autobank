@@ -1,7 +1,7 @@
 import React from 'react'
-import CardProfile from '../../components/elements/Cards/CardProfile'
-import CardSettings from '../../components/elements/Cards/CardSettings'
-import Admin from '../../components/Layout/Admin'
+import CardProfile from 'components/elements/Cards/CardProfile'
+import CardSettings from 'components/elements/Cards/CardSettings'
+import Admin from 'components/Layout/Admin'
 
 export default function Settings() {
   return (

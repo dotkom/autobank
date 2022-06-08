@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { signOut } from 'next-auth/react'
-import Button from '../../components/elements/Button'
-import { OnlineBankom } from '../../components/icons/Online'
-import Public from '../../components/Layout/Public'
+import Button from 'components/elements/Button'
+import { OnlineBankom } from 'components/icons/Online'
+import Public from 'components/Layout/Public'
 
 export default function SignOut() {
   return (
