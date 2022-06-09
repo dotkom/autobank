@@ -3,7 +3,7 @@ import { MenuIcon } from '../../icons/MenuIcon'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { OnlineBankom } from '../../icons/Online'
-import Button, { ButtonLink } from '../../elements/Button'
+import Button, { ButtonLink } from '../../html/Button'
 import { useSession } from 'next-auth/react'
 
 const spring = {

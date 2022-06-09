@@ -7,10 +7,10 @@ import {
   useSession,
 } from 'next-auth/react'
 import { useState } from 'react'
-import Button from 'components/elements/Button'
-import Input from 'components/elements/form/Input'
+import Button from 'components/html/Button'
 import Online, { OnlineBankom } from 'components/icons/Online'
 import Public from 'components/Layout/Public'
+import Input from 'components/forms/Input'
 
 const errors = {
   Signin: 'Try signing with a different account.',

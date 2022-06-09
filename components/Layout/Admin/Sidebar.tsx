@@ -7,6 +7,7 @@ import { MdDashboard, MdOutlineEmail, MdSettings } from 'react-icons/md'
 import Dropdown from '../../elements/Dropdown'
 import { useSession } from 'next-auth/react'
 import { IconType } from 'react-icons'
+import Searchbar from 'components/html/searchbar'
 
 export default function Sidebar() {
   const { data: session } = useSession()
@@ -62,15 +63,7 @@ export default function Sidebar() {
             </div>
           </div>
           {/* Form */}
-          <form className="mt-6 mb-4 md:hidden">
-            <div className="mb-3 pt-0">
-              <input
-                type="text"
-                placeholder="Search"
-                className=" px-3 py-2 h-12 border border-solid  border-slate-500 placeholder-slate-300 text-slate-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal"
-              />
-            </div>
-          </form>
+          <Searchbar className="md:hidden" />
 
           {/* Divider */}
           <hr className="my-4 md:min-w-full" />
@@ -114,8 +107,8 @@ export default function Sidebar() {
               oversikt
             </SidebarLink>
             <SidebarLink
-              active={router.pathname == '/admin/kvitteringer/inboks'}
-              href={'/admin/kvitteringer/inboks'}
+              active={router.pathname == '/admin/kvitteringer/inbox'}
+              href={'/admin/kvitteringer/inbox'}
             >
               inboks
             </SidebarLink>
@@ -131,8 +124,8 @@ export default function Sidebar() {
               oversikt
             </SidebarLink>
             <SidebarLink
-              active={router.pathname == '/admin/onlinepotten/inboks'}
-              href={'/admin/onlinepotten/inboks'}
+              active={router.pathname == '/admin/onlinepotten/inbox'}
+              href={'/admin/onlinepotten/inbox'}
             >
               inboks
             </SidebarLink>
@@ -148,8 +141,8 @@ export default function Sidebar() {
               oversikt
             </SidebarLink>
             <SidebarLink
-              active={router.pathname == '/admin/faktura/inboks'}
-              href={'/admin/faktura/inboks'}
+              active={router.pathname == '/admin/faktura/inbox'}
+              href={'/admin/faktura/inbox'}
             >
               inboks
             </SidebarLink>
@@ -165,8 +158,8 @@ export default function Sidebar() {
               oversikt
             </SidebarLink>
             <SidebarLink
-              active={router.pathname == '/admin/fondet/inboks'}
-              href={'/admin/fondet/inboks'}
+              active={router.pathname == '/admin/fondet/inbox'}
+              href={'/admin/fondet/inbox'}
             >
               inboks
             </SidebarLink>
@@ -182,8 +175,8 @@ export default function Sidebar() {
               oversikt
             </SidebarLink>
             <SidebarLink
-              active={router.pathname == '/admin/faq/inboks'}
-              href={'/admin/faq/inboks'}
+              active={router.pathname == '/admin/faq/inbox'}
+              href={'/admin/faq/inbox'}
             >
               inboks
             </SidebarLink>

@@ -1,6 +1,6 @@
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
-import Button, { ButtonLink } from 'components/elements/Button'
+import Button, { ButtonLink } from 'components/html/Button'
 import { OnlineBankom } from 'components/icons/Online'
 import Public from 'components/Layout/Public'
 
