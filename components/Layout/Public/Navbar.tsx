@@ -1,10 +1,13 @@
 import { motion, useCycle, Variants } from 'framer-motion'
 import { MenuIcon } from '../../icons/MenuIcon'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect } from 'react'
 import { OnlineBankom } from '../../icons/Online'
-import Button, { ButtonLink } from '../../html/Button'
+import { ButtonLink } from '../../html/Button'
 import { useSession } from 'next-auth/react'
+import Dropdown from 'components/elements/Dropdown'
+import { FaUser } from 'react-icons/fa'
 
 const spring = {
   type: 'spring',
@@ -65,7 +68,28 @@ export const ItemList = ({
       ) : (
         ''
       )}
-      <Item link={'/auth/signin'} text={'Login'} button />
+      {status == 'authenticated' ? (
+        <Dropdown
+          type="user"
+          trigger={
+            <div className=" ml-5 items-center flex w-10 h-10 relative text-sm text-white justify-center rounded-full shadow-xl">
+              {session?.user?.image ? (
+                <Image
+                  layout="fill"
+                  alt="..."
+                  className="rounded-full align-middle border-none  bg-slate-200"
+                  src={session?.user?.image}
+                  objectFit="cover"
+                />
+              ) : (
+                <FaUser />
+              )}
+            </div>
+          }
+        />
+      ) : (
+        <Item link={'/auth/signin'} text={'Login'} button />
+      )}
     </motion.ul>
   )
 }
