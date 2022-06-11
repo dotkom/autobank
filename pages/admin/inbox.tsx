@@ -1,12 +1,12 @@
 import React from 'react'
-import CardBarChart from '../../components/elements/Cards/CardBarChart'
-import CardLineChart from '../../components/elements/Cards/CardLineChart'
-import CardPageVisits from '../../components/elements/Cards/CardPageVisits'
-import CardSocialTraffic from '../../components/elements/Cards/CardSocialTraffic'
-import Admin from '../../components/Layout/Admin'
-import { authenticate } from '../../lib/auth'
+import CardBarChart from 'components/elements/Cards/CardBarChart'
+import CardLineChart from 'components/elements/Cards/CardLineChart'
+import CardPageVisits from 'components/elements/Cards/CardPageVisits'
+import CardSocialTraffic from 'components/elements/Cards/CardSocialTraffic'
+import Admin from 'components/Layout/Admin'
+import { authenticate } from 'lib/auth'
 
-export default function Dashboard() {
+export default function Inbox() {
   return (
     <Admin>
       <div className="flex flex-wrap">

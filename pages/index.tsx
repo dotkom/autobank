@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import Layout from '../components/Layout/Public/'
+import Layout from 'components/Layout/Public/'
 import Image from 'next/image'
-import paymentImage from '../images/undraw/undraw_payment.svg'
-import receiptImage from '../images/undraw/undraw_receipt.svg'
-import creditcardImage from '../images/undraw/undraw_credit_card.svg'
-import vaultImage from '../images/undraw/undraw_vault.svg'
-import questionsImage from '../images/undraw/undraw_questions.svg'
+import paymentImage from 'images/undraw/undraw_payment.svg'
+import receiptImage from 'images/undraw/undraw_receipt.svg'
+import creditcardImage from 'images/undraw/undraw_credit_card.svg'
+import vaultImage from 'images/undraw/undraw_vault.svg'
+import questionsImage from 'images/undraw/undraw_questions.svg'
 
 const IndexPage = () => (
   <Layout title="Online Autobank" className="flex flex-col m-10 divide-y-2 p-5">

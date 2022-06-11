@@ -1,5 +1,5 @@
-import { OnlineBankom } from '../../components/icons/Online'
-import Public from '../../components/Layout/Public'
+import { OnlineBankom } from 'components/icons/Online'
+import Public from 'components/Layout/Public'
 
 export default function VerifyRequestPage() {
   return (

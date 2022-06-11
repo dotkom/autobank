@@ -1,30 +1,18 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+
 import Dropdown from '../Dropdown'
 
-// components
-
-export default function CardTable({ color }) {
+const Table = () => {
   return (
     <>
       <div
         className={
-          'relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded ' +
-          (color === 'light' ? 'bg-white' : 'bg-slate-700 text-white')
+          'relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white'
         }
       >
-        <div className="rounded-t mb-0 px-4 py-3 border-0">
-          <div className="flex flex-wrap items-center">
-            <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-              <h3
-                className={
-                  'font-semibold text-lg ' +
-                  (color === 'light' ? 'text-slate-700' : 'text-white')
-                }
-              >
-                Card Tables
-              </h3>
-            </div>
+        <div className="rounded-t mb-0 px-4 py-3 border-0 flex flex-wrap items-center relative w-full max-w-full flex-grow flex-1">
+          <div className="relative w-full px-4 max-w-full flex-grow flex-1">
+            <h3 className={'font-semibold text-lg text-slate-700'}>Inboks</h3>
           </div>
         </div>
         <div className="block w-full overflow-x-auto">
@@ -35,9 +23,7 @@ export default function CardTable({ color }) {
                 <th
                   className={
                     'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ' +
-                    (color === 'light'
-                      ? 'bg-slate-50 text-slate-500 border-slate-100'
-                      : 'bg-slate-600 text-slate-200 border-slate-500')
+                    'bg-slate-50 text-slate-500 border-slate-100'
                   }
                 >
                   Project
@@ -45,9 +31,7 @@ export default function CardTable({ color }) {
                 <th
                   className={
                     'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ' +
-                    (color === 'light'
-                      ? 'bg-slate-50 text-slate-500 border-slate-100'
-                      : 'bg-slate-600 text-slate-200 border-slate-500')
+                    'bg-slate-50 text-slate-500 border-slate-100'
                   }
                 >
                   Budget
@@ -55,9 +39,7 @@ export default function CardTable({ color }) {
                 <th
                   className={
                     'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ' +
-                    (color === 'light'
-                      ? 'bg-slate-50 text-slate-500 border-slate-100'
-                      : 'bg-slate-600 text-slate-200 border-slate-500')
+                    'bg-slate-50 text-slate-500 border-slate-100'
                   }
                 >
                   Status
@@ -65,9 +47,7 @@ export default function CardTable({ color }) {
                 <th
                   className={
                     'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ' +
-                    (color === 'light'
-                      ? 'bg-slate-50 text-slate-500 border-slate-100'
-                      : 'bg-slate-600 text-slate-200 border-slate-500')
+                    'bg-slate-50 text-slate-500 border-slate-100'
                   }
                 >
                   Users
@@ -75,9 +55,7 @@ export default function CardTable({ color }) {
                 <th
                   className={
                     'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ' +
-                    (color === 'light'
-                      ? 'bg-slate-50 text-slate-500 border-slate-100'
-                      : 'bg-slate-600 text-slate-200 border-slate-500')
+                    'bg-slate-50 text-slate-500 border-slate-100'
                   }
                 >
                   Completion
@@ -85,9 +63,7 @@ export default function CardTable({ color }) {
                 <th
                   className={
                     'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ' +
-                    (color === 'light'
-                      ? 'bg-slate-50 text-slate-500 border-slate-100'
-                      : 'bg-slate-600 text-slate-200 border-slate-500')
+                    'bg-slate-50 text-slate-500 border-slate-100'
                   }
                 ></th>
               </tr>
@@ -100,12 +76,7 @@ export default function CardTable({ color }) {
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{' '}
-                  <span
-                    className={
-                      'ml-3 font-bold ' +
-                      +(color === 'light' ? 'text-slate-600' : 'text-white')
-                    }
-                  >
+                  <span className={'ml-3 font-bold text-slate-600'}>
                     Argon Design System
                   </span>
                 </th>
@@ -163,12 +134,7 @@ export default function CardTable({ color }) {
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{' '}
-                  <span
-                    className={
-                      'ml-3 font-bold ' +
-                      +(color === 'light' ? 'text-slate-600' : 'text-white')
-                    }
-                  >
+                  <span className={'ml-3 font-bold text-slate-600'}>
                     Angular Now UI Kit PRO
                   </span>
                 </th>
@@ -227,12 +193,7 @@ export default function CardTable({ color }) {
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{' '}
-                  <span
-                    className={
-                      'ml-3 font-bold ' +
-                      +(color === 'light' ? 'text-slate-600' : 'text-white')
-                    }
-                  >
+                  <span className={'ml-3 font-bold text-slate-600'}>
                     Black Dashboard Sketch
                   </span>
                 </th>
@@ -290,12 +251,7 @@ export default function CardTable({ color }) {
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{' '}
-                  <span
-                    className={
-                      'ml-3 font-bold ' +
-                      +(color === 'light' ? 'text-slate-600' : 'text-white')
-                    }
-                  >
+                  <span className={'ml-3 font-bold text-slate-600'}>
                     React Material Dashboard
                   </span>
                 </th>
@@ -354,12 +310,7 @@ export default function CardTable({ color }) {
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{' '}
-                  <span
-                    className={
-                      'ml-3 font-bold ' +
-                      +(color === 'light' ? 'text-slate-600' : 'text-white')
-                    }
-                  >
+                  <span className={'ml-3 font-bold text-slate-600'}>
                     React Material Dashboard
                   </span>
                 </th>
@@ -419,10 +370,4 @@ export default function CardTable({ color }) {
   )
 }
 
-CardTable.defaultProps = {
-  color: 'light',
-}
-
-CardTable.propTypes = {
-  color: PropTypes.oneOf(['light', 'dark']),
-}
+export default Table

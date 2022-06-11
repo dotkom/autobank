@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import ExtraInformation from '../../components/forms/receipt/sections/ExtraInformation'
-import ReciptInformation from '../../components/forms/receipt/sections/ReciptInformation'
-import UserInformation from '../../components/forms/receipt/sections/UserInformation'
+import ExtraInformation from 'components/forms/receipt/sections/ExtraInformation'
+import ReciptInformation from 'components/forms/receipt/sections/ReciptInformation'
+import UserInformation from 'components/forms/receipt/sections/UserInformation'
 import {
   IUserData,
   IReceiptData,
   IExtraInformationData,
-} from '../../components/forms/receipt/state'
-import Public from '../../components/Layout/Public'
+} from 'components/forms/receipt/state'
+import Public from 'components/Layout/Public'
 
 const initUserData: IUserData = {
   fullname: '',

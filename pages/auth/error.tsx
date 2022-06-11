@@ -1,8 +1,8 @@
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
-import Button, { ButtonLink } from '../../components/elements/Button'
-import { OnlineBankom } from '../../components/icons/Online'
-import Public from '../../components/Layout/Public'
+import Button, { ButtonLink } from 'components/html/Button'
+import { OnlineBankom } from 'components/icons/Online'
+import Public from 'components/Layout/Public'
 
 /**
  * The following errors are passed as error query parameters to the default or overridden error page.
