@@ -1,20 +1,18 @@
-import { signOut, useSession } from 'next-auth/react';
-import React from 'react';
-import Button from '../components/elements/Button';
-import Layout from '../components/Layout';
+import { signOut, useSession } from 'next-auth/react'
+import React from 'react'
+import Button from '../components/elements/Button'
+import Public from '../components/Layout/Public'
 
-const profile = () => {
-  const { data: session, status } = useSession();
+const Profile = () => {
+  const { data: session, status } = useSession()
   return (
-    <Layout>
+    <Public>
       <div>
         {JSON.stringify(session)}, {status}
       </div>
-      <Button pri={'primary'} onClick={() => signOut()}>
-        Log ut
-      </Button>
-    </Layout>
-  );
-};
+      <Button onClick={() => signOut()}>Log ut</Button>
+    </Public>
+  )
+}
 
-export default profile;
+export default Profile
