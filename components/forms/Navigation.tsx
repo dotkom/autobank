@@ -1,4 +1,4 @@
-import Button from '../elements/Button'
+import Button from 'components/html/Button'
 import ProgressBar from './ProgressBar'
 
 type props = {
@@ -11,19 +11,19 @@ const Navigation = ({ step, numberOfSteps, changeStep }: props) => {
   return (
     <>
       <div className="max-w-lg w-full flex flex-row padding-top justify-around pt-12">
-        {step !== 0 && (
-          <Button pri={'primary'} onClick={() => changeStep(-1)}>
-            Tilbake
-          </Button>
-        )}
+        {step !== 0 && <Button onClick={() => changeStep(-1)}>Tilbake</Button>}
 
         {step < numberOfSteps - 1 ? (
-          <Button pri="primary">Neste</Button>
+          <Button>Neste</Button>
         ) : (
-          <Button pri="primary">Send til Bankom</Button>
+          <Button>Send til Bankom</Button>
         )}
       </div>
-      <ProgressBar currentStep={step} numberOfSteps={numberOfSteps} />
+      <ProgressBar
+        currentStep={step}
+        numberOfSteps={numberOfSteps}
+        changeStep={changeStep}
+      />
     </>
   )
 }

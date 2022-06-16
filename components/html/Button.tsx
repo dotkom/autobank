@@ -2,7 +2,6 @@ import Link from 'next/link'
 import React from 'react'
 
 type Props = {
-  pri: 'primary' | 'secondary'
   logo?: boolean
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
@@ -16,7 +15,6 @@ const Button = ({ logo = false, className, ...props }: Props) => {
 }
 
 type LinkProps = {
-  pri: 'primary' | 'secondary'
   logo?: boolean
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>
 
