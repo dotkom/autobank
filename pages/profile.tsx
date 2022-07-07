@@ -1,10 +1,10 @@
-import { signOut, useSession } from 'next-auth/react';
-import React from 'react';
-import Button from '../components/elements/Button';
-import Layout from '../components/Layout';
+import { signOut, useSession } from 'next-auth/react'
+import React from 'react'
+import Button from '../components/elements/Button'
+import Layout from '../components/Layout'
 
-const profile = () => {
-  const { data: session, status } = useSession();
+const Profile = () => {
+  const { data: session, status } = useSession()
   return (
     <Layout>
       <div>
@@ -14,7 +14,7 @@ const profile = () => {
         Log ut
       </Button>
     </Layout>
-  );
-};
+  )
+}
 
-export default profile;
+export default Profile
