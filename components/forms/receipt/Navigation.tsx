@@ -1,10 +1,10 @@
-import Button from "../../elements/Button";
-import ProgressBar from "../ProgressBar";
+import Button from '../../html/Button'
+import ProgressBar from '../ProgressBar'
 
 type props = {
-  step: 0 | 1 | 2;
-  changeStep?: (step: number) => void;
-};
+  step: 0 | 1 | 2
+  changeStep?: (step: number) => void
+}
 
 const Navigation = ({ step, changeStep }: props) => {
   return (
@@ -16,7 +16,7 @@ const Navigation = ({ step, changeStep }: props) => {
       </div>
       <ProgressBar currentStep={step} />
     </>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation

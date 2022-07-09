@@ -1,8 +1,8 @@
-import React from 'react';
-import { AppProps } from 'next/app';
-
-import '../styles/index.css';
-import { SessionProvider } from 'next-auth/react';
+import React from 'react'
+import { AppProps } from 'next/app'
+import 'reflect-metadata'
+import 'styles/index.css'
+import { SessionProvider } from 'next-auth/react'
 
 export default function App({
   Component,
@@ -12,5 +12,5 @@ export default function App({
     <SessionProvider session={session}>
       <Component {...pageProps} />
     </SessionProvider>
-  );
+  )
 }

@@ -1,12 +1,12 @@
-import { UseFormRegister } from "react-hook-form";
-import { ERROR_MSG_STYLE } from "../styles";
-import { getAllGroups, OnlineGroup } from "./groups";
-import { IReceiptData } from "./state";
+import { UseFormRegister } from 'react-hook-form'
+import { ERROR_MSG_STYLE } from '../styles'
+import { getAllGroups, OnlineGroup } from './groups'
+import { IReceiptData } from './state'
 
 type props = {
-  register: UseFormRegister<IReceiptData>;
-  errors?: string;
-};
+  register: UseFormRegister<IReceiptData>
+  errors?: string
+}
 
 //TODO: Need to fetch the actual groups from OW4 and use them.
 const GroupDropdown = ({ register, errors }: props) => {
@@ -24,14 +24,14 @@ const GroupDropdown = ({ register, errors }: props) => {
           <path
             d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z"
             fill="#648299"
-            fill-rule="nonzero"
+            fillRule="nonzero"
           />
         </svg>
         <select
           className={`border ${
-            errors ? "border-red-500" : "border-gray-500"
+            errors ? 'border-red-500' : 'border-gray-500'
           } rounded text-gray-700 border shadow h-10 bg-white focus:outline-none appearance-none`}
-          {...register("responsible_unit")}
+          {...register('responsible_unit')}
           defaultValue="default"
         >
           <option disabled value="default">
@@ -46,7 +46,7 @@ const GroupDropdown = ({ register, errors }: props) => {
       </div>
       {errors && <p className={ERROR_MSG_STYLE}>{errors}</p>}
     </div>
-  );
-};
+  )
+}
 
-export default GroupDropdown;
+export default GroupDropdown
