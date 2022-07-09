@@ -72,6 +72,11 @@ export class ApplicationScalarWhereInput {
   })
   status?: StringFilter | undefined;
 
+  @TypeGraphQL.Field(_type => StringFilter, {
+    nullable: true
+  })
+  responsible_unit?: StringFilter | undefined;
+
   @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })

@@ -2,6 +2,9 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
+import { Invoice } from "../models/Invoice";
+import { Onlinepotten } from "../models/Onlinepotten";
+import { Receipt } from "../models/Receipt";
 import { User } from "../models/User";
 
 @TypeGraphQL.ObjectType("Application", {
@@ -58,6 +61,11 @@ export class Application {
   status!: string;
 
   @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  responsible_unit!: string;
+
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
   comments?: string | null;
@@ -71,4 +79,10 @@ export class Application {
     nullable: false
   })
   error_fields!: string[];
+
+  Receipt?: Receipt | null;
+
+  Onlinepotten?: Onlinepotten | null;
+
+  Invoice?: Invoice | null;
 }

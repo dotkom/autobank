@@ -2,6 +2,9 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { InvoiceOrderByWithRelationInput } from "../inputs/InvoiceOrderByWithRelationInput";
+import { OnlinepottenOrderByWithRelationInput } from "../inputs/OnlinepottenOrderByWithRelationInput";
+import { ReceiptOrderByWithRelationInput } from "../inputs/ReceiptOrderByWithRelationInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
 import { SortOrder } from "../../enums/SortOrder";
 
@@ -67,6 +70,11 @@ export class ApplicationOrderByWithRelationInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
+  responsible_unit?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
   comments?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
@@ -78,4 +86,19 @@ export class ApplicationOrderByWithRelationInput {
     nullable: true
   })
   error_fields?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => ReceiptOrderByWithRelationInput, {
+    nullable: true
+  })
+  Receipt?: ReceiptOrderByWithRelationInput | undefined;
+
+  @TypeGraphQL.Field(_type => OnlinepottenOrderByWithRelationInput, {
+    nullable: true
+  })
+  Onlinepotten?: OnlinepottenOrderByWithRelationInput | undefined;
+
+  @TypeGraphQL.Field(_type => InvoiceOrderByWithRelationInput, {
+    nullable: true
+  })
+  Invoice?: InvoiceOrderByWithRelationInput | undefined;
 }

@@ -55,6 +55,11 @@ export class ApplicationCountAggregate {
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
+  responsible_unit!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
   comments!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {

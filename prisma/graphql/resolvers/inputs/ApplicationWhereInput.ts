@@ -4,6 +4,9 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
+import { InvoiceRelationFilter } from "../inputs/InvoiceRelationFilter";
+import { OnlinepottenRelationFilter } from "../inputs/OnlinepottenRelationFilter";
+import { ReceiptRelationFilter } from "../inputs/ReceiptRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
 import { StringNullableListFilter } from "../inputs/StringNullableListFilter";
@@ -83,6 +86,11 @@ export class ApplicationWhereInput {
   })
   status?: StringFilter | undefined;
 
+  @TypeGraphQL.Field(_type => StringFilter, {
+    nullable: true
+  })
+  responsible_unit?: StringFilter | undefined;
+
   @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
@@ -97,4 +105,19 @@ export class ApplicationWhereInput {
     nullable: true
   })
   error_fields?: StringNullableListFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ReceiptRelationFilter, {
+    nullable: true
+  })
+  Receipt?: ReceiptRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => OnlinepottenRelationFilter, {
+    nullable: true
+  })
+  Onlinepotten?: OnlinepottenRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => InvoiceRelationFilter, {
+    nullable: true
+  })
+  Invoice?: InvoiceRelationFilter | undefined;
 }

@@ -35,5 +35,5 @@ export class FindFirstOnlinepottenArgs {
   @TypeGraphQL.Field(_type => [OnlinepottenScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "occation" | "planned_date" | "hours" | "description" | "participants" | "payment_method" | "recipt_id"> | undefined;
+  distinct?: Array<"id" | "occasion" | "planned_date" | "hours" | "description" | "participants" | "payment_method" | "recipt_id" | "applicationId"> | undefined;
 }

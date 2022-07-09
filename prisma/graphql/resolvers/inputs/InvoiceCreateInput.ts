@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ApplicationCreateNestedOneWithoutInvoiceInput } from "../inputs/ApplicationCreateNestedOneWithoutInvoiceInput";
 
 @TypeGraphQL.InputType("InvoiceCreateInput", {
   isAbstract: true
@@ -36,4 +37,9 @@ export class InvoiceCreateInput {
     nullable: true
   })
   duedays?: number | undefined;
+
+  @TypeGraphQL.Field(_type => ApplicationCreateNestedOneWithoutInvoiceInput, {
+    nullable: false
+  })
+  application!: ApplicationCreateNestedOneWithoutInvoiceInput;
 }

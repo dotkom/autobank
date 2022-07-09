@@ -51,6 +51,11 @@ export class ApplicationCreateManyUserInput {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
+  responsible_unit?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
   comments?: string | undefined;
 
   @TypeGraphQL.Field(_type => String, {

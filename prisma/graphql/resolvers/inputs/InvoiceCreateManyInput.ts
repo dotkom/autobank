@@ -36,4 +36,9 @@ export class InvoiceCreateManyInput {
     nullable: true
   })
   duedays?: number | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  applicationId!: string;
 }

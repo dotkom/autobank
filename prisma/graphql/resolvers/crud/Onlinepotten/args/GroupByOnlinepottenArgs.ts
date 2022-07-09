@@ -20,7 +20,7 @@ export class GroupByOnlinepottenArgs {
   @TypeGraphQL.Field(_type => [OnlinepottenScalarFieldEnum], {
     nullable: false
   })
-  by!: Array<"id" | "occation" | "planned_date" | "hours" | "description" | "participants" | "payment_method" | "recipt_id">;
+  by!: Array<"id" | "occasion" | "planned_date" | "hours" | "description" | "participants" | "payment_method" | "recipt_id" | "applicationId">;
 
   @TypeGraphQL.Field(_type => OnlinepottenScalarWhereWithAggregatesInput, {
     nullable: true

@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ApplicationRelationFilter } from "../inputs/ApplicationRelationFilter";
 import { IntFilter } from "../inputs/IntFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
@@ -54,4 +55,14 @@ export class InvoiceWhereInput {
     nullable: true
   })
   duedays?: IntFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ApplicationRelationFilter, {
+    nullable: true
+  })
+  application?: ApplicationRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringFilter, {
+    nullable: true
+  })
+  applicationId?: StringFilter | undefined;
 }

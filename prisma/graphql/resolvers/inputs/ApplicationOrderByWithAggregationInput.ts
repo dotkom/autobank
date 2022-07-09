@@ -59,6 +59,11 @@ export class ApplicationOrderByWithAggregationInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
+  responsible_unit?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
   comments?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {

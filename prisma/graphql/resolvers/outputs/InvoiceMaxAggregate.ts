@@ -36,4 +36,9 @@ export class InvoiceMaxAggregate {
     nullable: true
   })
   duedays!: number | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  applicationId!: string | null;
 }

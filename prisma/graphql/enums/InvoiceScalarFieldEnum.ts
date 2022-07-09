@@ -6,7 +6,8 @@ export enum InvoiceScalarFieldEnum {
   occasion = "occasion",
   method = "method",
   po_nr = "po_nr",
-  duedays = "duedays"
+  duedays = "duedays",
+  applicationId = "applicationId"
 }
 TypeGraphQL.registerEnumType(InvoiceScalarFieldEnum, {
   name: "InvoiceScalarFieldEnum",

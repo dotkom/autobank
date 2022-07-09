@@ -4,8 +4,11 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { ApplicationUpdateerror_fieldsInput } from "../inputs/ApplicationUpdateerror_fieldsInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
+import { InvoiceUpdateOneWithoutApplicationInput } from "../inputs/InvoiceUpdateOneWithoutApplicationInput";
 import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
+import { OnlinepottenUpdateOneWithoutApplicationInput } from "../inputs/OnlinepottenUpdateOneWithoutApplicationInput";
+import { ReceiptUpdateOneWithoutApplicationInput } from "../inputs/ReceiptUpdateOneWithoutApplicationInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { UserUpdateOneWithoutApplicationsInput } from "../inputs/UserUpdateOneWithoutApplicationsInput";
 import { UserUpdateOneWithoutApprovedApplicationsInput } from "../inputs/UserUpdateOneWithoutApprovedApplicationsInput";
@@ -59,6 +62,11 @@ export class ApplicationUpdateInput {
   })
   status?: StringFieldUpdateOperationsInput | undefined;
 
+  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  responsible_unit?: StringFieldUpdateOperationsInput | undefined;
+
   @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
     nullable: true
   })
@@ -73,4 +81,19 @@ export class ApplicationUpdateInput {
     nullable: true
   })
   error_fields?: ApplicationUpdateerror_fieldsInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReceiptUpdateOneWithoutApplicationInput, {
+    nullable: true
+  })
+  Receipt?: ReceiptUpdateOneWithoutApplicationInput | undefined;
+
+  @TypeGraphQL.Field(_type => OnlinepottenUpdateOneWithoutApplicationInput, {
+    nullable: true
+  })
+  Onlinepotten?: OnlinepottenUpdateOneWithoutApplicationInput | undefined;
+
+  @TypeGraphQL.Field(_type => InvoiceUpdateOneWithoutApplicationInput, {
+    nullable: true
+  })
+  Invoice?: InvoiceUpdateOneWithoutApplicationInput | undefined;
 }

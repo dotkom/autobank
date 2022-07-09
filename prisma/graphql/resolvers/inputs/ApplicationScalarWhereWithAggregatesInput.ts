@@ -72,6 +72,11 @@ export class ApplicationScalarWhereWithAggregatesInput {
   })
   status?: StringWithAggregatesFilter | undefined;
 
+  @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
+    nullable: true
+  })
+  responsible_unit?: StringWithAggregatesFilter | undefined;
+
   @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
     nullable: true
   })

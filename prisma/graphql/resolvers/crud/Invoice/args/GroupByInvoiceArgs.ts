@@ -20,7 +20,7 @@ export class GroupByInvoiceArgs {
   @TypeGraphQL.Field(_type => [InvoiceScalarFieldEnum], {
     nullable: false
   })
-  by!: Array<"id" | "orgnr" | "occasion" | "method" | "po_nr" | "duedays">;
+  by!: Array<"id" | "orgnr" | "occasion" | "method" | "po_nr" | "duedays" | "applicationId">;
 
   @TypeGraphQL.Field(_type => InvoiceScalarWhereWithAggregatesInput, {
     nullable: true

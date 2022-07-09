@@ -42,6 +42,11 @@ export class InvoiceGroupBy {
   })
   duedays!: number;
 
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  applicationId!: string;
+
   @TypeGraphQL.Field(_type => InvoiceCountAggregate, {
     nullable: true
   })

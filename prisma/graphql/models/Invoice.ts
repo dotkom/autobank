@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
+import { Application } from "../models/Application";
 
 @TypeGraphQL.ObjectType("Invoice", {
   isAbstract: true
@@ -36,4 +37,11 @@ export class Invoice {
     nullable: false
   })
   duedays!: number;
+
+  application?: Application;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  applicationId!: string;
 }

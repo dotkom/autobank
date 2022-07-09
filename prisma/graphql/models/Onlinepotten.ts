@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
+import { Application } from "../models/Application";
 
 @TypeGraphQL.ObjectType("Onlinepotten", {
   isAbstract: true
@@ -15,7 +16,7 @@ export class Onlinepotten {
   @TypeGraphQL.Field(_type => String, {
     nullable: false
   })
-  occation!: string;
+  occasion!: string;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
@@ -46,4 +47,11 @@ export class Onlinepotten {
     nullable: true
   })
   recipt_id?: number | null;
+
+  application?: Application;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  applicationId!: string;
 }

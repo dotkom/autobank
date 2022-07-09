@@ -54,4 +54,9 @@ export class InvoiceScalarWhereWithAggregatesInput {
     nullable: true
   })
   duedays?: IntWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
+    nullable: true
+  })
+  applicationId?: StringWithAggregatesFilter | undefined;
 }

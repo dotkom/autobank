@@ -43,6 +43,11 @@ export class InvoiceOrderByWithAggregationInput {
   })
   duedays?: "asc" | "desc" | undefined;
 
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  applicationId?: "asc" | "desc" | undefined;
+
   @TypeGraphQL.Field(_type => InvoiceCountOrderByAggregateInput, {
     nullable: true
   })

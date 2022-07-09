@@ -20,7 +20,7 @@ export class GroupByApplicationArgs {
   @TypeGraphQL.Field(_type => [ApplicationScalarFieldEnum], {
     nullable: false
   })
-  by!: Array<"id" | "userId" | "full_name" | "email" | "created_at" | "approved_at" | "approvedById" | "last_updated" | "status" | "comments" | "error" | "error_fields">;
+  by!: Array<"id" | "userId" | "full_name" | "email" | "created_at" | "approved_at" | "approvedById" | "last_updated" | "status" | "responsible_unit" | "comments" | "error" | "error_fields">;
 
   @TypeGraphQL.Field(_type => ApplicationScalarWhereWithAggregatesInput, {
     nullable: true

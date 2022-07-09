@@ -11,4 +11,9 @@ export class OnlinepottenWhereUniqueInput {
     nullable: true
   })
   id?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  applicationId?: string | undefined;
 }

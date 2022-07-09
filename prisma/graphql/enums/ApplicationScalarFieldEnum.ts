@@ -10,6 +10,7 @@ export enum ApplicationScalarFieldEnum {
   approvedById = "approvedById",
   last_updated = "last_updated",
   status = "status",
+  responsible_unit = "responsible_unit",
   comments = "comments",
   error = "error",
   error_fields = "error_fields"

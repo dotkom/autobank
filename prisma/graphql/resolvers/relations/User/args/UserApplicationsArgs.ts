@@ -35,5 +35,5 @@ export class UserApplicationsArgs {
   @TypeGraphQL.Field(_type => [ApplicationScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "userId" | "full_name" | "email" | "created_at" | "approved_at" | "approvedById" | "last_updated" | "status" | "comments" | "error" | "error_fields"> | undefined;
+  distinct?: Array<"id" | "userId" | "full_name" | "email" | "created_at" | "approved_at" | "approvedById" | "last_updated" | "status" | "responsible_unit" | "comments" | "error" | "error_fields"> | undefined;
 }

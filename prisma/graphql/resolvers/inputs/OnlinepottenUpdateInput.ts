@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ApplicationUpdateOneRequiredWithoutOnlinepottenInput } from "../inputs/ApplicationUpdateOneRequiredWithoutOnlinepottenInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { IntFieldUpdateOperationsInput } from "../inputs/IntFieldUpdateOperationsInput";
 import { NullableIntFieldUpdateOperationsInput } from "../inputs/NullableIntFieldUpdateOperationsInput";
@@ -20,7 +21,7 @@ export class OnlinepottenUpdateInput {
   @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
     nullable: true
   })
-  occation?: StringFieldUpdateOperationsInput | undefined;
+  occasion?: StringFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, {
     nullable: true
@@ -51,4 +52,9 @@ export class OnlinepottenUpdateInput {
     nullable: true
   })
   recipt_id?: NullableIntFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => ApplicationUpdateOneRequiredWithoutOnlinepottenInput, {
+    nullable: true
+  })
+  application?: ApplicationUpdateOneRequiredWithoutOnlinepottenInput | undefined;
 }

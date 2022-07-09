@@ -56,6 +56,11 @@ export class ApplicationGroupBy {
   status!: string;
 
   @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  responsible_unit!: string;
+
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
   comments!: string | null;

@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ApplicationRelationFilter } from "../inputs/ApplicationRelationFilter";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { IntFilter } from "../inputs/IntFilter";
 import { IntNullableFilter } from "../inputs/IntNullableFilter";
@@ -35,7 +36,7 @@ export class OnlinepottenWhereInput {
   @TypeGraphQL.Field(_type => StringFilter, {
     nullable: true
   })
-  occation?: StringFilter | undefined;
+  occasion?: StringFilter | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeFilter, {
     nullable: true
@@ -66,4 +67,14 @@ export class OnlinepottenWhereInput {
     nullable: true
   })
   recipt_id?: IntNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ApplicationRelationFilter, {
+    nullable: true
+  })
+  application?: ApplicationRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringFilter, {
+    nullable: true
+  })
+  applicationId?: StringFilter | undefined;
 }

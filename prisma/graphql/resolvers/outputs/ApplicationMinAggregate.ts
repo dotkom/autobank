@@ -55,6 +55,11 @@ export class ApplicationMinAggregate {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
+  responsible_unit!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
   comments!: string | null;
 
   @TypeGraphQL.Field(_type => String, {

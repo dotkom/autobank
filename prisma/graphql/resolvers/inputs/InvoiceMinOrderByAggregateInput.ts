@@ -37,4 +37,9 @@ export class InvoiceMinOrderByAggregateInput {
     nullable: true
   })
   duedays?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  applicationId?: "asc" | "desc" | undefined;
 }

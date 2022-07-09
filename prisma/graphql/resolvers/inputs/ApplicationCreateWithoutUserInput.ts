@@ -3,6 +3,9 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { ApplicationCreateerror_fieldsInput } from "../inputs/ApplicationCreateerror_fieldsInput";
+import { InvoiceCreateNestedOneWithoutApplicationInput } from "../inputs/InvoiceCreateNestedOneWithoutApplicationInput";
+import { OnlinepottenCreateNestedOneWithoutApplicationInput } from "../inputs/OnlinepottenCreateNestedOneWithoutApplicationInput";
+import { ReceiptCreateNestedOneWithoutApplicationInput } from "../inputs/ReceiptCreateNestedOneWithoutApplicationInput";
 import { UserCreateNestedOneWithoutApprovedApplicationsInput } from "../inputs/UserCreateNestedOneWithoutApprovedApplicationsInput";
 
 @TypeGraphQL.InputType("ApplicationCreateWithoutUserInput", {
@@ -52,6 +55,11 @@ export class ApplicationCreateWithoutUserInput {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
+  responsible_unit?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
   comments?: string | undefined;
 
   @TypeGraphQL.Field(_type => String, {
@@ -63,4 +71,19 @@ export class ApplicationCreateWithoutUserInput {
     nullable: true
   })
   error_fields?: ApplicationCreateerror_fieldsInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReceiptCreateNestedOneWithoutApplicationInput, {
+    nullable: true
+  })
+  Receipt?: ReceiptCreateNestedOneWithoutApplicationInput | undefined;
+
+  @TypeGraphQL.Field(_type => OnlinepottenCreateNestedOneWithoutApplicationInput, {
+    nullable: true
+  })
+  Onlinepotten?: OnlinepottenCreateNestedOneWithoutApplicationInput | undefined;
+
+  @TypeGraphQL.Field(_type => InvoiceCreateNestedOneWithoutApplicationInput, {
+    nullable: true
+  })
+  Invoice?: InvoiceCreateNestedOneWithoutApplicationInput | undefined;
 }
