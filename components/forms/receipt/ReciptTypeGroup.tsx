@@ -1,29 +1,29 @@
-import { UseFormRegister } from "react-hook-form";
-import { ERROR_MSG_STYLE, LABEL_STYLE } from "../styles";
-import { IReceiptData } from "./state";
+import { UseFormRegister } from 'react-hook-form'
+import { ERROR_MSG_STYLE, LABEL_STYLE } from '../styles'
+import { receiptDataType } from './types'
 
 type props = {
-  error?: string;
-  register: UseFormRegister<IReceiptData>;
-  changeType: (type: string) => void;
-};
+  error?: string
+  register: UseFormRegister<receiptDataType>
+  changeType: (type: string) => void
+}
 
 const ReciptTypeGroup = ({ error, register, changeType }: props) => {
   return (
     <div
       className={`w-full flex flex-row justify-around pb-5 ${
-        error && "border-red-500"
+        error && 'border-red-500'
       }`}
     >
       <div className="flex flex-col">
-        <label className={LABEL_STYLE + " hover:cursor-pointer"}>
+        <label className={LABEL_STYLE + ' hover:cursor-pointer'}>
           <input
             type="radio"
             name="type"
             value="deposit"
             className="form-radio h-5 w-5 mr-1 mb-1 form-checkbox text-online-blue-500 hover:border-online-blue-500 hover:border-2"
-            onClick={() => changeType("deposit")}
-            {...register("type")}
+            onClick={() => changeType('deposit')}
+            {...register('type')}
           />
           Utlegg
         </label>
@@ -32,14 +32,14 @@ const ReciptTypeGroup = ({ error, register, changeType }: props) => {
         </p>
       </div>
       <div className="flex flex-col">
-        <label className={LABEL_STYLE + " hover:cursor-pointer"}>
+        <label className={LABEL_STYLE + ' hover:cursor-pointer'}>
           <input
             type="radio"
             name="type"
             value="card"
             className="form-radio h-5 w-5 mr-1 mb-1 form-checkbox text-online-blue-500 hover:border-online-blue-500 hover:border-2"
-            onClick={() => changeType("card")}
-            {...register("type")}
+            onClick={() => changeType('card')}
+            {...register('type')}
           />
           Bankkort
         </label>
@@ -49,7 +49,7 @@ const ReciptTypeGroup = ({ error, register, changeType }: props) => {
       </div>
       {error && <p className={ERROR_MSG_STYLE}>{error}</p>}
     </div>
-  );
-};
+  )
+}
 
-export default ReciptTypeGroup;
+export default ReciptTypeGroup

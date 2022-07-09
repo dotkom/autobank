@@ -4,7 +4,7 @@ import { InvoiceInformationValidationSchema } from '../validation/InvoiceInforma
 import { FORM_STYLE } from '../../styles'
 import InputField from '../../InputField'
 import Dropdown from '../../Dropdown'
-import { INNVOICE_OCCATIONS } from '../invoiceOccations'
+import { INNVOICE_OCCASIONS } from '../invoiceOccasions'
 import { INNVOICE_DELIVERY_OPTIONS } from '../invoiceDeliveryOptions'
 import Checkbox from '../../Checkbox'
 import { Dispatch, SetStateAction, useState } from 'react'
@@ -59,11 +59,11 @@ const InvoiceInformation = ({
     >
       <Dropdown
         defaultOption={{ value: 'default', label: 'Anledning' }}
-        options={INNVOICE_OCCATIONS}
+        options={INNVOICE_OCCASIONS}
         label="Anledning"
-        name="occation"
-        onChange={(_) => clearErrors('occation')}
-        errors={errors.occation?.message}
+        name="occasion"
+        onChange={(_) => clearErrors('occasion')}
+        errors={errors.occasion?.message}
         register={register}
       />
       <Dropdown
@@ -137,7 +137,6 @@ const InvoiceInformation = ({
         error={errors.comments?.message}
         register={register}
       />
-      <Navigation step={2} numberOfSteps={3} changeStep={handlePrevStep} />
     </form>
   )
 }

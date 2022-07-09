@@ -58,8 +58,8 @@ export const ItemList = ({
     >
       <Item link={'/fondet'} text={'Fondet'} />
       <Item link={'/onlinepotten'} text={'Onlinepotten'} />
-      <Item link={'/kvitteringer'} text={'Kvitteringer'} />
-      <Item link={'/bedrift'} text={'Bedrift'} />
+      <Item link={'/kvittering'} text={'Kvitteringer'} />
+      <Item link={'/faktura'} text={'Faktura'} />
       <Item link={'/faq'} text={'FAQ'} />
       {status == 'authenticated' && session.user.role != 'USER' ? (
         <Item link={'/admin'} text={'Dashboard'} />

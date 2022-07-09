@@ -1,10 +1,10 @@
 import { UseFormRegister } from 'react-hook-form'
 import Dropdown from '../Dropdown'
 import { getAllGroups } from './groups'
-import { IReceiptData } from './state'
+import { receiptDataType } from './types'
 
 type props = {
-  register: UseFormRegister<IReceiptData>
+  register: UseFormRegister<receiptDataType>
   errors?: string
 }
 

@@ -1,29 +1,28 @@
 import Button from 'components/html/Button'
+import { Dispatch, SetStateAction } from 'react'
 import ProgressBar from './ProgressBar'
 
 type props = {
   step: number
   numberOfSteps: number
-  changeStep?: (step: number) => void
+  setStep?: Dispatch<SetStateAction<number>>
 }
 
-const Navigation = ({ step, numberOfSteps, changeStep }: props) => {
+const Navigation = ({ step, numberOfSteps, setStep }: props) => {
   return (
     <>
-      <div className="max-w-lg w-full flex flex-row padding-top justify-around pt-12">
-        {step !== 0 && <Button onClick={() => changeStep(-1)}>Tilbake</Button>}
+      <div className="max-w-lg w-full flex flex-row padding-top justify-around pt-10">
+        {step !== 0 && (
+          <Button onClick={() => setStep(step - 1)}>Tilbake</Button>
+        )}
 
         {step < numberOfSteps - 1 ? (
-          <Button>Neste</Button>
+          <Button onClick={() => setStep(step + 1)}>Neste</Button>
         ) : (
-          <Button>Send til Bankom</Button>
+          <Button type="submit">Send til Bankom</Button>
         )}
       </div>
-      <ProgressBar
-        currentStep={step}
-        numberOfSteps={numberOfSteps}
-        changeStep={changeStep}
-      />
+      <ProgressBar {...{ step, numberOfSteps, setStep }} />
     </>
   )
 }

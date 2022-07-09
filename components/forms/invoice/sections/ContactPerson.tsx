@@ -60,7 +60,6 @@ const ContactPerson = ({ changeStep, initialData, setFormData }: props) => {
         error={errors.phone?.message}
         register={register}
       />
-      <Navigation step={1} numberOfSteps={3} changeStep={handlePrevStep} />
     </form>
   )
 }

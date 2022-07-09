@@ -1,36 +1,36 @@
-import { useState } from "react";
-import { UseFormRegister } from "react-hook-form";
-import { ERROR_MSG_STYLE, INPUT_STYLE, LABEL_STYLE } from "../styles";
-import { IReceiptData } from "./state";
+import { useState } from 'react'
+import { UseFormRegister } from 'react-hook-form'
+import { ERROR_MSG_STYLE, INPUT_STYLE, LABEL_STYLE } from '../styles'
+import { receiptDataType } from './types'
 
 // Formats the value onto this "bankaccount format": xxxx xx xxxxx
 const FORMAT_ACCOUNT_VALUE = (value: string): string => {
-  const chars = value.replace(/\D/g, "").split("");
-  let insertedSpace = "";
+  const chars = value.replace(/\D/g, '').split('')
+  let insertedSpace = ''
   for (let i = 0; i < chars.length; i++) {
     if (i >= 11) {
-      break;
+      break
     } else if (i === 4 || i === 6) {
-      insertedSpace += " ";
+      insertedSpace += ' '
     }
-    const char = chars[i];
-    insertedSpace += char;
+    const char = chars[i]
+    insertedSpace += char
   }
-  return insertedSpace;
-};
+  return insertedSpace
+}
 
 type props = {
-  classNames?: string;
-  errors?: string;
-  register: UseFormRegister<IReceiptData>;
-};
+  classNames?: string
+  errors?: string
+  register: UseFormRegister<receiptDataType>
+}
 
 const AccountInput = ({ classNames, errors, register }: props) => {
-  const [account, setAccount] = useState<string>();
+  const [account, setAccount] = useState<string>()
 
   const updateValue = (value: string) => {
-    setAccount(FORMAT_ACCOUNT_VALUE(value));
-  };
+    setAccount(FORMAT_ACCOUNT_VALUE(value))
+  }
 
   return (
     <div className="w-full text-left mb-3">
@@ -38,19 +38,19 @@ const AccountInput = ({ classNames, errors, register }: props) => {
         Kontonummer
         <input
           className={`${classNames} ${
-            errors && "border-red-500"
+            errors && 'border-red-500'
           } ${INPUT_STYLE}`}
           type="text"
           name="account"
           value={account}
-          {...register("account")}
+          {...register('account_nr')}
           onChange={(e) => updateValue(e.target.value)}
           placeholder="Kontonummer for tilbakebetaling"
         />
       </label>
       {errors && <p className={ERROR_MSG_STYLE}>{errors}</p>}
     </div>
-  );
-};
+  )
+}
 
-export default AccountInput;
+export default AccountInput

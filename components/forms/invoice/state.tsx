@@ -10,7 +10,7 @@ export interface IContactPerson {
 }
 
 export interface IInvoiceInformation {
-  occation: string
+  occasion: string
   delivery: string
   deliveryAdress?: string
   comments?: string

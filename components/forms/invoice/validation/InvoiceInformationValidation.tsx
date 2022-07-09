@@ -1,7 +1,7 @@
 import * as Yup from 'yup'
 
 export const InvoiceInformationValidationSchema = Yup.object().shape({
-  occation: Yup.string().not(['default'], 'Dette feltet er påkrevd'),
+  occasion: Yup.string().not(['default'], 'Dette feltet er påkrevd'),
   delivery: Yup.string().not(['default'], 'Dette feltet er påkrevd'),
   deliveryAdress: Yup.string().when('delivery', {
     is: (delivery: string) => delivery === 'epost' || delivery === 'adresse',

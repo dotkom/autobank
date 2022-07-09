@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import CompanyInformation from '../../components/forms/invoice/sections/CompanyInformation'
-import Layout from '../../components/Layout'
+import Public from '../../components/Layout/Public'
 import ContactPerson from '../../components/forms/invoice/sections/ContactPerson'
 import InvoiceInformation from '../../components/forms/invoice/sections/InvoiceInformation'
 import {
@@ -21,7 +21,7 @@ const initContactData: IContactPerson = {
 }
 
 const initInvoiceData: IInvoiceInformation = {
-  occation: 'default',
+  occasion: 'default',
   delivery: 'default',
   isDueDate: false,
   isPoNumber: false,
@@ -53,7 +53,7 @@ export default function InviceForm() {
   }
 
   return (
-    <Layout title="Fakturainformasjon">
+    <Public title="Fakturainformasjon">
       <div className="max-w-lg w-full text-center text-online-blue-500">
         <h1 className="text-4xl">Fakturainformasjon</h1>
         {step === 0 && (
@@ -79,6 +79,6 @@ export default function InviceForm() {
           />
         )}
       </div>
-    </Layout>
+    </Public>
   )
 }

@@ -50,7 +50,6 @@ const CompanyInformation = ({
         error={errors.companyName?.message}
         register={register}
       />
-      <Navigation step={0} numberOfSteps={3} />
     </form>
   )
 }
