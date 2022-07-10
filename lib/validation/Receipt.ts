@@ -30,14 +30,13 @@ export const ReceiptSchema = Yup.object().shape({
         account === 'unused' ||
         (account !== null && ACCOUNT_NUMBER_REGEX.test(account))
     ),
-  cardDetails: Yup.string()
+  card: Yup.string()
     .nullable()
     .test(
       'Card detail validity',
       'Informasjonen burde være på mellom 5 og 30 tegn',
-      (cardDetails) =>
-        cardDetails === 'unused' ||
-        (cardDetails !== null && CARD_DETAIL_REGEX.test(cardDetails))
+      (card) =>
+        card === 'unused' || (card !== null && CARD_DETAIL_REGEX.test(card))
     ),
   responsible_unit: Yup.string().test(
     'Group chosen test',

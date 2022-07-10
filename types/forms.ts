@@ -1,7 +1,8 @@
-import Navigation from 'components/form/Navigation'
+import Navigation from 'components/html/form/Navigation'
 import React, { Dispatch, SetStateAction } from 'react'
 
 export type UserData = {
+  userid?: string
   fullname: string
   email: string
   toc: boolean
@@ -11,12 +12,12 @@ export type ReceiptData = {
   occasion: string
   type: 'card' | 'deposit'
   account: string
-  cardDetails: string
+  card: string
   responsible_unit: string
 }
 export type ExtraData = {
   comments: string
-  attachments: string[]
+  appendix: string[]
 }
 
 export type ReceiptFormData = UserData & ReceiptData & ExtraData
@@ -44,8 +45,6 @@ export type InvoiceData = {
 }
 
 export type InvoiceFormData = CompanyData & CompanyUserData & InvoiceData
-
-type FormData = ReceiptFormData | InvoiceFormData
 
 export type FormProps<FormData> = {
   setData: Dispatch<SetStateAction<FormData>>

@@ -11,10 +11,5 @@ export class ReceiptAvgOrderByAggregateInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  account_nr?: "asc" | "desc" | undefined;
-
-  @TypeGraphQL.Field(_type => SortOrder, {
-    nullable: true
-  })
   amount?: "asc" | "desc" | undefined;
 }

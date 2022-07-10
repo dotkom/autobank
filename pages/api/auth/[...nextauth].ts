@@ -78,7 +78,6 @@ export default NextAuth({
       if (account) {
         token.accessToken = account.access_token
       }
-      console.log(user)
       token.user = user
 
       return token

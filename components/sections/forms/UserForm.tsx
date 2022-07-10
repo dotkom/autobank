@@ -54,6 +54,7 @@ const UserForm = ({
             onClick={() => {
               setValue('fullname', session.user.name)
               setValue('email', session.user.email)
+              setData({ ...data, userid: session.user.id })
             }}
           >
             Bruk brukerdataen min

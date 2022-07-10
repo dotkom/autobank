@@ -104,7 +104,7 @@ enum receiptType {
 model Receipt {
   id            String      @id @default(cuid())
   type          receiptType
-  account_nr    Int?
+  account       String?
   card          String?
   paid_at       DateTime?
   amount        Int

@@ -6,7 +6,6 @@ import { ApplicationRelationFilter } from "../inputs/ApplicationRelationFilter";
 import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
 import { EnumreceiptTypeFilter } from "../inputs/EnumreceiptTypeFilter";
 import { IntFilter } from "../inputs/IntFilter";
-import { IntNullableFilter } from "../inputs/IntNullableFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
 import { StringNullableListFilter } from "../inputs/StringNullableListFilter";
@@ -40,10 +39,10 @@ export class ReceiptWhereInput {
   })
   type?: EnumreceiptTypeFilter | undefined;
 
-  @TypeGraphQL.Field(_type => IntNullableFilter, {
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
-  account_nr?: IntNullableFilter | undefined;
+  account?: StringNullableFilter | undefined;
 
   @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true

@@ -19,10 +19,10 @@ export class ReceiptCreateWithoutApplicationInput {
   })
   type!: "card" | "deposit";
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  account_nr?: number | undefined;
+  account?: string | undefined;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

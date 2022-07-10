@@ -11,6 +11,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@apollo/client": "^3.6.9",
     "@hookform/resolvers": "^2.9.0",
     "@next-auth/prisma-adapter": "^1.0.3",
     "@popperjs/core": "^2.11.5",

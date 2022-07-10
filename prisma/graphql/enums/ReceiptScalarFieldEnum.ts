@@ -3,7 +3,7 @@ import * as TypeGraphQL from "type-graphql";
 export enum ReceiptScalarFieldEnum {
   id = "id",
   type = "type",
-  account_nr = "account_nr",
+  account = "account",
   card = "card",
   paid_at = "paid_at",
   amount = "amount",

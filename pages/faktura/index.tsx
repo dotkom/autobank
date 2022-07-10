@@ -23,10 +23,7 @@ export default function InviceForm() {
   const [step, setStep] = useState<0 | 1 | 2>(0) //TODO: Add "enum" for steps, remove use of magic numbers.
   const [formData, setFormData] = useState<InvoiceFormData>(initData)
 
-  const submitForm = () => {
-    console.log('Invoice form submitted')
-    console.log(formData)
-  }
+  const submitForm = () => {}
 
   return (
     <Public title="Fakturainformasjon">

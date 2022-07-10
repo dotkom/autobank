@@ -7,7 +7,7 @@ export const ExtraSchema = Yup.object().shape({
   comments: Yup.string().required(
     'Du må legge ved en kommentar om utlegget ditt'
   ),
-  attachments: Yup.mixed()
+  appendix: Yup.mixed()
     // .typeError("Du må legge ved kvitteringen din som et vedlegg")
     .nullable()
     .test(
@@ -15,11 +15,11 @@ export const ExtraSchema = Yup.object().shape({
       `Det er ikke tillat å legge ved filer på over ${formatBytes(
         FILE_SIZE_MAX
       )}`,
-      (attachments) => {
-        if (attachments === null || attachments === undefined) return true
+      (appendix) => {
+        if (appendix === null || appendix === undefined) return true
         // Skip this test, and validate with the File Exists one.
 
-        const tempArray: File[] = Array.from(attachments)
+        const tempArray: File[] = Array.from(appendix)
         return (
           tempArray.filter((file) => file.size >= FILE_SIZE_MAX).length === 0
         )
@@ -28,6 +28,6 @@ export const ExtraSchema = Yup.object().shape({
     .test(
       'Files exists',
       'Du må legge ved kvitteringen din som et vedlegg',
-      (attachments) => attachments && attachments.length !== 0
+      (appendix) => appendix && appendix.length !== 0
     ),
 })

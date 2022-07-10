@@ -22,7 +22,7 @@ export class ReceiptOrderByWithRelationInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  account_nr?: "asc" | "desc" | undefined;
+  account?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true

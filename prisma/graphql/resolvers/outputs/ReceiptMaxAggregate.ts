@@ -18,10 +18,10 @@ export class ReceiptMaxAggregate {
   })
   type!: "card" | "deposit" | null;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  account_nr!: number | null;
+  account!: string | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

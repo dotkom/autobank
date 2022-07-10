@@ -18,7 +18,9 @@ const ReciptForm = ({
   const [type, setType] = useState<'card' | 'deposit'>(data.type)
 
   const submitForm = (values) => {
-    setData({ ...data, ...values })
+    console.log(values)
+
+    setData({ ...data, ...values, type })
   }
 
   const {
@@ -36,16 +38,16 @@ const ReciptForm = ({
   const changeType = (type: 'card' | 'deposit') => {
     if (type === 'card') {
       setValue('account', 'unused')
-      setValue('cardDetails', null)
+      setValue('card', null)
     } else {
-      setValue('cardDetails', 'unused')
+      setValue('card', 'unused')
       setValue('account', null)
     }
     setType(type)
   }
 
   const saveStep = () => {
-    submitForm(getValues())
+    submitForm({ ...getValues(), amount: parseInt('' + getValues().amount) })
 
     if (isValid && !isValidating) {
       return true
@@ -64,11 +66,11 @@ const ReciptForm = ({
         <AccountInput register={register} errors={errors.account?.message} />
       ) : (
         <Input
-          name="cardDetails"
+          name="card"
           type="text"
           label="Kortinformasjon"
           placeholder="Kortinformasjon/Hvilken komite kortet tilhører"
-          error={errors.cardDetails?.message}
+          error={errors.card?.message}
           register={register}
         />
       )}

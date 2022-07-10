@@ -14,13 +14,13 @@ const ExtraForm = ({
   navigation,
 }: FormProps<ReceiptFormData>) => {
   const submitForm = async (data) => {
-    const fileArray: File[] = Array.from(data.attachments)
+    const fileArray: File[] = Array.from(data.appendix)
     const files: string[] = await getDataUrlsFromFiles(fileArray)
     setData({
       ...data,
       ...{
         comments: data.comments,
-        attachments: files,
+        appendix: files,
       },
     })
   }
@@ -62,15 +62,15 @@ const ExtraForm = ({
         Vedlegg/Kvittering
         <input
           type="file"
-          name="attachments"
+          name="appendix"
           accept="image/png,image/jpeg,image/jpg,application/pdf,.pdf"
           multiple
-          className={errors.attachments?.length != 0 ? 'border-red-500' : ''}
-          {...register('attachments')}
+          className={errors.appendix?.length != 0 ? 'border-red-500' : ''}
+          {...register('appendix')}
         />
       </Label>
-      {/* {errors.attachments?.length != 0 && (
-        <Error error={errors.attachments.join(', ')} /> //TODO: fix ewrror display
+      {/* {errors.appendix?.length != 0 && (
+        <Error error={errors.appendix.join(', ')} /> //TODO: fix ewrror display
       )} */}
     </Form>
   )

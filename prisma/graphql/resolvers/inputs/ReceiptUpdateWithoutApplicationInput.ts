@@ -5,7 +5,6 @@ import { DecimalJSScalar } from "../../scalars";
 import { EnumreceiptTypeFieldUpdateOperationsInput } from "../inputs/EnumreceiptTypeFieldUpdateOperationsInput";
 import { IntFieldUpdateOperationsInput } from "../inputs/IntFieldUpdateOperationsInput";
 import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
-import { NullableIntFieldUpdateOperationsInput } from "../inputs/NullableIntFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { ReceiptUpdateappendixInput } from "../inputs/ReceiptUpdateappendixInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
@@ -24,10 +23,10 @@ export class ReceiptUpdateWithoutApplicationInput {
   })
   type?: EnumreceiptTypeFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => NullableIntFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
     nullable: true
   })
-  account_nr?: NullableIntFieldUpdateOperationsInput | undefined;
+  account?: NullableStringFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
     nullable: true
