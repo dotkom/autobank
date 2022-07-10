@@ -20,7 +20,7 @@ export class ApplicationMinAggregate {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  full_name!: string | null;
+  fullname!: string | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true
@@ -55,7 +55,7 @@ export class ApplicationMinAggregate {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  responsible_unit!: string | null;
+  responsible_committee!: string | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

@@ -30,7 +30,7 @@ export class ApplicationOrderByWithRelationInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  full_name?: "asc" | "desc" | undefined;
+  fullname?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
@@ -70,7 +70,7 @@ export class ApplicationOrderByWithRelationInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  responsible_unit?: "asc" | "desc" | undefined;
+  responsible_committee?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true

@@ -78,7 +78,7 @@ model Application {
   id                    String    @id @default(cuid())
   user                  User?     @relation(fields: [userId], references: [id], name: "owner")
   userId                String?
-  full_name             String
+  fullname              String
   email                 String
   created_at            DateTime  @default(now())
   approved_at           DateTime?

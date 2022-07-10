@@ -30,7 +30,7 @@ export class ApplicationUpdateInput {
   @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
     nullable: true
   })
-  full_name?: StringFieldUpdateOperationsInput | undefined;
+  fullname?: StringFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
     nullable: true
@@ -65,7 +65,7 @@ export class ApplicationUpdateInput {
   @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
     nullable: true
   })
-  responsible_unit?: StringFieldUpdateOperationsInput | undefined;
+  responsible_committee?: StringFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
     nullable: true

@@ -21,7 +21,7 @@ export class ApplicationCreateManyApprovedByInput {
   @TypeGraphQL.Field(_type => String, {
     nullable: false
   })
-  full_name!: string;
+  fullname!: string;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: false
@@ -51,7 +51,7 @@ export class ApplicationCreateManyApprovedByInput {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  responsible_unit?: string | undefined;
+  responsible_committee?: string | undefined;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true
