@@ -18,8 +18,6 @@ const ReciptForm = ({
   const [type, setType] = useState<'card' | 'deposit'>(data.type)
 
   const submitForm = (values) => {
-    console.log(values)
-
     setData({ ...data, ...values, type })
   }
 

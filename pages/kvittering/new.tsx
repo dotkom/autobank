@@ -52,8 +52,6 @@ export default function Recipt() {
     if (formData.userid) {
       data.application.create.user = { connect: { id: formData.userid } }
     }
-    console.log(typeof formData.amount)
-    console.log(typeof data.amount)
 
     await createReceipt({ variables: { data } })
   }

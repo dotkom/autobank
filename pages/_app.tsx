@@ -8,8 +8,6 @@ export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
-  console.log(session)
-
   return (
     <SessionProvider session={session}>
       <GraphqlProvider>
@@ -22,12 +20,12 @@ export default function App({
 const GraphqlProvider = ({ children }: { children: React.ReactNode }) => {
   const { data: session, status } = useSession()
   const client = new ApolloClient({
-    uri: 'http://localhost:3000/api/graphql',
+    uri: `${process.env.NEXTAUTH_URL}/api/graphql`,
 
     cache: new InMemoryCache(),
   })
   const adminclient = new ApolloClient({
-    uri: 'http://localhost:3000/api/admin/graphql',
+    uri: `${process.env.NEXTAUTH_URL}/api/admin/graphql`,
 
     cache: new InMemoryCache(),
   })
