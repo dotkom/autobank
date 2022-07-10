@@ -21,7 +21,7 @@ export class OnlinepottenOrderByWithAggregationInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  occation?: "asc" | "desc" | undefined;
+  occasion?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
@@ -52,6 +52,11 @@ export class OnlinepottenOrderByWithAggregationInput {
     nullable: true
   })
   recipt_id?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  applicationId?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => OnlinepottenCountOrderByAggregateInput, {
     nullable: true

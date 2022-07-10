@@ -40,7 +40,7 @@ export class ApplicationScalarWhereInput {
   @TypeGraphQL.Field(_type => StringFilter, {
     nullable: true
   })
-  full_name?: StringFilter | undefined;
+  fullname?: StringFilter | undefined;
 
   @TypeGraphQL.Field(_type => StringFilter, {
     nullable: true
@@ -71,6 +71,11 @@ export class ApplicationScalarWhereInput {
     nullable: true
   })
   status?: StringFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringFilter, {
+    nullable: true
+  })
+  responsible_committee?: StringFilter | undefined;
 
   @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true

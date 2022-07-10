@@ -23,7 +23,7 @@ export class ApplicationGroupBy {
   @TypeGraphQL.Field(_type => String, {
     nullable: false
   })
-  full_name!: string;
+  fullname!: string;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: false
@@ -54,6 +54,11 @@ export class ApplicationGroupBy {
     nullable: false
   })
   status!: string;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  responsible_committee!: string;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

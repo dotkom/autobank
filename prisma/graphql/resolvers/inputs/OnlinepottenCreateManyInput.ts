@@ -16,7 +16,7 @@ export class OnlinepottenCreateManyInput {
   @TypeGraphQL.Field(_type => String, {
     nullable: false
   })
-  occation!: string;
+  occasion!: string;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
@@ -47,4 +47,9 @@ export class OnlinepottenCreateManyInput {
     nullable: true
   })
   recipt_id?: number | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  applicationId!: string;
 }

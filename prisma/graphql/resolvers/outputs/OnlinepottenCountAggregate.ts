@@ -15,7 +15,7 @@ export class OnlinepottenCountAggregate {
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
-  occation!: number;
+  occasion!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
@@ -46,6 +46,11 @@ export class OnlinepottenCountAggregate {
     nullable: false
   })
   recipt_id!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  applicationId!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false

@@ -21,13 +21,16 @@ type LinkProps = {
 export const ButtonLink = ({
   logo = false,
   className,
+  href,
   ...props
 }: LinkProps) => {
   return (
-    <a
-      {...props}
-      className={`${className} bg-online-blue-500 text-zinc-100 px-4 py-px rounded shadow-md cursor-pointer`}
-    />
+    <Link href={href}>
+      <a
+        {...props}
+        className={`${className} bg-online-blue-500 text-zinc-100 px-4 py-2 rounded shadow-md cursor-pointer`}
+      />
+    </Link>
   )
 }
 

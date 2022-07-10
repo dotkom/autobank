@@ -20,7 +20,7 @@ export class ApplicationUpdateManyMutationInput {
   @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
     nullable: true
   })
-  full_name?: StringFieldUpdateOperationsInput | undefined;
+  fullname?: StringFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
     nullable: true
@@ -46,6 +46,11 @@ export class ApplicationUpdateManyMutationInput {
     nullable: true
   })
   status?: StringFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  responsible_committee?: StringFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
     nullable: true

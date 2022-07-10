@@ -3,6 +3,9 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { ApplicationCreateerror_fieldsInput } from "../inputs/ApplicationCreateerror_fieldsInput";
+import { InvoiceCreateNestedOneWithoutApplicationInput } from "../inputs/InvoiceCreateNestedOneWithoutApplicationInput";
+import { OnlinepottenCreateNestedOneWithoutApplicationInput } from "../inputs/OnlinepottenCreateNestedOneWithoutApplicationInput";
+import { ReceiptCreateNestedOneWithoutApplicationInput } from "../inputs/ReceiptCreateNestedOneWithoutApplicationInput";
 import { UserCreateNestedOneWithoutApplicationsInput } from "../inputs/UserCreateNestedOneWithoutApplicationsInput";
 
 @TypeGraphQL.InputType("ApplicationCreateWithoutApprovedByInput", {
@@ -22,7 +25,7 @@ export class ApplicationCreateWithoutApprovedByInput {
   @TypeGraphQL.Field(_type => String, {
     nullable: false
   })
-  full_name!: string;
+  fullname!: string;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: false
@@ -52,6 +55,11 @@ export class ApplicationCreateWithoutApprovedByInput {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
+  responsible_committee?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
   comments?: string | undefined;
 
   @TypeGraphQL.Field(_type => String, {
@@ -63,4 +71,19 @@ export class ApplicationCreateWithoutApprovedByInput {
     nullable: true
   })
   error_fields?: ApplicationCreateerror_fieldsInput | undefined;
+
+  @TypeGraphQL.Field(_type => ReceiptCreateNestedOneWithoutApplicationInput, {
+    nullable: true
+  })
+  Receipt?: ReceiptCreateNestedOneWithoutApplicationInput | undefined;
+
+  @TypeGraphQL.Field(_type => OnlinepottenCreateNestedOneWithoutApplicationInput, {
+    nullable: true
+  })
+  Onlinepotten?: OnlinepottenCreateNestedOneWithoutApplicationInput | undefined;
+
+  @TypeGraphQL.Field(_type => InvoiceCreateNestedOneWithoutApplicationInput, {
+    nullable: true
+  })
+  Invoice?: InvoiceCreateNestedOneWithoutApplicationInput | undefined;
 }

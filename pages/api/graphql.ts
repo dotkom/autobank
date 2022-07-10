@@ -39,14 +39,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const session = await getSession({ req })
   await cors(req, res)
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
       resolvers,
     }),
-    context: () => ({ prisma, user: session.user }),
+    context: () => ({ prisma }),
   })
 
   await apolloServer.start()

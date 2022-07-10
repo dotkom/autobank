@@ -35,7 +35,7 @@ export class OnlinepottenScalarWhereWithAggregatesInput {
   @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
     nullable: true
   })
-  occation?: StringWithAggregatesFilter | undefined;
+  occasion?: StringWithAggregatesFilter | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter, {
     nullable: true
@@ -66,4 +66,9 @@ export class OnlinepottenScalarWhereWithAggregatesInput {
     nullable: true
   })
   recipt_id?: IntNullableWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
+    nullable: true
+  })
+  applicationId?: StringWithAggregatesFilter | undefined;
 }

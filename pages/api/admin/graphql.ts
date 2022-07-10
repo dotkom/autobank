@@ -39,15 +39,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const session = await getSession({ req })
   await cors(req, res)
-  if (!session.user.admin) res.status(401).json('you must be admin')
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
       resolvers,
     }),
-    context: () => ({ prisma, user: session.user }),
+    context: () => ({ prisma }),
   })
 
   await apolloServer.start()

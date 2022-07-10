@@ -35,5 +35,5 @@ export class FindFirstInvoiceArgs {
   @TypeGraphQL.Field(_type => [InvoiceScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "orgnr" | "occasion" | "method" | "po_nr" | "duedays"> | undefined;
+  distinct?: Array<"id" | "orgnr" | "occasion" | "method" | "po_nr" | "duedays" | "applicationId"> | undefined;
 }

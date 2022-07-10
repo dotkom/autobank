@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ApplicationUpdateOneRequiredWithoutInvoiceInput } from "../inputs/ApplicationUpdateOneRequiredWithoutInvoiceInput";
 import { IntFieldUpdateOperationsInput } from "../inputs/IntFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
@@ -39,4 +40,9 @@ export class InvoiceUpdateInput {
     nullable: true
   })
   duedays?: IntFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => ApplicationUpdateOneRequiredWithoutInvoiceInput, {
+    nullable: true
+  })
+  application?: ApplicationUpdateOneRequiredWithoutInvoiceInput | undefined;
 }

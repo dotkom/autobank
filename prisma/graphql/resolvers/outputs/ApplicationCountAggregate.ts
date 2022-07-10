@@ -20,7 +20,7 @@ export class ApplicationCountAggregate {
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
-  full_name!: number;
+  fullname!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
@@ -51,6 +51,11 @@ export class ApplicationCountAggregate {
     nullable: false
   })
   status!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  responsible_committee!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false

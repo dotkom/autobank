@@ -27,9 +27,7 @@ export const Item = ({
   return (
     <motion.li className="mt-10 md:mt-0 md:ml-6">
       {button ? (
-        <Link href={link}>
-          <ButtonLink>{text}</ButtonLink>
-        </Link>
+        <ButtonLink href={link}>{text}</ButtonLink>
       ) : (
         <Link href={link}>
           <a>{text}</a>
@@ -60,8 +58,8 @@ export const ItemList = ({
     >
       <Item link={'/fondet'} text={'Fondet'} />
       <Item link={'/onlinepotten'} text={'Onlinepotten'} />
-      <Item link={'/kvitteringer'} text={'Kvitteringer'} />
-      <Item link={'/bedrift'} text={'Bedrift'} />
+      <Item link={'/kvittering'} text={'Kvitteringer'} />
+      <Item link={'/faktura'} text={'Faktura'} />
       <Item link={'/faq'} text={'FAQ'} />
       {status == 'authenticated' && session.user.role != 'USER' ? (
         <Item link={'/admin'} text={'Dashboard'} />

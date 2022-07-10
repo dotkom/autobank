@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ApplicationOrderByWithRelationInput } from "../inputs/ApplicationOrderByWithRelationInput";
 import { SortOrder } from "../../enums/SortOrder";
 
 @TypeGraphQL.InputType("OnlinepottenOrderByWithRelationInput", {
@@ -16,7 +17,7 @@ export class OnlinepottenOrderByWithRelationInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  occation?: "asc" | "desc" | undefined;
+  occasion?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
@@ -47,4 +48,14 @@ export class OnlinepottenOrderByWithRelationInput {
     nullable: true
   })
   recipt_id?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => ApplicationOrderByWithRelationInput, {
+    nullable: true
+  })
+  application?: ApplicationOrderByWithRelationInput | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  applicationId?: "asc" | "desc" | undefined;
 }

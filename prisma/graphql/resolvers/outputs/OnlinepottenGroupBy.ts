@@ -20,7 +20,7 @@ export class OnlinepottenGroupBy {
   @TypeGraphQL.Field(_type => String, {
     nullable: false
   })
-  occation!: string;
+  occasion!: string;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
@@ -51,6 +51,11 @@ export class OnlinepottenGroupBy {
     nullable: true
   })
   recipt_id!: number | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  applicationId!: string;
 
   @TypeGraphQL.Field(_type => OnlinepottenCountAggregate, {
     nullable: true

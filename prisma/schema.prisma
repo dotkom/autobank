@@ -75,50 +75,65 @@ model VerificationToken {
 }
 
 model Application {
-  id           String    @id @default(cuid())
-  user         User?     @relation(fields: [userId], references: [id], name: "owner")
-  userId       String?
-  full_name    String
-  email        String
-  created_at   DateTime  @default(now())
-  approved_at  DateTime?
-  approvedBy   User?     @relation(fields: [approvedById], references: [id], name: "approved_by")
-  approvedById String?
-  last_updated DateTime  @default(now())
-  status       String    @default("ikke sendt")
-  comments     String?
-  error        String?
-  error_fields String[]
+  id                    String    @id @default(cuid())
+  user                  User?     @relation(fields: [userId], references: [id], name: "owner")
+  userId                String?
+  fullname              String
+  email                 String
+  created_at            DateTime  @default(now())
+  approved_at           DateTime?
+  approvedBy            User?     @relation(fields: [approvedById], references: [id], name: "approved_by")
+  approvedById          String?
+  last_updated          DateTime  @default(now())
+  status                String    @default("ikke sendt")
+  responsible_committee String    @default("Unkown")
+  comments              String?
+  error                 String?
+  error_fields          String[]
 
+  Receipt      Receipt?
+  Onlinepotten Onlinepotten?
+  Invoice      Invoice?
 }
 
-model Recipt {
-  id            String    @id @default(cuid())
-  reimbursement Boolean
-  account_nr    Int?
+enum receiptType {
+  card
+  deposit
+}
+
+model Receipt {
+  id            String      @id @default(cuid())
+  type          receiptType
+  account       String?
   card          String?
   paid_at       DateTime?
   amount        Int
   occasion      String
-  appendix      Bytes
+  appendix      String[]
+  application   Application @relation(fields: [applicationId], references: [id])
+  applicationId String      @unique
 }
 
 model Onlinepotten {
-  id             String   @id @default(cuid())
-  occation       String
+  id             String      @id @default(cuid())
+  occasion       String
   planned_date   DateTime
   hours          Int
   description    String
   participants   String[]
-  payment_method String   @default("kvittering")
+  payment_method String      @default("kvittering")
   recipt_id      Int?
+  application    Application @relation(fields: [applicationId], references: [id])
+  applicationId  String      @unique
 }
 
 model Invoice {
-  id       String  @id @default(cuid())
-  orgnr    String
-  occasion String
-  method   String  @default("mail")
-  po_nr    String?
-  duedays  Int     @default(30)
+  id            String      @id @default(cuid())
+  orgnr         String
+  occasion      String
+  method        String      @default("mail")
+  po_nr         String?
+  duedays       Int         @default(30)
+  application   Application @relation(fields: [applicationId], references: [id])
+  applicationId String      @unique
 }

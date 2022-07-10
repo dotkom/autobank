@@ -20,7 +20,7 @@ export class ApplicationMaxAggregate {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  full_name!: string | null;
+  fullname!: string | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true
@@ -51,6 +51,11 @@ export class ApplicationMaxAggregate {
     nullable: true
   })
   status!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  responsible_committee!: string | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

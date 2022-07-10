@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ApplicationOrderByWithRelationInput } from "../inputs/ApplicationOrderByWithRelationInput";
 import { SortOrder } from "../../enums/SortOrder";
 
 @TypeGraphQL.InputType("InvoiceOrderByWithRelationInput", {
@@ -37,4 +38,14 @@ export class InvoiceOrderByWithRelationInput {
     nullable: true
   })
   duedays?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => ApplicationOrderByWithRelationInput, {
+    nullable: true
+  })
+  application?: ApplicationOrderByWithRelationInput | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  applicationId?: "asc" | "desc" | undefined;
 }

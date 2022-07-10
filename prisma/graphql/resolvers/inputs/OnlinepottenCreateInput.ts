@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ApplicationCreateNestedOneWithoutOnlinepottenInput } from "../inputs/ApplicationCreateNestedOneWithoutOnlinepottenInput";
 import { OnlinepottenCreateparticipantsInput } from "../inputs/OnlinepottenCreateparticipantsInput";
 
 @TypeGraphQL.InputType("OnlinepottenCreateInput", {
@@ -16,7 +17,7 @@ export class OnlinepottenCreateInput {
   @TypeGraphQL.Field(_type => String, {
     nullable: false
   })
-  occation!: string;
+  occasion!: string;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
@@ -47,4 +48,9 @@ export class OnlinepottenCreateInput {
     nullable: true
   })
   recipt_id?: number | undefined;
+
+  @TypeGraphQL.Field(_type => ApplicationCreateNestedOneWithoutOnlinepottenInput, {
+    nullable: false
+  })
+  application!: ApplicationCreateNestedOneWithoutOnlinepottenInput;
 }
