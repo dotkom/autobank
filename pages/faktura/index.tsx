@@ -1,26 +1,16 @@
+import CompanyForm from 'components/sections/forms/CompanyForm'
+import CompanyUserForm from 'components/sections/forms/CompanyUserForm'
+import InvoiceForm from 'components/sections/forms/InvoiceForm'
 import { useState } from 'react'
-import CompanyInformation from '../../components/forms/invoice/sections/CompanyInformation'
+import { InvoiceFormData } from 'types/forms'
 import Public from '../../components/Layout/Public'
-import ContactPerson from '../../components/forms/invoice/sections/ContactPerson'
-import InvoiceInformation from '../../components/forms/invoice/sections/InvoiceInformation'
-import {
-  ICompanyInformation,
-  IContactPerson,
-  IInvoiceInformation,
-} from '../../components/forms/invoice/state'
 
-const initCompanyData: ICompanyInformation = {
+const initData: InvoiceFormData = {
   organizationNumber: '',
   companyName: '',
-}
-
-const initContactData: IContactPerson = {
   name: '',
   email: '',
   phone: '',
-}
-
-const initInvoiceData: IInvoiceInformation = {
   occasion: 'default',
   delivery: 'default',
   isDueDate: false,
@@ -31,25 +21,11 @@ const initInvoiceData: IInvoiceInformation = {
 
 export default function InviceForm() {
   const [step, setStep] = useState<0 | 1 | 2>(0) //TODO: Add "enum" for steps, remove use of magic numbers.
-  const [companyData, setCompanyData] =
-    useState<ICompanyInformation>(initCompanyData)
-  const [contactData, setContactData] =
-    useState<IContactPerson>(initContactData)
-  const [invoiceData, setInvoiceData] =
-    useState<IInvoiceInformation>(initInvoiceData)
+  const [formData, setFormData] = useState<InvoiceFormData>(initData)
 
-  const submitInvoiceForm = (invoiceData: IInvoiceInformation) => {
-    const formData = {
-      ...companyData,
-      ...contactData,
-      ...invoiceData,
-    }
+  const submitForm = () => {
     console.log('Invoice form submitted')
     console.log(formData)
-  }
-
-  const changeStep = (delta) => {
-    setStep(step + delta)
   }
 
   return (
@@ -57,25 +33,24 @@ export default function InviceForm() {
       <div className="max-w-lg w-full text-center text-online-blue-500">
         <h1 className="text-4xl">Fakturainformasjon</h1>
         {step === 0 && (
-          <CompanyInformation
-            changeStep={changeStep}
-            initialData={companyData}
-            setFormData={setCompanyData}
+          <CompanyForm
+            data={formData}
+            setData={setFormData}
+            navigation={{ setStep, step, numberOfSteps: 3, submitForm }}
           />
         )}
         {step === 1 && (
-          <ContactPerson
-            changeStep={changeStep}
-            initialData={contactData}
-            setFormData={setContactData}
+          <CompanyUserForm
+            data={formData}
+            setData={setFormData}
+            navigation={{ setStep, step, numberOfSteps: 3, submitForm }}
           />
         )}
         {step === 2 && (
-          <InvoiceInformation
-            changeStep={changeStep}
-            initialData={invoiceData}
-            setFormData={setInvoiceData}
-            submitInvoiceForm={submitInvoiceForm}
+          <InvoiceForm
+            data={formData}
+            setData={setFormData}
+            navigation={{ setStep, step, numberOfSteps: 3, submitForm }}
           />
         )}
       </div>

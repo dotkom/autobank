@@ -10,7 +10,7 @@ import { useState } from 'react'
 import Button from 'components/html/Button'
 import Online, { OnlineBankom } from 'components/icons/Online'
 import Public from 'components/Layout/Public'
-import Input from 'components/forms/Input'
+import Input from 'components/html/form/Input'
 
 const errors = {
   Signin: 'Try signing with a different account.',
