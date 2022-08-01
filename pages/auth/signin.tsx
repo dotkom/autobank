@@ -78,7 +78,7 @@ export default function SignIn({
                     onSubmit={sendLoginVerification}
                     className={`flex flex-col items-center`}
                   >
-                    <h2 className="mx-auto text-lg mb-2">Log inn med mail</h2>
+                    <h2 className="mx-auto text-lg mb-2">Logg inn med mail</h2>
                     <Input
                       name="email"
                       type="email"
