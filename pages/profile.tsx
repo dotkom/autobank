@@ -4,12 +4,14 @@ import Button from '../components/elements/Button'
 import Layout from '../components/Layout'
 
 import ProfileForm from './profile/ProfileForm'
+import ProfileMenu from './profile/ProfileMenu'
 import ReceiptList from './profile/ReceiptList'
 
 const Profile = () => {
   const { data: session, status } = useSession()
   return (
     <Layout>
+      <ProfileMenu />
       <ProfileForm />
       <ReceiptList />
       {/* 

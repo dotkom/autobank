@@ -133,6 +133,6 @@ const IndexPage = () => (
       </section>
     </div>
   </Layout>
-);
+)
 
-export default IndexPage;
+export default IndexPage
