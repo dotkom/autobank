@@ -4,14 +4,14 @@ import Button from '../components/elements/Button'
 import Layout from '../components/Layout'
 
 import ProfileForm from './profile/ProfileForm'
+import ReceiptList from './profile/ReceiptList'
 
 const Profile = () => {
   const { data: session, status } = useSession()
   return (
     <Layout>
-      <h2> Profile page</h2>
       <ProfileForm />
-
+      <ReceiptList />
       {/* 
          <div>
         {JSON.stringify(session)}, {status}
