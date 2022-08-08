@@ -4,5 +4,7 @@
   },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "css.lint.unknownAtRules": "ignore"
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  }
 }

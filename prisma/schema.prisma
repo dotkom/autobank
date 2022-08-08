@@ -7,6 +7,11 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator typegraphql {
+  provider = "typegraphql-prisma"
+  output   = "graphql"
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String  @map("user_id")
@@ -37,14 +42,25 @@ model Session {
   @@map("sessions")
 }
 
+enum role {
+  USER
+  ADMIN
+  SUPERADMIN
+}
+
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime? @map("email_verified")
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
+  id                   String        @id @default(cuid())
+  name                 String?
+  email                String?       @unique
+  emailVerified        DateTime?     @map("email_verified")
+  image                String?
+  role                 role          @default(USER)
+  /// @TypeGraphQL.omit(output: true)
+  accounts             Account[]
+  /// @TypeGraphQL.omit(output: true)
+  sessions             Session[]
+  applications         Application[] @relation(name: "owner")
+  approvedApplications Application[] @relation(name: "approved_by")
 
   @@map("users")
 }
@@ -56,4 +72,68 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map("verificationtokens")
+}
+
+model Application {
+  id                    String    @id @default(cuid())
+  user                  User?     @relation(fields: [userId], references: [id], name: "owner")
+  userId                String?
+  fullname              String
+  email                 String
+  created_at            DateTime  @default(now())
+  approved_at           DateTime?
+  approvedBy            User?     @relation(fields: [approvedById], references: [id], name: "approved_by")
+  approvedById          String?
+  last_updated          DateTime  @default(now())
+  status                String    @default("ikke sendt")
+  responsible_committee String    @default("Unkown")
+  comments              String?
+  error                 String?
+  error_fields          String[]
+
+  Receipt      Receipt?
+  Onlinepotten Onlinepotten?
+  Invoice      Invoice?
+}
+
+enum receiptType {
+  card
+  deposit
+}
+
+model Receipt {
+  id            String      @id @default(cuid())
+  type          receiptType
+  account       String?
+  card          String?
+  paid_at       DateTime?
+  amount        Int
+  occasion      String
+  appendix      String[]
+  application   Application @relation(fields: [applicationId], references: [id])
+  applicationId String      @unique
+}
+
+model Onlinepotten {
+  id             String      @id @default(cuid())
+  occasion       String
+  planned_date   DateTime
+  hours          Int
+  description    String
+  participants   String[]
+  payment_method String      @default("kvittering")
+  recipt_id      Int?
+  application    Application @relation(fields: [applicationId], references: [id])
+  applicationId  String      @unique
+}
+
+model Invoice {
+  id            String      @id @default(cuid())
+  orgnr         String
+  occasion      String
+  method        String      @default("mail")
+  po_nr         String?
+  duedays       Int         @default(30)
+  application   Application @relation(fields: [applicationId], references: [id])
+  applicationId String      @unique
 }

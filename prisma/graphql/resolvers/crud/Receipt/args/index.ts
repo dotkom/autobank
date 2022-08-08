@@ -1,0 +1,12 @@
+export { AggregateReceiptArgs } from "./AggregateReceiptArgs";
+export { CreateManyReceiptArgs } from "./CreateManyReceiptArgs";
+export { CreateReceiptArgs } from "./CreateReceiptArgs";
+export { DeleteManyReceiptArgs } from "./DeleteManyReceiptArgs";
+export { DeleteReceiptArgs } from "./DeleteReceiptArgs";
+export { FindFirstReceiptArgs } from "./FindFirstReceiptArgs";
+export { FindManyReceiptArgs } from "./FindManyReceiptArgs";
+export { FindUniqueReceiptArgs } from "./FindUniqueReceiptArgs";
+export { GroupByReceiptArgs } from "./GroupByReceiptArgs";
+export { UpdateManyReceiptArgs } from "./UpdateManyReceiptArgs";
+export { UpdateReceiptArgs } from "./UpdateReceiptArgs";
+export { UpsertReceiptArgs } from "./UpsertReceiptArgs";

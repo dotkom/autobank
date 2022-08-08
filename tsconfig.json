@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "target": "es2018",
+    "lib": ["dom", "dom.iterable", "esnext", "esnext.asynciterable"],
+    "baseUrl": ".",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -16,15 +15,23 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "paths": {
+      // "$lib": ["./lib"],
+      // "$lib/*": ["./lib/*"],
+      // "$components": ["./components"],
+      // "$components/*": ["./components/*"],
+      // "$prisma": ["./prisma"],
+      // "$prisma/*": ["./prisma/*"]
+    },
     "jsx": "preserve",
     "incremental": true
   },
   "include": [
     "next-env.d.ts",
+    "types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "next.config.js"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

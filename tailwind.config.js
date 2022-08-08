@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -5,6 +7,11 @@ module.exports = {
   ],
   darkMode: `media`,
   theme: {
+    screens: {
+      '2xs': '390px',
+      xs: '480px',
+      ...defaultTheme.screens,
+    },
     extend: {
       fontFamily: {
         montserrat: ['Montserrat'],
