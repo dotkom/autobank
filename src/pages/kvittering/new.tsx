@@ -5,11 +5,12 @@ import { ReceiptFormData } from 'src/lib/types/forms'
 import UserForm from 'src/components/sections/forms/UserForm'
 import ExtraForm from 'src/components/sections/forms/ExtraForm'
 import ReciptForm from 'src/components/sections/forms/ReciptForm'
-import { CREATE_RECEIPT } from 'src/lib/qraphql'
+
 import FullPageLoader from 'src/components/sections/FullPageLoader'
-import { useMutation } from '@apollo/client'
+
 import Button from 'src/components/html/Button'
-import { useSession } from 'next-auth/react'
+import { trpc } from '~/utils/trpc'
+import { useRouter } from 'next/router'
 
 const initialData: ReceiptFormData = {
   fullname: '',
@@ -20,25 +21,39 @@ const initialData: ReceiptFormData = {
   type: 'deposit',
   account: '',
   card: 'unused',
-  responsible_unit: 'default',
+  responsible_committee: 'default',
   comments: '',
   appendix: [],
 }
 
 export default function Recipt() {
+  const router = useRouter()
   const [step, setStep] = useState<number>(0)
   const [formData, setFormData] = useState<ReceiptFormData>(initialData)
-  const [createReceipt, { loading, error }] = useMutation(CREATE_RECEIPT)
+  const createReceipt = trpc.useMutation('application.receipt.add', {
+    onSuccess: () => {
+      router.push('/kvittering/success')
+    },
+  })
 
   const submitForm = async () => {
-    const data: ReceiptCreateInput = {
-      type: formData.type,
+    const data: any = {
       amount: formData.amount,
       occasion: formData.occasion,
+      type: formData.type,
+      appendix: formData.appendix,
       application: {
         create: {
           fullname: formData.fullname,
           email: formData.email,
+          user: formData.userid
+            ? {
+                connect: {
+                  id: formData.userid,
+                },
+              }
+            : null,
+          responsible_committee: formData.responsible_committee,
           comments: formData.comments,
         },
       },
@@ -48,23 +63,20 @@ export default function Recipt() {
     } else {
       data.card = formData.card
     }
-    if (formData.userid) {
-      data.application.create.user = { connect: { id: formData.userid } }
-    }
 
-    await createReceipt({ variables: { data } })
+    await createReceipt.mutate(data)
   }
 
-  if (loading)
+  if (createReceipt.isLoading)
     return (
       <Public title="Kvittering">
         <FullPageLoader />
       </Public>
     )
-  if (error)
+  if (createReceipt.error)
     return (
       <Public title="Kvittering">
-        {`Submission error! ${error.message}`}
+        {`Submission error! ${createReceipt.error.message}`}
         <Button onClick={() => submitForm()}>Send på nytt</Button>
       </Public>
     )

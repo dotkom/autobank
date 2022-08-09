@@ -69,6 +69,12 @@ model VerificationToken {
   @@map("verificationtokens")
 }
 
+enum statusType {
+  pending
+  approved
+  rejected
+}
+
 model Application {
   id                    String    @id @default(cuid())
   user                  User?     @relation(fields: [userId], references: [id], name: "owner")
@@ -79,7 +85,7 @@ model Application {
   approved_at           DateTime?
   approvedBy            User?     @relation(fields: [approvedById], references: [id], name: "approved_by")
   approvedById          String?
-  last_updated          DateTime  @default(now())
+  last_updated          DateTime  @updatedAt
   status                String    @default("ikke sendt")
   responsible_committee String    @default("Unkown")
   comments              String?

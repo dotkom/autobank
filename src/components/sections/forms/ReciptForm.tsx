@@ -85,7 +85,7 @@ const ReciptForm = ({
         </div>
         <GroupDropdown
           register={register}
-          errors={errors.responsible_unit?.message}
+          errors={errors.responsible_committee?.message}
         />
       </div>
       <Input

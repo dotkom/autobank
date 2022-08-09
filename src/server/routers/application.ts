@@ -1,12 +1,9 @@
-/**
- *
- * This is an example router, you can delete this file and then update `../pages/api/trpc/[trpc].tsx`
- */
 import { Prisma } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
 import { createRouter } from '~/server/createRouter'
 import { prisma } from '~/server/prisma'
+import { receiptRouter } from './receipt'
 
 /**
  * Default selector for application.
@@ -15,21 +12,23 @@ import { prisma } from '~/server/prisma'
  */
 const defaultapplicationSelect = Prisma.validator<Prisma.ApplicationSelect>()({
   id: true,
+  userId: true,
   fullname: true,
   email: true,
+  created_at: true,
+  approved_at: true,
   last_updated: true,
   status: true,
+  responsible_committee: true,
   comments: true,
+  error: true,
+  error_fields: true,
 })
 
 export const applicationRouter = createRouter()
+  .merge('receipt.', receiptRouter)
   .query('all', {
     async resolve() {
-      /**
-       * For pagination you can have a look at this docs site
-       * @link https://trpc.io/docs/useInfiniteQuery
-       */
-
       return prisma.application.findMany({
         select: defaultapplicationSelect,
       })

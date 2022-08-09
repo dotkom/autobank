@@ -18,7 +18,7 @@ const GroupDropdown = ({ register, errors }: props) => {
           return { value: group.name_long, label: group.name_long }
         })} //TODO: FIx this ugly thing
         label="Ansvarlig enhet"
-        name="responsible_unit"
+        name="responsible_committee"
         register={register}
         errors={errors}
       />

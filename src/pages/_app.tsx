@@ -1,5 +1,4 @@
 import React from 'react'
-import 'reflect-metadata'
 import 'styles/index.css'
 import { SessionProvider } from 'next-auth/react'
 import { withTRPC } from '@trpc/next'

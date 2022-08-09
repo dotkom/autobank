@@ -38,7 +38,7 @@ export const ReceiptSchema = Yup.object().shape({
       (card) =>
         card === 'unused' || (card !== null && CARD_DETAIL_REGEX.test(card))
     ),
-  responsible_unit: Yup.string().test(
+  responsible_committee: Yup.string().test(
     'Group chosen test',
     'Du må velge en komité eller gruppe',
     (unit) => unit !== 'default'

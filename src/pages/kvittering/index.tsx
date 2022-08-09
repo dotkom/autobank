@@ -1,8 +1,8 @@
 import React from 'react'
 import Public from 'src/components/Layout/Public'
 import Image from 'next/image'
-import receiptImage from 'images/undraw/undraw_receipt.svg'
-import receipt from 'images/receipt.svg'
+import receiptImage from '~/assets/images/undraw/undraw_receipt.svg'
+import receipt from '~/assets/images/receipt.svg'
 import { ButtonLink } from 'src/components/html/Button'
 
 const Recipt = () => {

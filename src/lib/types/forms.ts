@@ -13,7 +13,7 @@ export type ReceiptData = {
   type: 'card' | 'deposit'
   account: string
   card: string
-  responsible_unit: string
+  responsible_committee: string
 }
 export type ExtraData = {
   comments: string
