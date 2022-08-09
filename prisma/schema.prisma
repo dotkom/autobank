@@ -7,11 +7,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator typegraphql {
-  provider = "typegraphql-prisma"
-  output   = "graphql"
-}
-
 model Account {
   id                String  @id @default(cuid())
   userId            String  @map("user_id")
@@ -110,7 +105,7 @@ model Receipt {
   amount        Int
   occasion      String
   appendix      String[]
-  application   Application @relation(fields: [applicationId], references: [id])
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
   applicationId String      @unique
 }
 
@@ -123,7 +118,7 @@ model Onlinepotten {
   participants   String[]
   payment_method String      @default("kvittering")
   recipt_id      Int?
-  application    Application @relation(fields: [applicationId], references: [id])
+  application    Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
   applicationId  String      @unique
 }
 
@@ -134,6 +129,6 @@ model Invoice {
   method        String      @default("mail")
   po_nr         String?
   duedays       Int         @default(30)
-  application   Application @relation(fields: [applicationId], references: [id])
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
   applicationId String      @unique
 }
