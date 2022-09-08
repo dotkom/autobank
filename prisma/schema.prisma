@@ -44,18 +44,18 @@ enum role {
 }
 
 model User {
-  id                   String        @id @default(cuid())
-  name                 String?
-  email                String?       @unique
-  emailVerified        DateTime?     @map("email_verified")
-  image                String?
-  role                 role          @default(USER)
+  id                  String        @id @default(cuid())
+  name                String?
+  email               String?       @unique
+  emailVerified       DateTime?     @map("email_verified")
+  image               String?
+  role                role          @default(USER)
   /// @TypeGraphQL.omit(output: true)
-  accounts             Account[]
+  accounts            Account[]
   /// @TypeGraphQL.omit(output: true)
-  sessions             Session[]
-  applications         Application[] @relation(name: "owner")
-  approvedApplications Application[] @relation(name: "approved_by")
+  sessions            Session[]
+  applications        Application[] @relation(name: "owner")
+  updatedApplications Application[] @relation(name: "updated_by")
 
   @@map("users")
 }
@@ -76,18 +76,18 @@ enum statusType {
 }
 
 model Application {
-  id                    String    @id @default(cuid())
-  user                  User?     @relation(fields: [userId], references: [id], name: "owner")
+  id                    String     @id @default(cuid())
+  user                  User?      @relation(fields: [userId], references: [id], name: "owner")
   userId                String?
   fullname              String
   email                 String
-  created_at            DateTime  @default(now())
+  created_at            DateTime   @default(now())
   approved_at           DateTime?
-  approvedBy            User?     @relation(fields: [approvedById], references: [id], name: "approved_by")
-  approvedById          String?
-  last_updated          DateTime  @updatedAt
-  status                String    @default("ikke sendt")
-  responsible_committee String    @default("Unkown")
+  updatedBy             User?      @relation(fields: [updatedById], references: [id], name: "updated_by")
+  updatedById           String?
+  last_updated          DateTime   @updatedAt
+  status                statusType @default(pending)
+  responsible_committee String     @default("Unkown")
   comments              String?
   error                 String?
   error_fields          String[]

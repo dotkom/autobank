@@ -59,6 +59,7 @@ export const receiptRouter = createRouter()
       }),
     }),
     async resolve({ input }) {
+      // if user exists connect user
       const receipt = await prisma.receipt.create({
         data: input,
         select: defaultReceiptSelect,
@@ -66,19 +67,7 @@ export const receiptRouter = createRouter()
       return receipt
     },
   })
-  // read
-  .query('all', {
-    async resolve() {
-      /**
-       * For pagination you can have a look at this docs site
-       * @link https://trpc.io/docs/useInfiniteQuery
-       */
 
-      return prisma.receipt.findMany({
-        select: defaultReceiptSelect,
-      })
-    },
-  })
   .query('byId', {
     input: z.object({
       id: z.string(),
@@ -99,6 +88,94 @@ export const receiptRouter = createRouter()
     },
   })
 
+  .mutation('useredit', {
+    input: z.object({
+      id: z.string().uuid(),
+      data: z.object({
+        amount: z.number().min(0),
+        occasion: z.string(),
+        type: z.enum(['card', 'deposit']),
+        account: z.string().optional(),
+        card: z.string().optional(),
+        responsible_committee: z.string(),
+        application: z.object({
+          update: z.object({
+            user: z
+              .object({
+                connect: z.object({
+                  id: z.string(),
+                }),
+              })
+              .optional(),
+            appendix: z.array(z.string()),
+            fullname: z.string(),
+            email: z.string(),
+          }),
+        }),
+      }),
+    }),
+    async resolve({ input }) {
+      const { id, data } = input
+      const receipt = await prisma.receipt.update({
+        where: { id },
+        data,
+        select: defaultReceiptSelect,
+      })
+      // on sucess notify email with update
+
+      return receipt
+    },
+  })
+  // delete
+  .mutation('delete', {
+    input: z.object({
+      id: z.string(),
+    }),
+    async resolve({ input, ctx }) {
+      const { id } = input
+      const receipt = await prisma.receipt.findUnique({
+        where: { id },
+        select: defaultReceiptSelect,
+      })
+      if (!receipt) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: `No receipt with id '${id}'`,
+        })
+      }
+      if (
+        receipt.application.userId &&
+        ctx.session &&
+        ctx.session.user &&
+        receipt.application.userId !== ctx.session.user.id
+      )
+        await prisma.receipt.delete({ where: { id } })
+      // on sucess notify email with update
+      return {
+        id,
+      }
+    },
+  })
+  .middleware(async ({ ctx, next }) => {
+    if (!ctx.session || ctx.session.user!.role === 'USER') {
+      throw new TRPCError({ code: 'UNAUTHORIZED' })
+    }
+
+    return next()
+  })
+  // read
+  .query('all', {
+    async resolve() {
+      /**
+       * For pagination you can have a look at this docs site
+       * @link https://trpc.io/docs/useInfiniteQuery
+       */
+
+      return prisma.receipt.findMany({
+        select: defaultReceiptSelect,
+      })
+    },
+  })
   .mutation('edit', {
     input: z.object({
       id: z.string().uuid(),
@@ -109,10 +186,6 @@ export const receiptRouter = createRouter()
         account: z.string().optional(),
         card: z.string().optional(),
         responsible_committee: z.string(),
-        comments: z.string(),
-        appendix: z.array(z.string()),
-        fullname: z.string(),
-        email: z.string(),
         application: z.object({
           update: z.object({
             user: z
@@ -122,6 +195,10 @@ export const receiptRouter = createRouter()
                 }),
               })
               .optional(),
+            comments: z.string(),
+            appendix: z.array(z.string()),
+            fullname: z.string(),
+            email: z.string(),
             status: z.enum(['pending', 'approved', 'rejected']),
             error: z.string().optional(),
             error_fields: z.array(z.string()).optional(),
@@ -136,35 +213,18 @@ export const receiptRouter = createRouter()
         data,
         select: defaultReceiptSelect,
       })
+      // on sucess notify email with update
+
       return receipt
     },
-  })
-  // delete
-  .mutation('delete', {
-    input: z.object({
-      id: z.string(),
-    }),
-    async resolve({ input }) {
-      const { id } = input
-      await prisma.receipt.delete({ where: { id } })
-      return {
-        id,
-      }
-    },
-  })
-  .middleware(async ({ ctx, next }) => {
-    // Any queries or mutations after this middleware will
-    // raise an error unless there is a current session
-    if (!ctx.session) {
-      throw new TRPCError({ code: 'UNAUTHORIZED' })
-    }
-    return next()
   })
   .mutation('approve', {
     input: z.object({
       id: z.string(),
     }),
     async resolve({ input, ctx }) {
+      if (!ctx.session || !ctx.session.user)
+        throw new TRPCError({ code: 'UNAUTHORIZED' })
       const { id } = input
       await prisma.receipt.update({
         where: { id },
@@ -172,13 +232,14 @@ export const receiptRouter = createRouter()
           application: {
             update: {
               status: 'approved',
-              approvedBy: { connect: ctx.session.user.id },
-              approvedById: ctx.session.user.id,
+              updatedBy: { connect: { id: ctx.session.user.id } },
             },
           },
         },
         select: defaultReceiptSelect,
       })
+      // on sucess notify email with update
+
       return {
         id,
       }
@@ -189,6 +250,8 @@ export const receiptRouter = createRouter()
       id: z.string(),
     }),
     async resolve({ input, ctx }) {
+      if (!ctx.session || !ctx.session.user)
+        throw new TRPCError({ code: 'UNAUTHORIZED' })
       const { id } = input
       await prisma.receipt.update({
         where: { id },
@@ -196,11 +259,14 @@ export const receiptRouter = createRouter()
           application: {
             update: {
               status: 'rejected',
+              updatedBy: { connect: { id: ctx.session.user.id } },
             },
           },
         },
         select: defaultReceiptSelect,
       })
+      // on sucess notify email with update
+
       return {
         id,
       }
