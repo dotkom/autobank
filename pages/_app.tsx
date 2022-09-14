@@ -3,6 +3,7 @@ import 'reflect-metadata'
 import 'styles/index.css'
 import { SessionProvider, useSession } from 'next-auth/react'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
+import Layout from 'components/Layout/Public/'
 
 export default function App({
   Component,
@@ -11,7 +12,12 @@ export default function App({
   return (
     <SessionProvider session={session}>
       <GraphqlProvider>
-        <Component {...pageProps} />
+        <Layout
+          title="Online Autobank"
+          className="flex flex-col m-10 divide-y-2 p-5"
+        >
+          <Component {...pageProps} />
+        </Layout>
       </GraphqlProvider>
     </SessionProvider>
   )

@@ -8,14 +8,14 @@ function ReceiptList() {
         {' '}
         Kvitteringer{' '}
       </p>
-      <div className="grid grid-cols-4 gap-4 text-xl font-bold py-5 text-center text-online-blue-500">
+      <div className="grid grid-cols-4 gap-4 text-md md:text-xl font-bold py-5 text-center text-online-blue-500">
         <div>Kvitteringstittel</div>
         <div>Dato opprettet</div>
         <div>Beløp</div>
         <div>Kvitteringsstatus</div>
       </div>
       <div
-        className="grid grid-cols-1 gap-4 text-lg text-center divide-y-2 divide-blue-200
+        className="grid grid-cols-1 gap-4  text-center divide-y-2 divide-blue-200
       "
       >
         <Receipt

@@ -7,10 +7,7 @@ import { ButtonLink } from 'components/html/Button'
 
 const Recipt = () => {
   return (
-    <Public
-      title="Online Autobank"
-      className="flex flex-col -mt-10 space-y-20 p-5"
-    >
+    <>
       {/* Greeting / bankbot */}
       <section className="flex">
         <div className=" space-y-2">
@@ -69,7 +66,7 @@ const Recipt = () => {
           <Image src={receipt} alt="example recipt" />
         </div>
       </section>
-    </Public>
+    </>
   )
 }
 
