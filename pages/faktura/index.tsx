@@ -26,7 +26,7 @@ export default function InviceForm() {
   const submitForm = () => {}
 
   return (
-    <Public title="Fakturainformasjon">
+    <>
       <div className="max-w-lg w-full text-center text-online-blue-500">
         <h1 className="text-4xl">Fakturainformasjon</h1>
         {step === 0 && (
@@ -51,6 +51,6 @@ export default function InviceForm() {
           />
         )}
       </div>
-    </Public>
+    </>
   )
 }
