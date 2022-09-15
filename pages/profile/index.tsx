@@ -1,10 +1,9 @@
 import { signOut, useSession } from 'next-auth/react'
 import React from 'react'
 
-
-import ProfileForm from './profile/ProfileForm'
-import ProfileMenu from './profile/ProfileMenu'
-import ReceiptList from './profile/ReceiptList'
+import ProfileForm from './ProfileForm'
+import ProfileMenu from './ProfileMenu'
+import ReceiptList from './ReceiptList'
 
 const Profile = () => {
   const { data: session, status } = useSession()
@@ -21,7 +20,6 @@ const Profile = () => {
       </Button>
       */}
     </div>
-
   )
 }
 

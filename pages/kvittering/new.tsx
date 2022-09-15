@@ -56,22 +56,17 @@ export default function Recipt() {
     await createReceipt({ variables: { data } })
   }
 
-  if (loading)
-    return (
-      <Public title="Kvittering">
-        <FullPageLoader />
-      </Public>
-    )
+  if (loading) return <FullPageLoader />
   if (error)
     return (
-      <Public title="Kvittering">
+      <>
         {`Submission error! ${error.message}`}
         <Button onClick={() => submitForm()}>Send på nytt</Button>
-      </Public>
+      </>
     )
 
   return (
-    <Public title="Kvittering">
+    <>
       <div className="max-w-lg w-full text-center text-online-blue-500">
         <h1 className="text-4xl">Kvitteringsskjema</h1>
         {step === 0 && (
@@ -97,6 +92,6 @@ export default function Recipt() {
         )}
       </div>
       {JSON.stringify(formData, null, 2)}
-    </Public>
+    </>
   )
 }

@@ -3,7 +3,6 @@ import CompanyUserForm from 'components/sections/forms/CompanyUserForm'
 import InvoiceForm from 'components/sections/forms/InvoiceForm'
 import { useState } from 'react'
 import { InvoiceFormData } from 'types/forms'
-import Public from '../../components/Layout/Public'
 
 const initData: InvoiceFormData = {
   organizationNumber: '',
