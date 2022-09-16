@@ -7654,8 +7654,9 @@ jest-worker@^27.4.5:
     supports-color "^8.0.0"
 
 jose@^4.1.4, jose@^4.3.7:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/jose/-/jose-4.6.0.tgz#f3ff007ddcbce462c091d3d41b7af2e35dec348c"
+  version "4.9.3"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-4.9.3.tgz#890abd3f26725fe0f2aa720bc2f7835702b624db"
+  integrity sha512-f8E/z+T3Q0kA9txzH2DKvH/ds2uggcw0m3vVPSB9HrSkrQ7mojjifvS7aR8cw+lQl2Fcmx9npwaHpM/M3GD8UQ==
 
 js-string-escape@^1.0.1:
   version "1.0.1"
