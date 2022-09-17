@@ -6,11 +6,13 @@ import Soknad from './Soknad'
 const Fondet = () => {
   return (
     <>
-      <section className="w-full grid gap-20">
-        <div className="">
-          <p className="text-3xl mb-10">Onlines fond</p>
-          <div className="grid md:grid-cols-2">
-            <p className="text-xl">
+      <section className=" grid gap-20 mx-4">
+        <div className="  grid md:grid-cols-2 gap-20">
+          <div>
+            <p className="text-3xl mb-10 text-center sm:text-left">
+              Onlines fond
+            </p>
+            <p className="text-lg md:text-xl">
               Hva er onlinefondet? Alle Onlines medlemmer kan søke Onlines fond
               om penger. Søknaden skal være velbegrunnet og ha som hensikt å
               komme flest mulig medlemmer av Online til gode. For at Fondstyre
@@ -22,13 +24,15 @@ const Fondet = () => {
               onlinere til gode Aktivitetsplan Budsjett Søknader sendes til:
               fond@online.ntnu.no
             </p>
-            <Image alt="" src={bilde} />
           </div>
+          <Image alt="" src={bilde} />
         </div>
 
         <div className="">
-          <p className="text-3xl mb-10">SØKNAD OM STØTTE FRA ONLINES FOND</p>
-          <p className="text-lg">
+          <p className="text-2xl md:text-3xl mb-10 text-center">
+            SØKNAD OM STØTTE FRA ONLINES FOND
+          </p>
+          <p className="text-md md:text-lg">
             Alle Onlines medlemmer kan søke Onlines fond om penger. Søknaden
             skal være velbegrunnet og ha som hensikt å komme flest mulig
             medlemmer av Online til gode. For at Fondstyre skal kunne ta en god
@@ -41,8 +45,10 @@ const Fondet = () => {
           </p>
         </div>
 
-        <p className="text-3xl">Godkjente søknader med begrunnelse</p>
-        <div className="grid gap-10 ">
+        <p className="text-2xl md:text-3xl text-center">
+          Godkjente søknader med begrunnelse
+        </p>
+        <div className="grid md:gap-20 bg-blue">
           <Soknad
             tittel="Onlines band, Output"
             tekst="     Den 17. april 2018 fikk Fondstyret en søknad om å innvilge 24 733
