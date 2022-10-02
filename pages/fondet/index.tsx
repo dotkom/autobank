@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import bilde from 'images/undraw/stonks.svg'
 import Soknad from './Soknad'
+import Text from 'components/elements/Typography/Text'
 
 const Fondet = () => {
   return (
@@ -9,10 +10,10 @@ const Fondet = () => {
       <section className=" grid gap-20 mx-4">
         <div className="  grid md:grid-cols-2 gap-20">
           <div>
-            <p className="text-3xl mb-10 text-center sm:text-left">
+            <Text textType="title" className="text-center sm:text-left">
               Onlines fond
-            </p>
-            <p className="text-lg md:text-xl">
+            </Text>
+            <Text textType="body">
               Hva er onlinefondet? Alle Onlines medlemmer kan søke Onlines fond
               om penger. Søknaden skal være velbegrunnet og ha som hensikt å
               komme flest mulig medlemmer av Online til gode. For at Fondstyre
@@ -23,16 +24,16 @@ const Fondet = () => {
               av dere selv Hva midlene skal brukes til Hvordan midlene går
               onlinere til gode Aktivitetsplan Budsjett Søknader sendes til:
               fond@online.ntnu.no
-            </p>
+            </Text>
           </div>
           <Image alt="" src={bilde} />
         </div>
 
         <div className="">
-          <p className="text-2xl md:text-3xl mb-10 text-center">
+          <Text textType="title" className="">
             SØKNAD OM STØTTE FRA ONLINES FOND
-          </p>
-          <p className="text-md md:text-lg">
+          </Text>
+          <Text textType="body">
             Alle Onlines medlemmer kan søke Onlines fond om penger. Søknaden
             skal være velbegrunnet og ha som hensikt å komme flest mulig
             medlemmer av Online til gode. For at Fondstyre skal kunne ta en god
@@ -42,13 +43,13 @@ const Fondet = () => {
             skal være med i søknaden: Beskriv av dere selv Hva midlene skal
             brukes til Hvordan midlene går onlinere til gode Aktivitetsplan
             Budsjett Søknader sendes til: fond@online.ntnu.no
-          </p>
+          </Text>
         </div>
 
-        <p className="text-2xl md:text-3xl text-center">
+        <Text textType="title" className="">
           Godkjente søknader med begrunnelse
-        </p>
-        <div className="grid md:gap-20 bg-blue">
+        </Text>
+        <div className="grid md:gap-10 bg-blue">
           <Soknad
             tittel="Onlines band, Output"
             tekst="     Den 17. april 2018 fikk Fondstyret en søknad om å innvilge 24 733
