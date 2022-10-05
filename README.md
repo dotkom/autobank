@@ -1,5 +1,5 @@
 Hvordan kjøre lokalt (om jeg husker riktig hehe). Send mld i slack om det dukker opp en feilmelding):
-1) Klon repoet (kjør "git clone + " i mappen du ønsker å klone til).
+1) Klon repoet (kjør "git clone https://github.com/dotkom/autobank.git" i mappen du ønsker å klone til).
 1) sørg for å ha node.js installert
 2) kjør npm install --global yarn i terminalen
 3) lag .env.local-fil i root (mappen som heter "autobank") og lim inn tekst fra slack
