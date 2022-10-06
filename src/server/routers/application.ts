@@ -3,6 +3,8 @@ import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
 import { createRouter } from '~/server/createRouter'
 import { prisma } from '~/server/prisma'
+import { invoiceRouter } from './invoice'
+import { onlinepottenRouter } from './onlinepotten'
 import { receiptRouter } from './receipt'
 
 /**
@@ -27,6 +29,8 @@ const defaultapplicationSelect = Prisma.validator<Prisma.ApplicationSelect>()({
 
 export const applicationRouter = createRouter()
   .merge('receipt.', receiptRouter)
+  .merge('onlinepotten.', onlinepottenRouter)
+  .merge('invoice.', invoiceRouter)
   .query('all', {
     async resolve() {
       return prisma.application.findMany({
