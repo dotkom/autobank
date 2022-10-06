@@ -1,63 +1,18 @@
 import { Prisma } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
-import { z } from 'zod'
+import { ReceiptCreateInputObjectSchema } from 'prisma/generated/schemas/objects/ReceiptCreateInput.schema'
+import { ReceiptUpdateInputObjectSchema } from 'prisma/generated/schemas/objects/ReceiptUpdateInput.schema'
+import { z, ZodType } from 'zod'
+import { limitedReceiptUpdateInput } from '~/lib/types/zod'
 import { createRouter } from '~/server/createRouter'
-import { prisma } from '~/server/prisma'
-
-const defaultReceiptSelect = Prisma.validator<Prisma.ReceiptSelect>()({
-  id: true,
-  type: true,
-  account: true,
-  card: true,
-  paid_at: true,
-  amount: true,
-  occasion: true,
-  appendix: true,
-  application: {
-    select: {
-      id: true,
-      userId: true,
-      fullname: true,
-      email: true,
-      created_at: true,
-      approved_at: true,
-      last_updated: true,
-      status: true,
-      responsible_committee: true,
-      comments: true,
-      error: true,
-      error_fields: true,
-    },
-  },
-})
+import { defaultReceiptSelect, prisma } from '~/server/prisma'
 
 export const receiptRouter = createRouter()
   // create
   .mutation('add', {
-    input: z.object({
-      amount: z.number().min(0),
-      occasion: z.string(),
-      type: z.enum(['card', 'deposit']),
-      account: z.string().optional(),
-      card: z.string().optional(),
-
-      appendix: z.array(z.string()),
-      application: z.object({
-        create: z.object({
-          fullname: z.string(),
-          email: z.string(),
-          user: z
-            .object({
-              connect: z.object({
-                id: z.string(),
-              }),
-            })
-            .optional(),
-          responsible_committee: z.string(),
-          comments: z.string(),
-        }),
-      }),
-    }),
+    input: ReceiptCreateInputObjectSchema.omit({
+      id: true,
+    }) as ZodType<Prisma.ReceiptCreateInput>,
     async resolve({ input }) {
       // if user exists connect user
       const receipt = await prisma.receipt.create({
@@ -91,28 +46,7 @@ export const receiptRouter = createRouter()
   .mutation('useredit', {
     input: z.object({
       id: z.string().uuid(),
-      data: z.object({
-        amount: z.number().min(0),
-        occasion: z.string(),
-        type: z.enum(['card', 'deposit']),
-        account: z.string().optional(),
-        card: z.string().optional(),
-        responsible_committee: z.string(),
-        application: z.object({
-          update: z.object({
-            user: z
-              .object({
-                connect: z.object({
-                  id: z.string(),
-                }),
-              })
-              .optional(),
-            appendix: z.array(z.string()),
-            fullname: z.string(),
-            email: z.string(),
-          }),
-        }),
-      }),
+      data: limitedReceiptUpdateInput,
     }),
     async resolve({ input }) {
       const { id, data } = input
@@ -179,32 +113,7 @@ export const receiptRouter = createRouter()
   .mutation('edit', {
     input: z.object({
       id: z.string().uuid(),
-      data: z.object({
-        amount: z.number().min(0),
-        occasion: z.string(),
-        type: z.enum(['card', 'deposit']),
-        account: z.string().optional(),
-        card: z.string().optional(),
-        responsible_committee: z.string(),
-        application: z.object({
-          update: z.object({
-            user: z
-              .object({
-                connect: z.object({
-                  id: z.string(),
-                }),
-              })
-              .optional(),
-            comments: z.string(),
-            appendix: z.array(z.string()),
-            fullname: z.string(),
-            email: z.string(),
-            status: z.enum(['pending', 'approved', 'rejected']),
-            error: z.string().optional(),
-            error_fields: z.array(z.string()).optional(),
-          }),
-        }),
-      }),
+      data: ReceiptUpdateInputObjectSchema,
     }),
     async resolve({ input }) {
       const { id, data } = input
