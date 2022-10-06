@@ -1,12 +1,31 @@
+const { env } = require('./src/server/env')
+
+/**
+ * Don't be scared of the generics here.
+ * All they do is to give us autocompletion when using this.
+ *
+ * @template {import('next').NextConfig} T
+ * @param {T} config - A generic parameter that flows through to the return type
+ * @constraint {{import('next').NextConfig}}
+ */
+function getConfig(config) {
+  return config
+}
+
+/**
+ * @link https://nextjs.org/docs/api-reference/next.config.js/introduction
+ */
 module.exports = {
-  reactStrictMode: true,
-  webpack: function (config, options) {
-    config.experiments = { topLevelAwait: true, layers: true }
-    // config.resolve.alias['$components'] = path.resolve(__dirname, 'components')
-    // config.resolve.alias['$prisma'] = path.resolve(__dirname, 'prisma')
-    // config.resolve.alias['$lib'] = path.resolve(__dirname, 'lib')
-    return config
-  },
+  ...getConfig({
+    /**
+     * Dynamic configuration available for the browser and server.
+     * Note: requires `ssr: true` or a `getInitialProps` in `_app.tsx`
+     * @link https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration
+     */
+    publicRuntimeConfig: {
+      NODE_ENV: env.NODE_ENV,
+    },
+  }),
   images: {
     domains: ['lh3.googleusercontent.com'],
   },

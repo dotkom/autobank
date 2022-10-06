@@ -7,9 +7,8 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator typegraphql {
-  provider = "typegraphql-prisma"
-  output   = "graphql"
+generator zod {
+  provider = "prisma-zod-generator"
 }
 
 model Account {
@@ -49,18 +48,18 @@ enum role {
 }
 
 model User {
-  id                   String        @id @default(cuid())
-  name                 String?
-  email                String?       @unique
-  emailVerified        DateTime?     @map("email_verified")
-  image                String?
-  role                 role          @default(USER)
+  id                  String        @id @default(cuid())
+  name                String?
+  email               String?       @unique
+  emailVerified       DateTime?     @map("email_verified")
+  image               String?
+  role                role          @default(USER)
   /// @TypeGraphQL.omit(output: true)
-  accounts             Account[]
+  accounts            Account[]
   /// @TypeGraphQL.omit(output: true)
-  sessions             Session[]
-  applications         Application[] @relation(name: "owner")
-  approvedApplications Application[] @relation(name: "approved_by")
+  sessions            Session[]
+  applications        Application[] @relation(name: "owner")
+  updatedApplications Application[] @relation(name: "updated_by")
 
   @@map("users")
 }
@@ -74,19 +73,25 @@ model VerificationToken {
   @@map("verificationtokens")
 }
 
+enum statusType {
+  pending
+  approved
+  rejected
+}
+
 model Application {
-  id                    String    @id @default(cuid())
-  user                  User?     @relation(fields: [userId], references: [id], name: "owner")
+  id                    String     @id @default(cuid())
+  user                  User?      @relation(fields: [userId], references: [id], name: "owner")
   userId                String?
   fullname              String
   email                 String
-  created_at            DateTime  @default(now())
+  created_at            DateTime   @default(now())
   approved_at           DateTime?
-  approvedBy            User?     @relation(fields: [approvedById], references: [id], name: "approved_by")
-  approvedById          String?
-  last_updated          DateTime  @default(now())
-  status                String    @default("ikke sendt")
-  responsible_committee String    @default("Unkown")
+  updatedBy             User?      @relation(fields: [updatedById], references: [id], name: "updated_by")
+  updatedById           String?
+  last_updated          DateTime   @updatedAt
+  status                statusType @default(pending)
+  responsible_committee String     @default("Unkown")
   comments              String?
   error                 String?
   error_fields          String[]
@@ -110,8 +115,10 @@ model Receipt {
   amount        Int
   occasion      String
   appendix      String[]
-  application   Application @relation(fields: [applicationId], references: [id])
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
   applicationId String      @unique
+
+  onlinepotten Onlinepotten?
 }
 
 model Onlinepotten {
@@ -122,8 +129,9 @@ model Onlinepotten {
   description    String
   participants   String[]
   payment_method String      @default("kvittering")
-  recipt_id      Int?
-  application    Application @relation(fields: [applicationId], references: [id])
+  receipt_id     String?     @unique
+  receipt        Receipt?    @relation(fields: [receipt_id], references: [id])
+  application    Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
   applicationId  String      @unique
 }
 
@@ -134,6 +142,6 @@ model Invoice {
   method        String      @default("mail")
   po_nr         String?
   duedays       Int         @default(30)
-  application   Application @relation(fields: [applicationId], references: [id])
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
   applicationId String      @unique
 }
