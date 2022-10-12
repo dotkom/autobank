@@ -4,9 +4,12 @@ import bilde from 'images/undraw/stonks.svg'
 import Soknad from './Soknad'
 import Text from 'components/elements/Typography/Text'
 
+import StitchesButton from 'stitches_components/Buttons'
+
 const Fondet = () => {
   return (
     <>
+      <StitchesButton> Button</StitchesButton>
       <section className=" grid gap-20 mx-4">
         <div className="  grid md:grid-cols-2 gap-20">
           <div>
