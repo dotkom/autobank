@@ -6,6 +6,7 @@ import receiptImage from 'images/undraw/undraw_receipt.svg'
 import creditcardImage from 'images/undraw/undraw_credit_card.svg'
 import vaultImage from 'images/undraw/undraw_vault.svg'
 import questionsImage from 'images/undraw/undraw_questions.svg'
+import StitchesButton from 'stitches_components/Buttons'
 
 const IndexPage = () => (
   <>
@@ -18,14 +19,11 @@ const IndexPage = () => (
           <br />
           La bankbotten velge skjema for deg!
         </p>
-        <div className="justify-center flex space-x-2">
-          <button className="bg-online-blue-500 hover:bg-online-blue-700 text-white font-bold py-2 px-4 rounded">
-            Bankbotten
-          </button>
+        <div className="justify-center flex ">
+          <StitchesButton size={'medium'}>Bankbotten</StitchesButton>
           <p className="self-center">eller</p>
-          <button className="bg-online-blue-500 hover:bg-online-blue-700 text-white font-bold py-2 px-4 rounded">
-            Velg selv
-          </button>
+
+          <StitchesButton size={'medium'}>Velg selv</StitchesButton>
         </div>
       </div>
       <Image
@@ -124,9 +122,8 @@ const IndexPage = () => (
           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
           fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.
         </p>
-        <button className="mt-6 bg-[#0D5474] hover:bg-[#0A425C] text-white font-bold py-2 px-4 rounded">
-          Ofte stilte spørsmål
-        </button>
+
+        <StitchesButton size={'big'}>Ofte stilte spørsmål</StitchesButton>
       </div>
     </section>
   </>

@@ -5,32 +5,58 @@ const StitchesButton = styled('button', {
   height: '36px',
   margin: 'auto',
   color: 'white',
+  fontSize: '16px',
+  fontWeight: 'bold',
   textAlign: 'center',
   backgroundColor: '#153E75',
   borderRadius: '4px',
-  fontSize: '13px',
+  padding: '2px 4x',
+  marginTop: '6px',
+
+  '&:hover': {
+    filter: 'brightness(80%)',
+    backdropFilter: 'brightness(50%)',
+  },
 
   variants: {
     color: {
       blue: {
-        color: '#153E75',
+        background: '#153E75',
       },
       yellow: {
-        color: '#FFC300',
+        background: '#FFC300',
       },
       green: {
-        color: '#36B37E',
+        background: '#36B37E',
       },
       red: {
-        color: '#F43145',
+        background: '#F43145',
       },
       lightblue: {
-        color: '#3A86FF',
+        background: '#3A86FF',
       },
       gray: {
-        color: '#4C566A',
+        background: '#4C566A',
       },
     },
+    size: {
+      small: {
+        width: '80px',
+        height: '36px',
+      },
+      medium: {
+        width: '120px',
+        height: '50px',
+      },
+      big: {
+        width: '200px',
+        height: '40px',
+      },
+    },
+  },
+  defaultVariants: {
+    color: 'blue',
+    size: 'small',
   },
 })
 

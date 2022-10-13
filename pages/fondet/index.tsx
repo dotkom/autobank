@@ -9,7 +9,6 @@ import StitchesButton from 'stitches_components/Buttons'
 const Fondet = () => {
   return (
     <>
-      <StitchesButton> Button</StitchesButton>
       <section className=" grid gap-20 mx-4">
         <div className="  grid md:grid-cols-2 gap-20">
           <div>
