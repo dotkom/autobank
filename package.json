@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
+    "@dotkomonline/ui": "^0.1.0-beta.0",
     "@hookform/resolvers": "^2.9.0",
     "@next-auth/prisma-adapter": "^1.0.3",
     "@popperjs/core": "^2.11.5",
