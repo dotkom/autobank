@@ -8,7 +8,7 @@ import vaultImage from 'images/undraw/undraw_vault.svg'
 import questionsImage from 'images/undraw/undraw_questions.svg'
 
 const IndexPage = () => (
-  <Layout title="Online Autobank" className="flex flex-col m-10 divide-y-2 p-5">
+  <>
     {/* Greeting / bankbot */}
     <section className="flex flex-col-reverse py-12 md:grid gap-4 grid-cols-2">
       <div className="space-y-10">
@@ -129,7 +129,7 @@ const IndexPage = () => (
         </button>
       </div>
     </section>
-  </Layout>
+  </>
 )
 
 export default IndexPage

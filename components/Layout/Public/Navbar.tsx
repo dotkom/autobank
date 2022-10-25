@@ -61,6 +61,7 @@ export const ItemList = ({
       <Item link={'/kvittering'} text={'Kvitteringer'} />
       <Item link={'/faktura'} text={'Faktura'} />
       <Item link={'/faq'} text={'FAQ'} />
+      <Item link={'/profile'} text={'Profil'} />
       {status == 'authenticated' && session.user.role != 'USER' ? (
         <Item link={'/admin'} text={'Dashboard'} />
       ) : (

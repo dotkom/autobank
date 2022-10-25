@@ -3,7 +3,6 @@ import CompanyUserForm from 'components/sections/forms/CompanyUserForm'
 import InvoiceForm from 'components/sections/forms/InvoiceForm'
 import { useState } from 'react'
 import { InvoiceFormData } from 'types/forms'
-import Public from '../../components/Layout/Public'
 
 const initData: InvoiceFormData = {
   organizationNumber: '',
@@ -26,7 +25,7 @@ export default function InviceForm() {
   const submitForm = () => {}
 
   return (
-    <Public title="Fakturainformasjon">
+    <>
       <div className="max-w-lg w-full text-center text-online-blue-500">
         <h1 className="text-4xl">Fakturainformasjon</h1>
         {step === 0 && (
@@ -51,6 +50,6 @@ export default function InviceForm() {
           />
         )}
       </div>
-    </Public>
+    </>
   )
 }
