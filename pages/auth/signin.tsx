@@ -59,7 +59,7 @@ export default function SignIn({
     signIn('credentials', { redirect: false, username })
   }
   return (
-    <Public>
+    <>
       <div className=" max-w-lg w-full flex items-center flex-col justify-center shadow-2xl bg-slate-50 p-10 rounded-lg">
         <OnlineBankom className="h-10 my-10" />
         <h2 className="mx-auto text-lg mb-2 text-center">
@@ -134,7 +134,7 @@ export default function SignIn({
                   }`} // TODO: remove bg-gray when online signin works
                   disabled={provider.name == 'Online'}
                 >
-                  Log in med {provider.name}
+                  Logg inn med {provider.name}
                   {provider.name == 'Online' ? (
                     <Online className="h-5 ml-1.5" color="white" />
                   ) : (
@@ -145,7 +145,7 @@ export default function SignIn({
             </div>
           ))}
       </div>
-    </Public>
+    </>
   )
 }
 

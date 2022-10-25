@@ -9,7 +9,7 @@ const Button = ({ logo = false, className, ...props }: Props) => {
   return (
     <button
       {...props}
-      className={`${className} bg-online-blue-500 text-zinc-100 px-4 py-px rounded shadow-md cursor-pointer`}
+      className={`${className} bg-online-blue-500 text-zinc-100 my-2 px-4 py-px rounded shadow-md cursor-pointer`}
     />
   )
 }
