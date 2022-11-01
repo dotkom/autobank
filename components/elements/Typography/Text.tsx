@@ -1,3 +1,4 @@
+import { css, styled } from '@stitches/react'
 import React from 'react'
 
 type textProps = {
