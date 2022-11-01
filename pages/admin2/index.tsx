@@ -1,13 +1,19 @@
 import React from 'react'
 import Sidebar from './Sidebar'
+import Receipts from './Receipts'
+import { styled } from '@stitches/react'
 
-function hallo() {
+function AdminView() {
+  const Container = styled('div', {
+    display: 'flex',
+  })
+
   return (
-    <>
-      hallo
+    <div>
       <Sidebar />
-    </>
+      <Receipts />
+    </div>
   )
 }
 
-export default hallo
+export default AdminView

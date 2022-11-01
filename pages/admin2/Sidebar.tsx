@@ -16,7 +16,7 @@ const AdminNav = styled('nav', {
   paddingTop: 30,
 })
 
-const ListElement = styled('li', {
+const ListElement = styled('div', {
   fontSize: '20px',
   height: '100px',
   marginTop: '10px',
