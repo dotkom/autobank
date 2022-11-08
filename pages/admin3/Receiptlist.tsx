@@ -3,7 +3,7 @@ import Receipt from './Receipt'
 
 function Receiptlist() {
   return (
-    <div className="w-[50rem]  m-auto h-[32rem]">
+    <div className="  h-[32rem] ">
       <Receipt
         title="Hovedstyret"
         description="wkdeokjwkdpowkfreoa dokfokdokfw qwdokeopfj fjd  kdow "
@@ -11,6 +11,18 @@ function Receiptlist() {
       <Receipt
         title="Trivselskomiteen"
         description="i alrlfrfwdjwk djfrjf q  wodkfrmj wdkfr p"
+      />
+      <Receipt
+        title="Bedriftskomiteen"
+        description="i de wdj rwf q  wodkfrmj wdkfedefwrffeqkjodjqewoidjkr p"
+      />
+      <Receipt
+        title="Bedriftskomiteen"
+        description="i de wdj rwf q  wodkfrmj wdkfedefwrffeqkjodjqewoidjkr p"
+      />
+      <Receipt
+        title="Bedriftskomiteen"
+        description="i de wdj rwf q  wodkfrmj wdkfedefwrffeqkjodjqewoidjkr p"
       />
       <Receipt
         title="Bedriftskomiteen"
