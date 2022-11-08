@@ -31,7 +31,8 @@
     "types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next.config.js"
+    "next.config.js",
+    "pages/admin2"
   ],
   "exclude": ["node_modules"]
 }

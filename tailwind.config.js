@@ -55,6 +55,14 @@ module.exports = {
           lg: '4rem',
         },
       },
+      extend: {
+        height: {
+          128: '32rem',
+        },
+        spacing: {
+          128: '32rem',
+        },
+      },
     },
   },
   variants: {
